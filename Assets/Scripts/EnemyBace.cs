@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyBaceBehaviors
+{
+    Fly,
+    Walk,
+    Stand,
+    Roll
+}
+public enum EnemyBaceActions
+{
+    Run,
+    Attack,
+    None
+}
 public class EnemyBace : MonoBehaviour
 {
-    public enum EnemyBaceBehaviors
-    {
-        Fly,
-        Walk,
-        Stand,
-        Roll
-    }
-    public enum EnemyBaceActions
-    {
-        Run,
-        Attack,
-        None
-    }
-
     public int hp = 10;
     public int musicArm = 0;
     public int handArm = 5;
