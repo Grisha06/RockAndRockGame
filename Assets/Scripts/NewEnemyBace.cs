@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class NewEnemyBace : MonoBehaviour
 {
     [Header("Inheritanced fields")]
+    public EnemyBaceActions enemyBaceAction;
     public int hp;
     public int musicArm;
     public int handArm;
@@ -63,19 +64,21 @@ public abstract class NewEnemyBace : MonoBehaviour
         GameObject k;
         if (Drop.Length != 0)
         {
-            for (int j = 0; j < Drop.Length; j++)
+            foreach (var item in Drop)
             {
-                if (Drop[j].chance >= Random.Range(0f, 100f))
+                if (item.chance >= Random.Range(0f, 100f))
                 {
-                    for (int i = 0; i < Drop[j].number; i++)
+                    for (int i = 0; i < item.number; i++)
                     {
-                        k = Instantiate(Drop[j].obj, transform);
+                        k = Instantiate(item.obj, transform);
                         k.transform.localPosition = Vector3.zero;
+                        k.transform.rotation = Quaternion.identity;
                         k.transform.SetParent(null);
                     }
                 }
             }
         }
+        StopAllCoroutines();
         Destroy(gameObject);
     }
     public void Jump(float jumpForce)
@@ -92,6 +95,7 @@ public abstract class NewEnemyBace : MonoBehaviour
             {
                 hp -= musicArm < collision.gameObject.GetComponent<MusicNoteStart>().damage ? collision.gameObject.GetComponent<MusicNoteStart>().damage - musicArm : 1;
                 an.Play("damage");
+                collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
                 Destroy(collision.gameObject);
             }
             NewOnCollisionEnter2D(collision);

@@ -73,7 +73,7 @@ public class PlayerMover : MonoBehaviour
             {
                 if (jumps == 0)
                 {
-                    mainCamM.Shake(.1f, .05f);
+                    //mainCamM.Shake(.1f, .05f);
                 }
                 else
                 {
