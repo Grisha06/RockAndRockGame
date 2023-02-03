@@ -237,7 +237,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1.0625, y: 0.5625}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.01
 --- !u!58 &4300864505660117749
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d55a634f2fe48429f2fc9a14c0ebbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyBaceAction: 0
   hp: 10
   musicArm: 0
   handArm: 5
@@ -418,7 +419,6 @@ MonoBehaviour:
   attackTime: 1.5
   MusicNoteSpavnerSelNum: 0
   attackIfRad: 1
-  enemyBaceAction: 0
   rightWall: {fileID: 0}
   leftWall: {fileID: 0}
   WallsChecker: {fileID: 6218099679868554700}
