@@ -9772,7 +9772,7 @@ MonoBehaviour:
     shoot_speed: 0.25
     musicNoteSpavnerObjs:
     - MusicNoteSpavner: {fileID: 1418261139}
-      SpavnTime: 0
+      SpavnTime: 0.1
       force: 0.3
       lifeTime: 2.5
       damage: 2
@@ -9780,25 +9780,25 @@ MonoBehaviour:
     sprite: {fileID: 8198249141363050723, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
   - auto: 1
     inf_ammo: 0
-    ammo: 100
-    ammo_by_shoot: 1
+    ammo: 500
+    ammo_by_shoot: 3
     shoot_speed: 0.2
     musicNoteSpavnerObjs:
     - MusicNoteSpavner: {fileID: 1418261139}
       SpavnTime: 0
-      force: 0.25
-      lifeTime: 1
-      damage: 1
+      force: 0.3
+      lifeTime: 2.5
+      damage: 2
     - MusicNoteSpavner: {fileID: 803442022}
       SpavnTime: 0
-      force: 0.25
-      lifeTime: 1
-      damage: 1
+      force: 0.3
+      lifeTime: 2.5
+      damage: 2
     - MusicNoteSpavner: {fileID: 1622006841}
       SpavnTime: 0
-      force: 0.25
-      lifeTime: 1
-      damage: 1
+      force: 0.3
+      lifeTime: 2.5
+      damage: 2
     MusicNote: {fileID: 8212732330406563222, guid: 16db6a845a5f9864088080cc8f9dda27, type: 3}
     sprite: {fileID: 1162831633960180250, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
   weaponSprite: {fileID: 378218317}
@@ -16280,27 +16280,27 @@ MonoBehaviour:
   attackTime: 1.5
   sameTimeAttack: 0
   MusicNoteSpavner:
-  - MusicNoteSpavner: {fileID: 2358876629100787464}
+  - MusicNoteSpavner: {fileID: 4983290673316045903}
     SpavnTime: 0.1
     force: 0.3
     lifeTime: 2.5
     damage: 1
-  - MusicNoteSpavner: {fileID: 2358876628525550156}
+  - MusicNoteSpavner: {fileID: 4983290673316045902}
     SpavnTime: 0.1
     force: 0.3
     lifeTime: 2.5
     damage: 1
-  - MusicNoteSpavner: {fileID: 2358876628649950611}
+  - MusicNoteSpavner: {fileID: 4983290673316045901}
     SpavnTime: 0.1
     force: 0.3
     lifeTime: 2.5
     damage: 1
-  - MusicNoteSpavner: {fileID: 2358876629565299336}
+  - MusicNoteSpavner: {fileID: 4983290673316045900}
     SpavnTime: 0.1
     force: 0.3
     lifeTime: 2.5
     damage: 1
-  - MusicNoteSpavner: {fileID: 2358876628525801687}
+  - MusicNoteSpavner: {fileID: 4983290673316045899}
     SpavnTime: 0.1
     force: 0.3
     lifeTime: 2.5
@@ -16943,6 +16943,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
+--- !u!4 &4983290673316045899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4983290671391415564, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
+  m_PrefabInstance: {fileID: 4983290673316045898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4983290673316045900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4983290672431025608, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
+  m_PrefabInstance: {fileID: 4983290673316045898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4983290673316045901 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4983290671389570967, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
+  m_PrefabInstance: {fileID: 4983290673316045898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4983290673316045902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4983290671501126355, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
+  m_PrefabInstance: {fileID: 4983290673316045898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4983290673316045903 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4983290673029767240, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
+  m_PrefabInstance: {fileID: 4983290673316045898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5044096137172964865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17064,6 +17089,37 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   dont_totch_me: 0
+  attackRadius: 3
+  MusicNoteSpavner:
+  - MusicNoteSpavner: {fileID: 2358876629100787464}
+    SpavnTime: 0.1
+    force: 0.3
+    lifeTime: 2.5
+    damage: 2
+  - MusicNoteSpavner: {fileID: 2358876628525550156}
+    SpavnTime: 0.1
+    force: 0.3
+    lifeTime: 2.5
+    damage: 2
+  - MusicNoteSpavner: {fileID: 2358876628649950611}
+    SpavnTime: 0.1
+    force: 0.3
+    lifeTime: 2.5
+    damage: 2
+  - MusicNoteSpavner: {fileID: 2358876629565299336}
+    SpavnTime: 0.1
+    force: 0.3
+    lifeTime: 2.5
+    damage: 2
+  - MusicNoteSpavner: {fileID: 2358876628525801687}
+    SpavnTime: 0.1
+    force: 0.3
+    lifeTime: 2.5
+    damage: 2
+  sameTimeAttack: 0
+  attackTime: 1.5
+  MusicNoteSpavnerSelNum: 0
+  attackIfRad: 1
   enemyBaceAction: 0
   rightWall: {fileID: 0}
   leftWall: {fileID: 0}
@@ -17072,38 +17128,7 @@ MonoBehaviour:
   xDir: 0
   speed: 33
   runIfRad: 1
-  attackIfRad: 1
   runRadius: 6
-  attackRadius: 3
-  MusicNoteSpavner:
-  - MusicNoteSpavner: {fileID: 2358876629100787464}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
-  - MusicNoteSpavner: {fileID: 2358876628525550156}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
-  - MusicNoteSpavner: {fileID: 2358876628649950611}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
-  - MusicNoteSpavner: {fileID: 2358876629565299336}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
-  - MusicNoteSpavner: {fileID: 2358876628525801687}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
-  sameTimeAttack: 0
-  attackTime: 1.5
-  MusicNoteSpavnerSelNum: 0
 --- !u!1001 &6483396809577101761
 PrefabInstance:
   m_ObjectHideFlags: 0

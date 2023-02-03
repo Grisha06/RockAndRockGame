@@ -2,7 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Walker_Rock : NewEnemyBace
+public abstract class EnemyBaceAttakable : NewEnemyBace
+{
+    public float attackRadius;
+    public BaseMusicNoteSpavnerObj[] MusicNoteSpavner;
+    public bool sameTimeAttack = false;
+    public float attackTime;
+    [HideInInspector]
+    public int MusicNoteSpavnerSelNum = 0;
+    public bool attackIfRad = true;
+    public override void NewUpdate()
+    {
+
+    }
+    public override void NewOnCollisionEnter2D(Collision2D collision)
+    {
+
+    }
+    public override void NewFixedUpdate()
+    {
+
+    }
+    public void SpawnM(int mnssn)
+    {
+        GameObject mn = Instantiate(MusicNote, MusicNoteSpavner[mnssn].MusicNoteSpavner);
+        MusicNoteSpavner[mnssn].Attack(mn);
+        mn.transform.rotation = Quaternion.identity;
+        mn.transform.localScale = Vector3.one;
+        mn.GetComponent<MusicNoteStart>().dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
+        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].force;
+        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].lifeTime;
+        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].damage;
+        mn.transform.SetParent(null);
+    }
+    public void SpawnMN()
+    {
+        SpawnM(MusicNoteSpavnerSelNum);
+    }
+}
+public class Enemy_Walker_Rock : EnemyBaceAttakable
 {
     [HideInInspector]
     public EnemyBaceActions enemyBaceAction;
@@ -15,20 +53,14 @@ public class Enemy_Walker_Rock : NewEnemyBace
     public bool xDir = true;
     public float speed;
     public bool runIfRad = true;
-    public bool attackIfRad = true;
     public float runRadius;
-    public float attackRadius;
-    public MusicNoteSpavnerObj[] MusicNoteSpavner;
-    public bool sameTimeAttack = false;
-    public float attackTime;
-    [HideInInspector]
-    public int MusicNoteSpavnerSelNum = 0;
     public override void NewStart()
     {
         StartCoroutine(AttackingEnumerator());
     }
     public override void NewFixedUpdate()
     {
+        base.NewFixedUpdate();
         if (runIfRad && Vector2.Distance(pl.position, tr.position) < runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Run;
@@ -71,7 +103,7 @@ public class Enemy_Walker_Rock : NewEnemyBace
     }
     public override void NewUpdate()
     {
-
+        base.NewUpdate();
     }
     public override void NewOnCollisionEnter2D(Collision2D collision)
     {
@@ -128,20 +160,5 @@ public class Enemy_Walker_Rock : NewEnemyBace
             }
             yield return new WaitForSeconds(attackTime);
         }
-    }
-    private void SpawnM(int mnssn)
-    {
-        GameObject mn = Instantiate(MusicNote, MusicNoteSpavner[mnssn].MusicNoteSpavner);
-        mn.transform.rotation = Quaternion.identity;
-        mn.transform.localScale = Vector3.one;
-        mn.GetComponent<MusicNoteStart>().dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
-        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].force;
-        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].lifeTime;
-        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].damage;
-        mn.transform.SetParent(null);
-    }
-    private void SpawnMN()
-    {
-        SpawnM(MusicNoteSpavnerSelNum);
     }
 }

@@ -98,6 +98,7 @@ public class PlayerMover : MonoBehaviour
     private void Shoot()
     {
         GameObject mn = Instantiate(weapon[weaponSelect].MusicNote, weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].MusicNoteSpavner);
+        weapon[weaponSelect].Attack(mn);
         mn.transform.rotation = Quaternion.identity;
         mn.transform.localScale = Vector3.one;
         mn.GetComponent<MusicNoteStart>().isRight = false;
