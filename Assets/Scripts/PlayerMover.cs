@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMover : MonoBehaviour
+public interface IDamagable
+{
+    public void AddDamage(int damage, bool byHand);
+}
+public class PlayerMover : MonoBehaviour, IDamagable
 {
     public KeyObj[] controls;
     public float jumpForce = 1;
@@ -103,11 +108,11 @@ public class PlayerMover : MonoBehaviour
         mn.transform.localScale = Vector3.one;
         mn.GetComponent<MusicNoteStart>().isRight = false;
         mn.GetComponent<MusicNoteStart>().dir = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].MusicNoteSpavner;
-        mn.GetComponent<MusicNoteStart>().force = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].force;
-        mn.GetComponent<MusicNoteStart>().lifeTime = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].lifeTime;
-        mn.GetComponent<MusicNoteStart>().damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].damage;
+        mn.GetComponent<MusicNoteStart>().force = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Force;
+        mn.GetComponent<MusicNoteStart>().lifeTime = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Lifetime;
+        mn.GetComponent<MusicNoteStart>().damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Damage;
         mn.transform.SetParent(null);
-        weapon[weaponSelect].ammo -= weapon[weaponSelect].inf_ammo ? 0 : weapon[weaponSelect].ammo_by_shoot;
+        weapon[weaponSelect].Ammo -= !weapon[weaponSelect].isAmmoDecreasing ? 0 : weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].AmmoCost;
     }
     IEnumerator Shooter()
     {
@@ -125,28 +130,28 @@ public class PlayerMover : MonoBehaviour
                 weaponSelect -= weaponSelect > 0 ? 1 : 0;
             }
             weaponSprite.sprite = weapon[weaponSelect].sprite;
-            if ((weapon[weaponSelect].inf_ammo || weapon[weaponSelect].ammo > 0) && hp > 0)
+            if ((!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].Ammo > 0) && hp > 0)
             {
-                if (weapon[weaponSelect].auto && Input.GetKey(KeyObj.FindInKeysArr(controls, "attack")))
+                if (weapon[weaponSelect].isAutomatic && Input.GetKey(KeyObj.FindInKeysArr(controls, "attack")))
                 {
-                    yield return new WaitForSeconds(weapon[weaponSelect].shoot_speed);
+                    yield return new WaitForSeconds(weapon[weaponSelect].ShootSpeed);
                     MusicNoteSpavnerSelect = 0;
                     an.Play("atack");
                     for (int i = 0; i < weapon[weaponSelect].musicNoteSpavnerObjs.Length; i++)
                     {
                         MusicNoteSpavnerSelect = i;
                         Shoot();
-                        yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpavnTime);
+                        yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
                     }
                     MusicNoteSpavnerSelect = 0;
                 }
-                if (!weapon[weaponSelect].auto && Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
+                if (!weapon[weaponSelect].isAutomatic && Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
                 {
                     h = true;
                     t = 0;
 
                 }
-                if (t >= weapon[weaponSelect].shoot_speed && h)
+                if (t >= weapon[weaponSelect].ShootSpeed && h)
                 {
                     //yield return new WaitForSeconds(0.1f);
                     MusicNoteSpavnerSelect = 0;
@@ -155,7 +160,7 @@ public class PlayerMover : MonoBehaviour
                     {
                         MusicNoteSpavnerSelect = i;
                         Shoot();
-                        yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpavnTime);
+                        yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
                     }
                     MusicNoteSpavnerSelect = 0;
                     h = false;
@@ -167,17 +172,22 @@ public class PlayerMover : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void AddDamage(int d, bool byHand)
+    {
+        hp -= (byHand ? handRes : musicRes) < d ? d - (byHand ? handRes : musicRes) : 1;
+        if (hp > 0)
+            an.Play("damage");
+        else
+            an.Play("die");
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (hp > 0)
         {
             if (collision.gameObject.CompareTag("note"))
             {
-                hp -= musicRes < collision.gameObject.GetComponent<MusicNoteStart>().damage ? collision.gameObject.GetComponent<MusicNoteStart>().damage - musicRes : 1;
-                if (hp > 0)
-                    an.Play("damage");
-                else
-                    an.Play("die");
+                AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
+                collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
                 Destroy(collision.gameObject);
             }
             if (collision.gameObject.CompareTag("destroyOnCollPl"))
@@ -191,8 +201,18 @@ public class PlayerMover : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("ammo"))
             {
-                weapon[weaponSelect].ammo += 10;
+                weapon[weaponSelect].Ammo += 10;
                 Destroy(collision.gameObject);
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (hp > 0)
+        {
+            if (collision.CompareTag("HandHitter") && collision.gameObject.GetComponent<HandHitter>().LayerToAttack.Contains(gameObject.layer))
+            {
+                AddDamage(collision.gameObject.GetComponent<HandHitter>().Damage, true);
             }
         }
     }

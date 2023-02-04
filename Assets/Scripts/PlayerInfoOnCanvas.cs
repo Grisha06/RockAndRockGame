@@ -20,7 +20,7 @@ public class PlayerInfoOnCanvas : MonoBehaviour
         {
             yield return wfs;
             hp.text = "HP = " + (pm.hp > 0 ? pm.hp : 0).ToString();
-            ammo.text = "Ammo = " + pm.weapon[pm.weaponSelect].ammo.ToString();
+            ammo.text = "Ammo = " + pm.weapon[pm.weaponSelect].Ammo.ToString();
         }
     }
 }

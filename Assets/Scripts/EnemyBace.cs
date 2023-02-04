@@ -15,6 +15,8 @@ public enum EnemyBaceActions
     Attack,
     None
 }
+
+[AddComponentMenu("Enemies/Enemy OUTDATED")]
 public class EnemyBace : MonoBehaviour
 {
     public int hp = 10;
@@ -230,9 +232,9 @@ public class EnemyBace : MonoBehaviour
         mn.transform.rotation = Quaternion.identity;
         mn.transform.localScale = Vector3.one;
         mn.GetComponent<MusicNoteStart>().dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
-        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].force;
-        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].lifeTime;
-        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].damage;
+        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].Force;
+        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].Lifetime;
+        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].Damage;
         mn.transform.SetParent(null);
     }
     private void SpawnMN()
@@ -265,7 +267,7 @@ public class EnemyBace : MonoBehaviour
                         yield return new WaitForSeconds(0.25f);
                         if (hp > 0)
                             an.Play("spawnMN");
-                        yield return new WaitForSeconds(MusicNoteSpavner[MusicNoteSpavnerSelNum].SpavnTime);
+                        yield return new WaitForSeconds(MusicNoteSpavner[MusicNoteSpavnerSelNum].SpawnTime);
                     }
                     MusicNoteSpavnerSelNum = 0;
                 }

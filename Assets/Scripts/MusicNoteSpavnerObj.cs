@@ -4,10 +4,12 @@ using UnityEngine;
 public class BaseMusicNoteSpavnerObj
 {
     [SerializeField] public Transform MusicNoteSpavner;
-    [SerializeField] public float SpavnTime = 0.1f;
-    [SerializeField] public float force = 5;
-    [SerializeField] public float lifeTime = 10;
-    [SerializeField] public int damage = 1;
+    [Min(0)]
+    [SerializeField] public float SpawnTime = 0.1f;
+    [SerializeField] public float Force = 5;
+    [Min(0)]
+    [SerializeField] public float Lifetime = 10;
+    [SerializeField] public int Damage = 1;
     public virtual void Attack(GameObject gobj)
     {
 
@@ -18,4 +20,9 @@ public class BaseMusicNoteSpavnerObj
 public class MusicNoteSpavnerObj : BaseMusicNoteSpavnerObj
 {
 
+}
+[System.Serializable]
+public class MusicNoteSpavnerObjPL : BaseMusicNoteSpavnerObj
+{
+    [SerializeField] public int AmmoCost = 1;
 }

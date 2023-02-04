@@ -299,30 +299,30 @@ MonoBehaviour:
   sameTimeAttack: 0
   MusicNoteSpavner:
   - MusicNoteSpavner: {fileID: 0}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
+    SpawnTime: 0.1
+    Force: 5
+    Lifetime: 10
+    Damage: 1
   - MusicNoteSpavner: {fileID: 0}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
+    SpawnTime: 0.1
+    Force: 5
+    Lifetime: 10
+    Damage: 1
   - MusicNoteSpavner: {fileID: 0}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
+    SpawnTime: 0.1
+    Force: 5
+    Lifetime: 10
+    Damage: 1
   - MusicNoteSpavner: {fileID: 0}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
+    SpawnTime: 0.1
+    Force: 5
+    Lifetime: 10
+    Damage: 1
   - MusicNoteSpavner: {fileID: 0}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 1
+    SpawnTime: 0.1
+    Force: 5
+    Lifetime: 10
+    Damage: 1
   Drop:
   - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
     chance: 100
@@ -391,30 +391,30 @@ MonoBehaviour:
   attackRadius: 3
   MusicNoteSpavner:
   - MusicNoteSpavner: {fileID: 6218099679429095186}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 2
+    SpawnTime: 0.1
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 6218099679942283862}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 2
+    SpawnTime: 0.1
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 6218099680051733897}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 2
+    SpawnTime: 0.1
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 6218099678834541202}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 2
+    SpawnTime: 0.1
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 6218099679936313549}
-    SpavnTime: 0.1
-    force: 0.3
-    lifeTime: 2.5
-    damage: 2
+    SpawnTime: 0.1
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   sameTimeAttack: 0
   attackTime: 1.5
   MusicNoteSpavnerSelNum: 0

@@ -1,6 +1,70 @@
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
-public abstract class NewEnemyBace : MonoBehaviour
+public abstract class EnemyBaceAttakable : NewEnemyBace
+{
+    public float attackRadius;
+    public BaseMusicNoteSpavnerObj[] MusicNoteSpavner;
+    public bool sameTimeAttack = false;
+    public float attackTime;
+    [HideInInspector]
+    public int MusicNoteSpavnerSelNum = 0;
+    public bool attackIfRad = true;
+    public override void NewUpdate() { }
+    public override void NewOnCollisionEnter2D(Collision2D collision) { }
+    public override void NewFixedUpdate() { }
+    public override void NewOnTriggerStay2D(Collider2D collision) { }
+    public override void NewOnTriggerEnter2D(Collider2D collision) { }
+    public void SpawnM(int mnssn)
+    {
+        GameObject mn = Instantiate(MusicNote, MusicNoteSpavner[mnssn].MusicNoteSpavner);
+        MusicNoteSpavner[mnssn].Attack(mn);
+        mn.transform.rotation = Quaternion.identity;
+        mn.transform.localScale = Vector3.one;
+        mn.GetComponent<MusicNoteStart>().dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
+        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].Force;
+        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].Lifetime;
+        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].Damage;
+        mn.transform.SetParent(null);
+    }
+    public void SpawnMN()
+    {
+        SpawnM(MusicNoteSpavnerSelNum);
+    }
+    public virtual IEnumerator AttackingEnumerator()
+    {
+        while (true)
+        {
+            if (enemyBaceAction == EnemyBaceActions.Attack && hp > 0)
+            {
+                if (!sameTimeAttack)
+                {
+                    MusicNoteSpavnerSelNum = 0;
+                    for (int i = 0; i < MusicNoteSpavner.Length; i++)
+                    {
+                        MusicNoteSpavnerSelNum = i;
+                        yield return new WaitForSeconds(0.25f);
+                        if (hp > 0)
+                            an.Play("spawnMN");
+                        yield return new WaitForSeconds(MusicNoteSpavner[MusicNoteSpavnerSelNum].SpawnTime);
+                    }
+                    MusicNoteSpavnerSelNum = 0;
+                }
+                else
+                {
+                    for (int i = 0; i < MusicNoteSpavner.Length && hp > 0; i++)
+                    {
+                        SpawnM(i);
+                    }
+                }
+            }
+            yield return new WaitForSeconds(attackTime);
+        }
+    }
+}
+
+public abstract class NewEnemyBace : MonoBehaviour, IDamagable
 {
     [Header("Inheritanced fields")]
     public EnemyBaceActions enemyBaceAction;
@@ -35,6 +99,8 @@ public abstract class NewEnemyBace : MonoBehaviour
     public abstract void NewFixedUpdate();
     public abstract void NewUpdate();
     public abstract void NewOnCollisionEnter2D(Collision2D collision);
+    public abstract void NewOnTriggerStay2D(Collider2D collision);
+    public abstract void NewOnTriggerEnter2D(Collider2D collision);
 
     private void FixedUpdate()
     {
@@ -55,6 +121,7 @@ public abstract class NewEnemyBace : MonoBehaviour
         if (hp <= 0 && hp > -100)
         {
             an.Play("die");
+            an.SetBool("daed", true);
             hp = -101;
         }
     }
@@ -81,11 +148,16 @@ public abstract class NewEnemyBace : MonoBehaviour
         StopAllCoroutines();
         Destroy(gameObject);
     }
-    public void Jump(float jumpForce)
+    public virtual void Jump(float jumpForce)
     {
         JumpTarget.rotation = Quaternion.Euler(0, 0, Random.Range(45, 135));
         rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
         an.Play("jump");
+    }
+    public void AddDamage(int d, bool byHand)
+    {
+        hp -= (byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1;
+        an.Play("damage");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -93,12 +165,29 @@ public abstract class NewEnemyBace : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("notePL"))
             {
-                hp -= musicArm < collision.gameObject.GetComponent<MusicNoteStart>().damage ? collision.gameObject.GetComponent<MusicNoteStart>().damage - musicArm : 1;
-                an.Play("damage");
+                AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
                 collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
                 Destroy(collision.gameObject);
             }
             NewOnCollisionEnter2D(collision);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (hp > 0)
+        {
+            if (collision.CompareTag("HandHitter") && collision.gameObject.GetComponent<HandHitter>().LayerToAttack.Contains(gameObject.layer))
+            {
+                AddDamage(collision.gameObject.GetComponent<HandHitter>().Damage, true);
+            }
+            NewOnTriggerEnter2D(collision);
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (hp > 0)
+        {
+            NewOnTriggerStay2D(collision);
         }
     }
 }

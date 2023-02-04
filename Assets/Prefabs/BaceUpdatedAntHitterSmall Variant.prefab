@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2168426101385396127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: xDir
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: speed
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.217
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918819, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.31136572
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918819, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15568286
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918821, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Name
+      value: BaceUpdatedAntHitterSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664732209500834905, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3849401834889128797, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+    - target: {fileID: 9041824215635163125, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7535486
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16821969
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.033492565
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.20573622
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0bfb04803899e1648b47423757d759a4, type: 3}

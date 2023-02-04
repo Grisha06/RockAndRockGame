@@ -2,74 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyBaceAttakable : NewEnemyBace
-{
-    public float attackRadius;
-    public BaseMusicNoteSpavnerObj[] MusicNoteSpavner;
-    public bool sameTimeAttack = false;
-    public float attackTime;
-    [HideInInspector]
-    public int MusicNoteSpavnerSelNum = 0;
-    public bool attackIfRad = true;
-    public override void NewUpdate()
-    {
-
-    }
-    public override void NewOnCollisionEnter2D(Collision2D collision)
-    {
-
-    }
-    public override void NewFixedUpdate()
-    {
-
-    }
-    public void SpawnM(int mnssn)
-    {
-        GameObject mn = Instantiate(MusicNote, MusicNoteSpavner[mnssn].MusicNoteSpavner);
-        MusicNoteSpavner[mnssn].Attack(mn);
-        mn.transform.rotation = Quaternion.identity;
-        mn.transform.localScale = Vector3.one;
-        mn.GetComponent<MusicNoteStart>().dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
-        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].force;
-        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].lifeTime;
-        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].damage;
-        mn.transform.SetParent(null);
-    }
-    public void SpawnMN()
-    {
-        SpawnM(MusicNoteSpavnerSelNum);
-    }
-    public virtual IEnumerator AttackingEnumerator()
-    {
-        while (true)
-        {
-            if (enemyBaceAction == EnemyBaceActions.Attack && hp > 0)
-            {
-                if (!sameTimeAttack)
-                {
-                    MusicNoteSpavnerSelNum = 0;
-                    for (int i = 0; i < MusicNoteSpavner.Length; i++)
-                    {
-                        MusicNoteSpavnerSelNum = i;
-                        yield return new WaitForSeconds(0.25f);
-                        if (hp > 0)
-                            an.Play("spawnMN");
-                        yield return new WaitForSeconds(MusicNoteSpavner[MusicNoteSpavnerSelNum].SpavnTime);
-                    }
-                    MusicNoteSpavnerSelNum = 0;
-                }
-                else
-                {
-                    for (int i = 0; i < MusicNoteSpavner.Length && hp > 0; i++)
-                    {
-                        SpawnM(i);
-                    }
-                }
-            }
-            yield return new WaitForSeconds(attackTime);
-        }
-    }
-}
+[AddComponentMenu("Enemies/Walker")]
 public class Enemy_Walker_Rock : EnemyBaceAttakable
 {
     [HideInInspector]

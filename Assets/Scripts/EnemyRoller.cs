@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Enemies/Roller")]
 public class EnemyRoller : EnemyBaceAttakable
 {
     [HideInInspector]

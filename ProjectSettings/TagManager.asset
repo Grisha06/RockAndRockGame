@@ -9,6 +9,7 @@ TagManager:
   - hp
   - ammo
   - destroyOnCollPl
+  - HandHitter
   layers:
   - Default
   - TransparentFX

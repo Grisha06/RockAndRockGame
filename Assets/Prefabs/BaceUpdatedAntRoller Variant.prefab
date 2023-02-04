@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedAntRoller
+      value: BaceUpdatedAntRoller Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348847, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: an
@@ -310,25 +310,25 @@ MonoBehaviour:
   attackRadius: 3
   MusicNoteSpavner:
   - MusicNoteSpavner: {fileID: 8951767810657806978}
-    SpavnTime: 0
-    force: 0.3
-    lifeTime: 5
-    damage: 2
+    SpawnTime: 0
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 8951767811172177862}
-    SpavnTime: 0
-    force: 0.3
-    lifeTime: 5
-    damage: 2
+    SpawnTime: 0
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 8951767811280838681}
-    SpavnTime: 0
-    force: 0.3
-    lifeTime: 5
-    damage: 2
+    SpawnTime: 0
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   - MusicNoteSpavner: {fileID: 8951767810333787906}
-    SpavnTime: 0
-    force: 0.3
-    lifeTime: 5
-    damage: 2
+    SpawnTime: 0
+    Force: 0.3
+    Lifetime: 2.5
+    Damage: 2
   sameTimeAttack: 1
   attackTime: 2
   MusicNoteSpavnerSelNum: 0
