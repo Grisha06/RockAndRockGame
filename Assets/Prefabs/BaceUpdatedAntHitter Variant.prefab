@@ -95,7 +95,8 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1682562563737489306, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
 --- !u!4 &7664732208434031139 stripped
 Transform:
@@ -105,6 +106,11 @@ Transform:
 --- !u!4 &7664732208616918816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+  m_PrefabInstance: {fileID: 1380738553778933835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7664732208616918817 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8752683425371348842, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_PrefabInstance: {fileID: 1380738553778933835}
   m_PrefabAsset: {fileID: 0}
 --- !u!61 &7664732208616918819 stripped
@@ -130,9 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBaceAction: 0
-  hp: 10
-  musicArm: 2
-  handArm: 2
+  hp: 5
+  musicArm: 3
+  handArm: 5
   Drop:
   - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
     chance: 4.6
@@ -150,7 +156,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 264
   pl: {fileID: 0}
-  an: {fileID: 0}
+  an: {fileID: 7664732208616918817}
   tr: {fileID: 0}
   rb: {fileID: 0}
   dont_totch_me: 0

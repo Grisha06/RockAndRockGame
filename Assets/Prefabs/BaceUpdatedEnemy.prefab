@@ -159,7 +159,6 @@ GameObject:
   - component: {fileID: 6218099679868554700}
   - component: {fileID: 4300864505660117749}
   - component: {fileID: 6218099679868554702}
-  - component: {fileID: 6218099679868554699}
   - component: {fileID: 4300864505660117738}
   m_Layer: 6
   m_Name: BaceUpdatedEnemy
@@ -202,7 +201,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 0.59765625
   m_LinearDrag: 0
   m_AngularDrag: 0.05
@@ -274,83 +273,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &6218099679868554699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6218099679868554698}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7496925fa01ca742958522374279209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 10
-  musicArm: 0
-  handArm: 5
-  enemyBaceBehavior: 1
-  enemyBaceAction: 2
-  runIfRad: 1
-  attackIfRad: 1
-  runRadius: 6
-  attackRadius: 3
-  attackTime: 1.5
-  sameTimeAttack: 0
-  MusicNoteSpavner:
-  - MusicNoteSpavner: {fileID: 0}
-    SpawnTime: 0.1
-    Force: 5
-    Lifetime: 10
-    Damage: 1
-  - MusicNoteSpavner: {fileID: 0}
-    SpawnTime: 0.1
-    Force: 5
-    Lifetime: 10
-    Damage: 1
-  - MusicNoteSpavner: {fileID: 0}
-    SpawnTime: 0.1
-    Force: 5
-    Lifetime: 10
-    Damage: 1
-  - MusicNoteSpavner: {fileID: 0}
-    SpawnTime: 0.1
-    Force: 5
-    Lifetime: 10
-    Damage: 1
-  - MusicNoteSpavner: {fileID: 0}
-    SpawnTime: 0.1
-    Force: 5
-    Lifetime: 10
-    Damage: 1
-  Drop:
-  - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
-    chance: 100
-    number: 2
-  - obj: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
-    chance: 67.3
-    number: 1
-  - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
-    chance: 9.3
-    number: 3
-  MusicNoteSpavnerSelNum: 0
-  MusicNote: {fileID: 8212732330406563222, guid: 397da983742c26e4fb2c1058a955a0d6, type: 3}
-  xDir: 0
-  speed: 33
-  jumpForce: 6.5
-  jumpDest: 1
-  wallCheckRadius: 0.05
-  rightWall: {fileID: 0}
-  leftWall: {fileID: 0}
-  JumpTarget: {fileID: 6218099680122169548}
-  WallsChecker: {fileID: 6218099679868554700}
-  WallsCheckerRoll: {fileID: 4300864505660117749}
-  pl: {fileID: 0}
-  WingsPos: {fileID: 6218099680718814874}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 264
-  an: {fileID: 6218099679868554702}
 --- !u!114 &4300864505660117738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +306,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 264
   pl: {fileID: 0}
-  an: {fileID: 0}
+  an: {fileID: 6218099679868554702}
   tr: {fileID: 0}
   rb: {fileID: 0}
   dont_totch_me: 0

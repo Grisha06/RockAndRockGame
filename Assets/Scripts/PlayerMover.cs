@@ -27,6 +27,7 @@ public class PlayerMover : MonoBehaviour, IDamagable
     public SpriteRenderer weaponSprite;
     public int weaponSelect = 0;
     public int MusicNoteSpavnerSelect;
+    public int handCollideDamage=1;
     private Transform tr;
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -174,7 +175,7 @@ public class PlayerMover : MonoBehaviour, IDamagable
     }
     public void AddDamage(int d, bool byHand)
     {
-        hp -= (byHand ? handRes : musicRes) < d ? d - (byHand ? handRes : musicRes) : 1;
+        hp -= d == 0 ? 0 : ((byHand ? handRes : musicRes) < d ? d - (byHand ? handRes : musicRes) : 1);
         if (hp > 0)
             an.Play("damage");
         else

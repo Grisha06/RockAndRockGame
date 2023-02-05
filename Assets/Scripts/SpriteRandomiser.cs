@@ -10,9 +10,12 @@ public class SpriteRandomiser : MonoBehaviour
     public bool color_value = false;
     [HideInInspector]
     public float color_value_float = 1;
+
+    [ContextMenu("Update")]
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = Sprits[Random.Range(0, Sprits.Count)];
+        if(Sprits.Count > 0)
+            GetComponent<SpriteRenderer>().sprite = Sprits[Random.Range(0, Sprits.Count)];
         if (rotate) transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0f, 360f)));
         if (color)
         {

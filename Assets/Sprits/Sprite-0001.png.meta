@@ -2768,6 +2768,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ball
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 233
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be836d26e5354bb44ae5dec26c2508f1
+      internalID: -594198333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2808,9 +2829,9 @@ TextureImporter:
       Sprite-0001_18: -3719131521473346678
       Sprite-0001_42: -6474176387260023767
       Sprite-0001_15: 8492177070176303279
-      Sprite-0001_80: 8522412172829875233
-      Sprite-0001_34: 3462060946324363401
       Sprite-0001_95: 4707491005991146944
+      Sprite-0001_34: 3462060946324363401
+      Sprite-0001_80: 8522412172829875233
       Sprite-0001_6: -7812539098719814344
       Sprite-0001_35: 8762817157570230700
       Sprite-0001_5: -6880077232281017949
@@ -2860,12 +2881,13 @@ TextureImporter:
       Sprite-0001_45: -5974713180114783019
       Sprite-0001_39: -8523776664041350253
       Sprite-0001_22: -278907292611701771
-      Sprite-0001_14: -8687661716108889039
       Sprite-0001_107: -6440293488629442558
+      Sprite-0001_14: -8687661716108889039
       Sprite-0001_96: -5148036204997954043
       Sprite-0001_75: -8253937413428219000
       Sprite-0001_71: -7514402195955223974
       Sprite-0001_53: -556090176984672156
+      ball: -594198333
       Sprite-0001_70: 7650255054670704136
       Sprite-0001_88: 104429196087744972
       Sprite-0001_52: 3497770116053522734

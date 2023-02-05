@@ -78,7 +78,6 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public LayerMask groundLayer;
     [HideInInspector]
     public Transform pl;
-    [HideInInspector]
     public Animator an;
     [HideInInspector]
     public Transform tr;
@@ -91,8 +90,8 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     {
         tr = transform;
         pl = GameObject.FindGameObjectWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
-        an = GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        an = gameObject.GetComponent<Animator>();
         NewStart();
     }
     public abstract void NewStart();
@@ -156,8 +155,8 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     }
     public void AddDamage(int d, bool byHand)
     {
-        hp -= (byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1;
         an.Play("damage");
+        hp -= d==0 ? 0: ((byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -168,6 +167,10 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
                 AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
                 collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
                 Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                AddDamage(collision.gameObject.GetComponent<PlayerMover>().handCollideDamage, true);
             }
             NewOnCollisionEnter2D(collision);
         }

@@ -8,12 +8,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: an
+      value: 
+      objectReference: {fileID: 8379322424450724030}
+    - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: hp
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: xDir
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: speed
       value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: handArm
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_RootOrder
@@ -69,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918821, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedAntHitterSmall
+      value: BaceUpdatedAntHitterSmall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7664732209500834905, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Sprite
@@ -97,3 +109,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+--- !u!95 &8379322424450724030 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7664732208616918817, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+  m_PrefabInstance: {fileID: 2168426101385396127}
+  m_PrefabAsset: {fileID: 0}
