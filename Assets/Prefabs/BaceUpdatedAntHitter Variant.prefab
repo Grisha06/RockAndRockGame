@@ -43,17 +43,21 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.27969968
       objectReference: {fileID: 0}
+    - target: {fileID: 8752683425371348841, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: m_Mass
+      value: 0.30786034
+      objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -159,6 +163,7 @@ MonoBehaviour:
   an: {fileID: 7664732208616918817}
   tr: {fileID: 0}
   rb: {fileID: 0}
+  sr: {fileID: 7664732209500834905}
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner: []
@@ -181,6 +186,11 @@ MonoBehaviour:
 --- !u!1 &7664732208911137909 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8752683425142058046, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+  m_PrefabInstance: {fileID: 1380738553778933835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7664732209500834905 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_PrefabInstance: {fileID: 1380738553778933835}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1380738553848386844

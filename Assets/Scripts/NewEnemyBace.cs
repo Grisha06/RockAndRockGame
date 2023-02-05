@@ -83,6 +83,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public Transform tr;
     [HideInInspector]
     public Rigidbody2D rb;
+    public SpriteRenderer sr;
     [Header("Custom fields")]
     public bool dont_totch_me;
 
@@ -125,7 +126,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         }
     }
 
-    public void SelfDestroy()
+    public virtual void SelfDestroy()
     {
         GameObject k;
         if (Drop.Length != 0)
@@ -156,7 +157,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public void AddDamage(int d, bool byHand)
     {
         an.Play("damage");
-        hp -= d==0 ? 0: ((byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1);
+        hp -= d == 0 ? 0 : ((byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
