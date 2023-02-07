@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -133,7 +134,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         {
             foreach (var item in Drop)
             {
-                if (item.chance >= Random.Range(0f, 100f))
+                if (item.chance >= UnityEngine.Random.Range(0f, 100f))
                 {
                     for (int i = 0; i < item.number; i++)
                     {
@@ -146,11 +147,20 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
             }
         }
         StopAllCoroutines();
+        try
+        {
+            GetComponent<BossBar>().use=false;
+            Destroy(GetComponent<BossBar>().bbh.BossBarObj);
+        }
+        catch (NullReferenceException)
+        {
+
+        }
         Destroy(gameObject);
     }
     public virtual void Jump(float jumpForce)
     {
-        JumpTarget.rotation = Quaternion.Euler(0, 0, Random.Range(45, 135));
+        JumpTarget.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(45, 135));
         rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
         an.Play("jump");
     }
