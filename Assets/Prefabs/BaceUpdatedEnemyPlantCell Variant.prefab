@@ -223,7 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBaceAction: 0
-  hp: 10
+  health: 10
+  maxHealth: 0
   musicArm: 2
   handArm: 1
   Drop:
@@ -247,6 +248,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 6009576493054382128}
+  t: 0
   dont_totch_me: 0
   Prisoner: {fileID: 8951767811375925338, guid: 6180b1737fec3224ba4e6770f3c5a717, type: 3}
   PrisonerPlace: {fileID: 2087455545}

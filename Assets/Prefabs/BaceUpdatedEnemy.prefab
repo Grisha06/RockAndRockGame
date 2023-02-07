@@ -286,7 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBaceAction: 0
-  hp: 10
+  health: 10
+  maxHealth: 0
   musicArm: 0
   handArm: 5
   Drop:
@@ -310,6 +311,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 6218099678992961206}
+  t: 0
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:

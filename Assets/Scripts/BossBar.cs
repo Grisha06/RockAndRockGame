@@ -8,10 +8,9 @@ public class BossBar : MonoBehaviour
     public float Tiling = 1.66f;
     [Min(0)]
     public float Distance;
-    public float Width= 8.79f;
+    public float Width = 8.79f;
     public bool UseTiling;
-    [HideInInspector]
-    public bool use;
+    public bool use = true;
     public Color Color = Color.white;
     public Color BgColor = Color.red;
     [HideInInspector]
@@ -35,7 +34,7 @@ public class BossBar : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (use && (Vector3.Distance(neb.pl.transform.position, transform.position) < Distance || Distance == 0f))
+        if (use && ((neb.gameObject.CompareTag("Player") ? true : Vector3.Distance(neb.pl.transform.position, transform.position) < Distance) || Distance == 0f))
         {
             bbho.SetActive(true);
             bbh.BossBarBG1.color = BgColor;
@@ -50,7 +49,7 @@ public class BossBar : MonoBehaviour
             {
                 bbh.BossBarBG2.gameObject.SetActive(false);
             }
-            bbh.BossBarIm.transform.localScale = new Vector3(Mathf.Clamp01(1f - (1f / (float)neb.hp)), 1f, 1f);
+            bbh.BossBarIm.transform.localScale = new Vector3(neb.hp > 0 ? (float)neb.hp / (float)neb.maxHealth : 0, 1f, 1f);
             bbho.transform.localScale = new Vector3(Width, 1f, 1f);
         }
         else

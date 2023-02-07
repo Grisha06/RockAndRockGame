@@ -103,6 +103,26 @@ PrefabInstance:
       propertyPath: speed
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[0].chance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[1].chance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[1].number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[2].chance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227729, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Radius
       value: 0.4215417
@@ -181,6 +201,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+--- !u!1 &4302753472930892664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+  m_PrefabInstance: {fileID: 4810324129320965142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7384640276832725600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302753472930892664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677f145937453314b8b22c87344ceedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tiling: 0.66
+  Distance: 20
+  Width: 9.02
+  UseTiling: 1
+  use: 1
+  Color: {r: 0.9764706, g: 0.056320406, b: 0.01960785, a: 1}
+  BgColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  bbh: {fileID: 0}
+  bbho: {fileID: 0}
+  BossBarPrefab: {fileID: 6861077987212580079, guid: 351e8a6e56e47af4099bfb80d4ee6d94, type: 3}
+  BossBarGroup: {fileID: 0}
 --- !u!4 &4302753473680525319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752683426775358481, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}

@@ -69,7 +69,21 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
 {
     [Header("Inheritanced fields")]
     public EnemyBaceActions enemyBaceAction;
-    public int hp;
+
+    [SerializeField]
+    private int health;
+    public int maxHealth;
+
+    public int hp
+    {
+        get { return health; }
+        set 
+        {
+            health = value;
+            if (health > maxHealth)
+                maxHealth = health;
+        }
+    }
     public int musicArm;
     public int handArm;
     public DropObj[] Drop;
@@ -77,21 +91,27 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public Transform JumpTarget;
     public GameObject WingsPos;
     public LayerMask groundLayer;
-    [HideInInspector]
     public Transform pl;
+    [HideInInspector]
     public Animator an;
     [HideInInspector]
     public Transform tr;
     [HideInInspector]
     public Rigidbody2D rb;
     public SpriteRenderer sr;
+    [HideInInspector]
+    public float t = 0;
     [Header("Custom fields")]
     public bool dont_totch_me;
 
     private void Start()
     {
+        maxHealth = health;
         tr = transform;
-        pl = GameObject.FindGameObjectWithTag("Player").transform;
+        if (gameObject.CompareTag("Player"))
+            pl = null;
+        else
+            pl = GameObject.FindGameObjectWithTag("Player").transform;
         rb = gameObject.GetComponent<Rigidbody2D>();
         an = gameObject.GetComponent<Animator>();
         NewStart();
@@ -112,6 +132,8 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     }
     private void Update()
     {
+        if (gameObject.CompareTag("Player"))
+            t += Time.deltaTime;
         if (hp > 0)
         {
             NewUpdate();
@@ -149,7 +171,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         StopAllCoroutines();
         try
         {
-            GetComponent<BossBar>().use=false;
+            GetComponent<BossBar>().use = false;
             Destroy(GetComponent<BossBar>().bbh.BossBarObj);
         }
         catch (NullReferenceException)
@@ -164,7 +186,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
         an.Play("jump");
     }
-    public void AddDamage(int d, bool byHand)
+    public virtual void AddDamage(int d, bool byHand)
     {
         an.Play("damage");
         hp -= d == 0 ? 0 : ((byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1);
@@ -173,15 +195,27 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     {
         if (hp > 0)
         {
-            if (collision.gameObject.CompareTag("notePL"))
+            if (!gameObject.CompareTag("Player"))
             {
-                AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
-                collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
-                Destroy(collision.gameObject);
+                if (collision.gameObject.CompareTag("notePL"))
+                {
+                    AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
+                    collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
+                    Destroy(collision.gameObject);
+                }
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    AddDamage(collision.gameObject.GetComponent<PlayerMover>().handCollideDamage, true);
+                }
             }
-            if (collision.gameObject.CompareTag("Player"))
+            else
             {
-                AddDamage(collision.gameObject.GetComponent<PlayerMover>().handCollideDamage, true);
+                if (collision.gameObject.CompareTag("note"))
+                {
+                    AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
+                    collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
+                    Destroy(collision.gameObject);
+                }
             }
             NewOnCollisionEnter2D(collision);
         }

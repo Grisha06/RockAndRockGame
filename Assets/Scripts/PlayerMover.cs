@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +8,12 @@ public interface IDamagable
 {
     public void AddDamage(int damage, bool byHand);
 }
-public class PlayerMover : MonoBehaviour, IDamagable
+public class PlayerMover : NewEnemyBace
 {
+    public override void NewFixedUpdate() { }
+    public override void NewOnTriggerStay2D(Collider2D collision) { }
+    public override void NewOnTriggerEnter2D(Collider2D collision) { }
+
     public KeyObj[] controls;
     public float jumpForce = 1;
     private float angle;
@@ -21,55 +25,33 @@ public class PlayerMover : MonoBehaviour, IDamagable
     public Transform arrowObj;
     public SpriteRenderer arrowRend;
     public Sprite[] arrowSprites;
-    public LayerMask groundLayer;
-    public Animator an;
     public List<WeaponObg> weapon;
     public SpriteRenderer weaponSprite;
     public int weaponSelect = 0;
     public int MusicNoteSpavnerSelect;
     public int handCollideDamage=1;
-    private Transform tr;
-    private Rigidbody2D rb;
     private Camera mainCam;
     private Cameramower mainCamM;
-    [SerializeField]
-    private float t = 0;
 
-    [Header("HP")]
-    public int hp = 10;
-    public int musicRes = 0;
-    public int handRes = 5;
-
-    private void Start()
+    public override void NewStart()
     {
-        tr = transform;
-        rb = GetComponent<Rigidbody2D>();
         mainCam = Camera.main;
         mainCamM = mainCam.GetComponent<Cameramower>();
         StartCoroutine(Shooter());
     }
-    private void Update()
+    public override void NewUpdate()
     {
-        t += Time.deltaTime;
-        if (hp > 0)
-        {
-            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 mousePosZ = mousePos;
-            mousePosZ.z = 0;
-            Vector3 relativePos = mousePosZ - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            Vector3 e = rotation.eulerAngles;
-            e = new Vector3(e.x, e.y, e.z);
-            arrowObj.rotation = Quaternion.Euler(e);
-            isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
-            if (isGrounded) jumps = maxJumps;
-            arrowRend.sprite = arrowSprites[jumps];
-        }
-        if (hp < 0 && hp > -100)
-        {
-            an.Play("die");
-            hp = -101;
-        }
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePosZ = mousePos;
+        mousePosZ.z = 0;
+        Vector3 relativePos = mousePosZ - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        Vector3 e = rotation.eulerAngles;
+        e = new Vector3(e.x, e.y, e.z);
+        arrowObj.rotation = Quaternion.Euler(e);
+        isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
+        if (isGrounded) jumps = maxJumps;
+        arrowRend.sprite = arrowSprites[jumps];
     }
     private void LateUpdate()
     {
@@ -91,12 +73,12 @@ public class PlayerMover : MonoBehaviour, IDamagable
                     {
                         jumps -= 1;
                     }
-                    Jump();
+                    Jump(jumpForce);
                 }
             }
         }
     }
-    private void Jump()
+    public override void Jump(float jumpForce)
     {
         rb.AddForce(arrowObj.forward * jumpForce, ForceMode2D.Impulse);
         an.Play("jump");
@@ -169,52 +151,43 @@ public class PlayerMover : MonoBehaviour, IDamagable
             }
         }
     }
-    public void SelfDestroy()
+    public override void SelfDestroy()
     {
+        StopAllCoroutines();
+        try
+        {
+            GetComponent<BossBar>().use = false;
+            Destroy(GetComponent<BossBar>().bbh.BossBarObj);
+        }
+        catch (NullReferenceException)
+        {
+
+        }
         SceneManager.LoadScene(0);
     }
-    public void AddDamage(int d, bool byHand)
+    public override void AddDamage(int d, bool byHand)
     {
-        hp -= d == 0 ? 0 : ((byHand ? handRes : musicRes) < d ? d - (byHand ? handRes : musicRes) : 1);
+        base.AddDamage(d, byHand);
         if (hp > 0)
             an.Play("damage");
         else
             an.Play("die");
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void NewOnCollisionEnter2D(Collision2D collision)
     {
-        if (hp > 0)
+        if (collision.gameObject.CompareTag("destroyOnCollPl"))
         {
-            if (collision.gameObject.CompareTag("note"))
-            {
-                AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
-                collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
-                Destroy(collision.gameObject);
-            }
-            if (collision.gameObject.CompareTag("destroyOnCollPl"))
-            {
-                Destroy(collision.gameObject);
-            }
-            if (collision.gameObject.CompareTag("hp"))
-            {
-                hp += 2;
-                Destroy(collision.gameObject);
-            }
-            if (collision.gameObject.CompareTag("ammo"))
-            {
-                weapon[weaponSelect].Ammo += 10;
-                Destroy(collision.gameObject);
-            }
+            Destroy(collision.gameObject);
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (hp > 0)
+        if (collision.gameObject.CompareTag("hp"))
         {
-            if (collision.CompareTag("HandHitter") && collision.gameObject.GetComponent<HandHitter>().LayerToAttack.Contains(gameObject.layer))
-            {
-                AddDamage(collision.gameObject.GetComponent<HandHitter>().Damage, true);
-            }
+            hp += 2;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("ammo"))
+        {
+            weapon[weaponSelect].Ammo += 10;
+            Destroy(collision.gameObject);
         }
     }
 }

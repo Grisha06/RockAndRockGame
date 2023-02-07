@@ -1561,7 +1561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBaceAction: 2
-  hp: 10
+  health: 10
+  maxHealth: 0
   musicArm: 2
   handArm: 2
   Drop:
@@ -1585,6 +1586,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 0}
+  t: 0
   dont_totch_me: 0
   attackRadius: 6
   MusicNoteSpavner:
@@ -6407,11 +6409,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8159631142379723323, guid: d2437b2f69fd2e34a8bbcd3b4e1ed4b5, type: 3}
   m_PrefabInstance: {fileID: 776959485}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &783088572 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4302753472930892664, guid: 233306392c9da074bbb52cab1ef0844a, type: 3}
-  m_PrefabInstance: {fileID: 4810324128423508299}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &790617028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7198,28 +7195,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4302753472930892669, guid: 233306392c9da074bbb52cab1ef0844a, type: 3}
   m_PrefabInstance: {fileID: 4810324128423508299}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &931589476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783088572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677f145937453314b8b22c87344ceedc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tiling: 0.66
-  Distance: 10
-  Width: 9.02
-  UseTiling: 1
-  use: 0
-  Color: {r: 0.9764706, g: 0.056320406, b: 0.01960785, a: 1}
-  BgColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
-  bbh: {fileID: 0}
-  BossBarPrefab: {fileID: 6861077987212580079, guid: 351e8a6e56e47af4099bfb80d4ee6d94, type: 3}
-  BossBarGroup: {fileID: 1569560254}
 --- !u!4 &932294593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7083071663134785585, guid: 42b29495185ced44fa65afd47af06871, type: 3}
@@ -9961,6 +9936,7 @@ GameObject:
   - component: {fileID: 1333008058}
   - component: {fileID: 1333008059}
   - component: {fileID: 1333008055}
+  - component: {fileID: 1333008060}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -10065,6 +10041,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939d9794055180648b6a756ec097ee90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyBaceAction: 2
+  health: 50
+  maxHealth: 0
+  musicArm: 0
+  handArm: 0
+  Drop: []
+  MusicNote: {fileID: 8212732330406563222, guid: 16db6a845a5f9864088080cc8f9dda27, type: 3}
+  JumpTarget: {fileID: 0}
+  WingsPos: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2376
+  pl: {fileID: 0}
+  an: {fileID: 1333008055}
+  tr: {fileID: 0}
+  rb: {fileID: 0}
+  sr: {fileID: 489774253}
+  t: 0
+  dont_totch_me: 0
   controls:
   - key: 122
     name: jump
@@ -10086,10 +10081,6 @@ MonoBehaviour:
   - {fileID: -1335684660466582739, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
   - {fileID: 2616213020684850013, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
   - {fileID: 38780577723739802, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2376
-  an: {fileID: 1333008055}
   weapon:
   - isAutomatic: 0
     isAmmoDecreasing: 1
@@ -10133,10 +10124,29 @@ MonoBehaviour:
   weaponSelect: 0
   MusicNoteSpavnerSelect: 0
   handCollideDamage: 1
-  t: 0
-  hp: 50
-  musicRes: 10
-  handRes: 10
+--- !u!114 &1333008060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333008054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 677f145937453314b8b22c87344ceedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tiling: 1.66
+  Distance: 0
+  Width: 8.79
+  UseTiling: 0
+  use: 1
+  Color: {r: 1, g: 1, b: 1, a: 1}
+  BgColor: {r: 1, g: 0, b: 0, a: 1}
+  bbh: {fileID: 0}
+  bbho: {fileID: 0}
+  BossBarPrefab: {fileID: 6861077987212580079, guid: 351e8a6e56e47af4099bfb80d4ee6d94, type: 3}
+  BossBarGroup: {fileID: 1569560254}
 --- !u!1001 &1340087391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17233,6 +17243,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7384640276832725600, guid: 233306392c9da074bbb52cab1ef0844a, type: 3}
+      propertyPath: BossBarGroup
+      value: 
+      objectReference: {fileID: 1569560254}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 233306392c9da074bbb52cab1ef0844a, type: 3}
 --- !u!1001 &4983290673316045898
@@ -17701,30 +17715,3 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
---- !u!1 &8572401218835617819 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6218099679868554698, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
-  m_PrefabInstance: {fileID: 8572401218835617818}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8572401218835617820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8572401218835617819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677f145937453314b8b22c87344ceedc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tiling: 0.38
-  Distance: 10
-  Width: 8.79
-  UseTiling: 1
-  use: 0
-  Color: {r: 0.01960785, g: 0.42504367, b: 0.9764706, a: 1}
-  BgColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
-  bbh: {fileID: 0}
-  BossBarPrefab: {fileID: 6861077987212580079, guid: 351e8a6e56e47af4099bfb80d4ee6d94, type: 3}
-  BossBarGroup: {fileID: 1569560254}

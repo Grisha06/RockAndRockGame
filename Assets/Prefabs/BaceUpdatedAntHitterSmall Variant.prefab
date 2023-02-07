@@ -24,6 +24,10 @@ PrefabInstance:
       value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: handArm
       value: 3
       objectReference: {fileID: 0}
