@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-
+using TMPro;
 public abstract class EnemyBaceAttakable : NewEnemyBace
 {
     public float attackRadius;
@@ -12,11 +12,6 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     [HideInInspector]
     public int MusicNoteSpavnerSelNum = 0;
     public bool attackIfRad = true;
-    public override void NewUpdate() { }
-    public override void NewOnCollisionEnter2D(Collision2D collision) { }
-    public override void NewFixedUpdate() { }
-    public override void NewOnTriggerStay2D(Collider2D collision) { }
-    public override void NewOnTriggerEnter2D(Collider2D collision) { }
     public void SpawnM(int mnssn)
     {
         GameObject mn = Instantiate(MusicNote, MusicNoteSpavner[mnssn].MusicNoteSpavner);
@@ -39,6 +34,7 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
         {
             if (enemyBaceAction == EnemyBaceActions.Attack && hp > 0)
             {
+                an.Play("spawnMN");
                 if (!sameTimeAttack)
                 {
                     MusicNoteSpavnerSelNum = 0;
@@ -54,6 +50,9 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
                 }
                 else
                 {
+                    yield return new WaitForSeconds(0.25f);
+                    if (hp > 0)
+                        an.Play("spawnMN_nospawn");
                     for (int i = 0; i < MusicNoteSpavner.Length && hp > 0; i++)
                     {
                         SpawnM(i);
@@ -68,6 +67,9 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
 public abstract class NewEnemyBace : MonoBehaviour, IDamagable
 {
     [Header("Inheritanced fields")]
+    public string EntityName = "/n";
+    [SerializeField]
+    private TextMeshProUGUI nameText;
     public EnemyBaceActions enemyBaceAction;
 
     [SerializeField]
@@ -77,7 +79,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public int hp
     {
         get { return health; }
-        set 
+        set
         {
             health = value;
             if (health > maxHealth)
@@ -116,12 +118,13 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         an = gameObject.GetComponent<Animator>();
         NewStart();
     }
-    public abstract void NewStart();
-    public abstract void NewFixedUpdate();
-    public abstract void NewUpdate();
-    public abstract void NewOnCollisionEnter2D(Collision2D collision);
-    public abstract void NewOnTriggerStay2D(Collider2D collision);
-    public abstract void NewOnTriggerEnter2D(Collider2D collision);
+    public virtual void NewStart() { }
+    public virtual void NewFixedUpdate() { }
+    public virtual void NewUpdate() { }
+    public virtual void NewLateUpdate() { }
+    public virtual void NewOnCollisionEnter2D(Collision2D collision) { }
+    public virtual void NewOnTriggerStay2D(Collider2D collision) { }
+    public virtual void NewOnTriggerEnter2D(Collider2D collision) { }
 
     private void FixedUpdate()
     {
@@ -141,7 +144,13 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     }
     private void LateUpdate()
     {
-        if (hp <= 0 && hp > -100)
+        if (hp > 0)
+        {
+            if(!gameObject.CompareTag("Player"))
+                nameText.text = EntityName == "/n" ? "" : EntityName;
+            NewLateUpdate();
+        }
+        if (hp <= 0 && hp > -100 && !gameObject.CompareTag("Player"))
         {
             an.Play("die");
             an.SetBool("daed", true);

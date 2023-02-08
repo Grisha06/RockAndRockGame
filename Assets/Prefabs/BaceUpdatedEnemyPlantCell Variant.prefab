@@ -179,6 +179,17 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 4300864505660117738, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+--- !u!114 &1006468713956905412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 638064989111963458, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+  m_PrefabInstance: {fileID: 373074519060110982}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6009576491332214812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6218099680718814874, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
@@ -222,6 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24efc4719cc58a94e80f0e547cad447d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityName: /n
+  nameText: {fileID: 1006468713956905412}
   enemyBaceAction: 0
   health: 10
   maxHealth: 0

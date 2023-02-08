@@ -240,6 +240,17 @@ CircleCollider2D:
   m_CorrespondingSourceObject: {fileID: 1482628751363227729, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_PrefabInstance: {fileID: 381915737509582644}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2498069980772190930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2875050556032654822, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+  m_PrefabInstance: {fileID: 381915737509582644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &8951767809953041190 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
@@ -287,6 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e83b0078befea74e9d9f911f3e7503e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityName: /n
+  nameText: {fileID: 2498069980772190930}
   enemyBaceAction: 0
   health: 10
   maxHealth: 0

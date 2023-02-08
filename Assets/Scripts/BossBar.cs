@@ -8,6 +8,7 @@ public class BossBar : MonoBehaviour
     public float Tiling = 1.66f;
     [Min(0)]
     public float Distance;
+    [Min(1f)]
     public float Width = 8.79f;
     public bool UseTiling;
     public bool use = true;
@@ -51,6 +52,18 @@ public class BossBar : MonoBehaviour
             }
             bbh.BossBarIm.transform.localScale = new Vector3(neb.hp > 0 ? (float)neb.hp / (float)neb.maxHealth : 0, 1f, 1f);
             bbho.transform.localScale = new Vector3(Width, 1f, 1f);
+
+
+            if (neb.EntityName != "/n")
+            {
+                bbh.BossBarName.gameObject.SetActive(true);
+                bbh.BossBarName.text = neb.EntityName;
+                bbh.BossBarName.rectTransform.localScale = new Vector3(1 / Width, 1f, 1f);
+            }
+            else
+            {
+                bbh.BossBarName.gameObject.SetActive(false);
+            }
         }
         else
             bbho.SetActive(false);

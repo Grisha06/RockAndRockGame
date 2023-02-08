@@ -63,14 +63,6 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
             }
         }
     }
-    public override void NewUpdate()
-    {
-        base.NewUpdate();
-    }
-    public override void NewOnCollisionEnter2D(Collision2D collision)
-    {
-
-    }
     public void CheckRightWall()
     {
         try
@@ -93,5 +85,4 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
             leftWall = null;
         }
     }
-    
 }

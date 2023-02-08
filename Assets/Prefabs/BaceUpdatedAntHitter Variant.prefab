@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: MusicNoteSpavner.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2401969962508221583, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348840, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Size.x
       value: 0.5503409
@@ -102,6 +106,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+--- !u!114 &3805371644389854637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2875050556032654822, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+  m_PrefabInstance: {fileID: 1380738553778933835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7664732208434031139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8752683425755478632, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
@@ -139,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116234630677da544ba0aa0e0abe42c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EntityName: /n
+  nameText: {fileID: 3805371644389854637}
   enemyBaceAction: 0
   health: 5
   maxHealth: 0

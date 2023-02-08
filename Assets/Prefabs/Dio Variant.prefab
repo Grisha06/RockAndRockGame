@@ -108,6 +108,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: EntityName
+      value: DIO BRANDO
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: Drop.Array.data[0].chance
       value: 0
       objectReference: {fileID: 0}

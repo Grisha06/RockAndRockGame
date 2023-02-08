@@ -53,28 +53,25 @@ public class PlayerMover : NewEnemyBace
         if (isGrounded) jumps = maxJumps;
         arrowRend.sprite = arrowSprites[jumps];
     }
-    private void LateUpdate()
+    public override void NewLateUpdate()
     {
-        if (hp > 0)
+        if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0))
         {
-            if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0))
+            if (jumps == 0)
             {
-                if (jumps == 0)
+                //mainCamM.Shake(.1f, .05f);
+            }
+            else
+            {
+                if (isGrounded)
                 {
-                    //mainCamM.Shake(.1f, .05f);
+                    jumps = maxJumps;
                 }
-                else
+                else if (jumps > 0)
                 {
-                    if (isGrounded)
-                    {
-                        jumps = maxJumps;
-                    }
-                    else if (jumps > 0)
-                    {
-                        jumps -= 1;
-                    }
-                    Jump(jumpForce);
+                    jumps -= 1;
                 }
+                Jump(jumpForce);
             }
         }
     }
