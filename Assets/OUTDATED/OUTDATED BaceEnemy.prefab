@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4983290671322006164}
   - component: {fileID: 2939911278981193135}
   m_Layer: 6
-  m_Name: BaceEnemy
+  m_Name: OUTDATED BaceEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

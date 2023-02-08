@@ -16,6 +16,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4300864505660117738, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+      propertyPath: Flipable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300864505660117738, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: runRadius
       value: 5
       objectReference: {fileID: 0}
@@ -101,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554698, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedEnemy (2) Variant
+      value: EnemyRockRod
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554699, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: an
@@ -238,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_EdgeRadius
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218099679868554701, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+      propertyPath: m_Mass
+      value: 0.43916708
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_RootOrder

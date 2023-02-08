@@ -3,6 +3,8 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+
+
 public abstract class EnemyBaceAttakable : NewEnemyBace
 {
     public float attackRadius;
@@ -34,7 +36,6 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
         {
             if (enemyBaceAction == EnemyBaceActions.Attack && hp > 0)
             {
-                an.Play("spawnMN");
                 if (!sameTimeAttack)
                 {
                     MusicNoteSpavnerSelNum = 0;
@@ -71,7 +72,8 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     [SerializeField]
     private TextMeshProUGUI nameText;
     public EnemyBaceActions enemyBaceAction;
-
+    public bool Flipable = false;
+    public bool Flip = false;
     [SerializeField]
     private float health;
     [HideInInspector]
@@ -119,6 +121,8 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
             pl = GameObject.FindGameObjectWithTag("Player").transform;
         rb = gameObject.GetComponent<Rigidbody2D>();
         an = gameObject.GetComponent<Animator>();
+        if (nameText)
+            nameText.transform.parent.gameObject.SetActive(true);
         NewStart();
     }
     public virtual void NewStart() { }
@@ -150,7 +154,11 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         if (hp > 0)
         {
             if (!gameObject.CompareTag("Player"))
+            {
+
+                sr.flipX = (Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable;
                 nameText.text = EntityName == "/n" ? "" : EntityName;
+            }
             NewLateUpdate();
         }
         if (hp <= 0 && hp > -100 && !gameObject.CompareTag("Player"))
@@ -200,8 +208,8 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     }
     public virtual void AddDamage(float d, bool byHand)
     {
-        an.Play("damage"); 
-         hp -= d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f))));
+        an.Play("damage");
+        hp -= d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f))));
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

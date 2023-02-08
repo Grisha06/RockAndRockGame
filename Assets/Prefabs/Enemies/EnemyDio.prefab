@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4302753473680525316}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Flip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: xDir
       value: 1
       objectReference: {fileID: 0}
@@ -26,6 +30,10 @@ PrefabInstance:
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: handArm
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Flipable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: musicArm
@@ -85,11 +93,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.91
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348843, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -125,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Name
-      value: Dio Variant
+      value: EnemyDio
       objectReference: {fileID: 0}
     - target: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Sprite

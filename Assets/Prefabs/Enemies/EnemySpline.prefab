@@ -92,13 +92,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5250288554806240359}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Flip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: health
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Flipable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: WallsChecker
       value: 
       objectReference: {fileID: 1231433973379603654}
+    - target: {fileID: 2401969962508221583, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348840, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Size.x
       value: 0.92819977
@@ -165,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedAnt (1) Variant
+      value: EnemySpline
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348847, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: an

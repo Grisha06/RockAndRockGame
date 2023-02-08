@@ -18,6 +18,7 @@ public class EnemyFlier : EnemyBaceAttakable
     public float jumpForce;
     [Min(0.5f)]
     public float jumpDest;
+
     public override void NewStart()
     {
         StartCoroutine(AttackingEnumerator());
@@ -35,14 +36,6 @@ public class EnemyFlier : EnemyBaceAttakable
             enemyBaceAction = EnemyBaceActions.None;
         }
         WingsPos.SetActive(true);
-    }
-    public override void NewUpdate()
-    {
-        base.NewUpdate();
-    }
-    public override void NewOnCollisionEnter2D(Collision2D collision)
-    {
-
     }
     IEnumerator Flier()
     {

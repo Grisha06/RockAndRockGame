@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedAntHitter Variant
+      value: EnemyAcarus
       objectReference: {fileID: 0}
     - target: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Sprite
@@ -157,6 +157,8 @@ MonoBehaviour:
   EntityName: /n
   nameText: {fileID: 3805371644389854637}
   enemyBaceAction: 0
+  Flipable: 1
+  Flip: 1
   health: 5
   maxHealth: 0
   musicArm: 3

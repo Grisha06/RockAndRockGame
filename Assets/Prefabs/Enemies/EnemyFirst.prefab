@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1038472725297475115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 6218099679868554702}
   - component: {fileID: 4300864505660117738}
   m_Layer: 6
-  m_Name: BaceUpdatedEnemy
+  m_Name: EnemyFirst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,13 +524,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d55a634f2fe48429f2fc9a14c0ebbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: /n
+  EntityName: /n
   nameText: {fileID: 638064989111963458}
   enemyBaceAction: 0
   health: 10
   maxHealth: 0
   musicArm: 0
-  handArm: 5
+  handArm: 4
   Drop:
   - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
     chance: 100
