@@ -73,10 +73,11 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public EnemyBaceActions enemyBaceAction;
 
     [SerializeField]
-    private int health;
-    public int maxHealth;
+    private float health;
+    [HideInInspector]
+    public float maxHealth;
 
-    public int hp
+    public float hp
     {
         get { return health; }
         set
@@ -86,8 +87,10 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
                 maxHealth = health;
         }
     }
-    public int musicArm;
-    public int handArm;
+    [Min(0)]
+    public float musicArm;
+    [Min(0)]
+    public float handArm;
     public DropObj[] Drop;
     public GameObject MusicNote;
     public Transform JumpTarget;
@@ -146,7 +149,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     {
         if (hp > 0)
         {
-            if(!gameObject.CompareTag("Player"))
+            if (!gameObject.CompareTag("Player"))
                 nameText.text = EntityName == "/n" ? "" : EntityName;
             NewLateUpdate();
         }
@@ -195,10 +198,10 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
         an.Play("jump");
     }
-    public virtual void AddDamage(int d, bool byHand)
+    public virtual void AddDamage(float d, bool byHand)
     {
-        an.Play("damage");
-        hp -= d == 0 ? 0 : ((byHand ? handArm : musicArm) < d ? d - (byHand ? handArm : musicArm) : 1);
+        an.Play("damage"); 
+         hp -= d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f))));
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -249,3 +252,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     }
 }
 
+public interface IDamagable
+{
+    public void AddDamage(float damage, bool byHand);
+}

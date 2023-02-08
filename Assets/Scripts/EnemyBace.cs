@@ -19,7 +19,7 @@ public enum EnemyBaceActions
 [AddComponentMenu("Enemies/Enemy OUTDATED")]
 public class EnemyBace : MonoBehaviour
 {
-    public int hp = 10;
+    public float hp = 10;
     public int musicArm = 0;
     public int handArm = 5;
     public EnemyBaceBehaviors enemyBaceBehavior;

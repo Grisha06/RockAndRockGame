@@ -8,7 +8,7 @@ public class MusicNoteStart : MonoBehaviour
     public Transform dir;
     public float force = 0;
     public float lifeTime = 0;
-    public int damage = 1;
+    public float damage = 1;
     private void Start()
     {
         StartCoroutine(ded());

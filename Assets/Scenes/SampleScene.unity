@@ -5371,7 +5371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 486.12988, y: -105.306885}
+  m_AnchoredPosition: {x: 486.12988, y: -105.30713}
   m_SizeDelta: {x: 897.451, y: 133.29999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655347007
@@ -5630,7 +5630,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 1000
   m_TargetDisplay: 0
@@ -7143,11 +7143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6009576491658695497, guid: 752bdd72b3dd42147b2de3defe8f97e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.98
+      value: -20.19
       objectReference: {fileID: 0}
     - target: {fileID: 6009576491658695497, guid: 752bdd72b3dd42147b2de3defe8f97e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.69
+      value: 12.51
       objectReference: {fileID: 0}
     - target: {fileID: 6009576491658695497, guid: 752bdd72b3dd42147b2de3defe8f97e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12215,7 +12215,7 @@ GameObject:
   - component: {fileID: 1569560256}
   m_Layer: 5
   m_Name: BossBarGroup
-  m_TagString: Untagged
+  m_TagString: BossBarGroup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12261,7 +12261,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 100, y: 57.1}
-  m_Spacing: {x: 0, y: 66.2587}
+  m_Spacing: {x: 0, y: 33.857}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1001 &1570428983

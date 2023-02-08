@@ -10,6 +10,7 @@ TagManager:
   - ammo
   - destroyOnCollPl
   - HandHitter
+  - BossBarGroup
   layers:
   - Default
   - TransparentFX

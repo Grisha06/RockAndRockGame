@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public interface IDamagable
-{
-    public void AddDamage(int damage, bool byHand);
-}
 public class PlayerMover : NewEnemyBace
 {
     public override void NewFixedUpdate() { }
@@ -162,7 +158,7 @@ public class PlayerMover : NewEnemyBace
         }
         SceneManager.LoadScene(0);
     }
-    public override void AddDamage(int d, bool byHand)
+    public override void AddDamage(float d, bool byHand)
     {
         base.AddDamage(d, byHand);
         if (hp > 0)

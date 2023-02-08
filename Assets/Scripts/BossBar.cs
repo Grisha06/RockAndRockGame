@@ -19,12 +19,14 @@ public class BossBar : MonoBehaviour
     [HideInInspector]
     public GameObject bbho;
     public GameObject BossBarPrefab;
+    [HideInInspector]
     public GameObject BossBarGroup;
     NewEnemyBace neb;
     private void Start()
     {
         neb = GetComponent<NewEnemyBace>();
 
+        BossBarGroup = GameObject.FindGameObjectWithTag("BossBarGroup");
         bbho = Instantiate(BossBarPrefab);
         bbho.transform.SetParent(BossBarGroup.transform);
         bbho.transform.localPosition = Vector3.zero;
