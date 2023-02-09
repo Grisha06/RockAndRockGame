@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: handArm
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: Flipable
@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: musicArm
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: runIfRad
@@ -48,8 +48,16 @@ PrefabInstance:
       value: DIO BRANDO
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
-      propertyPath: Drop.Array.data[0].chance
+      propertyPath: sameTimeAttack
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[0].chance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[0].number
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: Drop.Array.data[1].chance
@@ -57,11 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: Drop.Array.data[1].number
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: Drop.Array.data[2].chance
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: Drop.Array.data[2].number
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1482628751363227729, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Radius
@@ -162,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677f145937453314b8b22c87344ceedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tiling: 0.66
+  Tiling: 0.4
   Distance: 20
   Width: 9.02
   UseTiling: 1

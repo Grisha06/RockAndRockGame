@@ -171,23 +171,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
 
     public virtual void SelfDestroy()
     {
-        GameObject k;
-        if (Drop.Length != 0)
-        {
-            foreach (var item in Drop)
-            {
-                if (item.chance >= UnityEngine.Random.Range(0f, 100f))
-                {
-                    for (int i = 0; i < item.number; i++)
-                    {
-                        k = Instantiate(item.obj, transform);
-                        k.transform.localPosition = Vector3.zero;
-                        k.transform.rotation = Quaternion.identity;
-                        k.transform.SetParent(null);
-                    }
-                }
-            }
-        }
+        DropObj.Drop(transform.position, Drop);
         StopAllCoroutines();
         try
         {
