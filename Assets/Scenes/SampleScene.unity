@@ -4270,8 +4270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214f588597ba3e94a974384fac36933d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookTo: {fileID: 1333008056}
-  CameraSpeed: 2
+  lookTo: {fileID: 1317878105}
+  CameraSpeed: 3
   shaker: {fileID: 519420034}
   isShaking: 0
 --- !u!20 &519420031
@@ -9908,6 +9908,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8159631142379723323, guid: d2437b2f69fd2e34a8bbcd3b4e1ed4b5, type: 3}
   m_PrefabInstance: {fileID: 1312933307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1317878104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317878105}
+  m_Layer: 10
+  m_Name: ForCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317878105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317878104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1333008056}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1319746953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9992,6 +10023,7 @@ GameObject:
   - component: {fileID: 1333008059}
   - component: {fileID: 1333008055}
   - component: {fileID: 1333008060}
+  - component: {fileID: 1333008061}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -10034,6 +10066,7 @@ Transform:
   - {fileID: 547472536}
   - {fileID: 489774252}
   - {fileID: 378218316}
+  - {fileID: 1317878105}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10206,6 +10239,20 @@ MonoBehaviour:
   bbho: {fileID: 0}
   BossBarPrefab: {fileID: 6861077987212580079, guid: 351e8a6e56e47af4099bfb80d4ee6d94, type: 3}
   BossBarGroup: {fileID: 1569560254}
+--- !u!114 &1333008061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333008054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a080ac8dab98a48b7fcba8cd2ced7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slf: {fileID: 1317878105}
+  dist: 1
 --- !u!1001 &1340087391
 PrefabInstance:
   m_ObjectHideFlags: 0

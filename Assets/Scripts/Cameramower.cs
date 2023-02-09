@@ -13,7 +13,7 @@ public class Cameramower : MonoBehaviour
 
     void Awake()
     {
-        lookTo = GameObject.FindGameObjectWithTag("Player").transform;
+        //lookTo = GameObject.FindGameObjectWithTag("Player").transform;
         tr = transform;
         if (lookTo != null) tr.position = lookTo.position;
     }
