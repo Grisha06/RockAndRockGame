@@ -168,11 +168,9 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
             hp = -101;
         }
     }
-
-    public virtual void SelfDestroy()
+    public void TryDestroyBossBar()
     {
-        DropObj.Drop(transform.position, Drop);
-        StopAllCoroutines();
+
         try
         {
             GetComponent<BossBar>().use = false;
@@ -182,6 +180,13 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         {
 
         }
+    }
+
+    public virtual void SelfDestroy()
+    {
+        DropObj.Drop(transform.position, Drop);
+        StopAllCoroutines();
+        TryDestroyBossBar();
         Destroy(gameObject);
     }
     public virtual void Jump(float jumpForce)

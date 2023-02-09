@@ -147,15 +147,7 @@ public class PlayerMover : NewEnemyBace
     public override void SelfDestroy()
     {
         StopAllCoroutines();
-        try
-        {
-            GetComponent<BossBar>().use = false;
-            Destroy(GetComponent<BossBar>().bbh.BossBarObj);
-        }
-        catch (NullReferenceException)
-        {
-
-        }
+        TryDestroyBossBar();
         SceneManager.LoadScene(0);
     }
     public override void AddDamage(float d, bool byHand)
