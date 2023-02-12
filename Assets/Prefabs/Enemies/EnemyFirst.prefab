@@ -527,6 +527,9 @@ MonoBehaviour:
   EntityName: /n
   nameText: {fileID: 638064989111963458}
   enemyBaceAction: 0
+  Flipable: 0
+  Flip: 0
+  FlipLocalScale: 0
   health: 10
   maxHealth: 0
   musicArm: 0
@@ -590,6 +593,7 @@ MonoBehaviour:
   WallsChecker: {fileID: 6218099679868554700}
   wallCheckRadius: 0.05
   xDir: 0
+  FlipxDir: 0
   speed: 33
   runIfRad: 1
   runRadius: 6

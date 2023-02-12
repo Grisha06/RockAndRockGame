@@ -39,6 +39,22 @@ PrefabInstance:
       propertyPath: MusicNoteSpavner.Array.data[0].MusicNoteSpavner
       value: 
       objectReference: {fileID: 7475071826075414057}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.93218815
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.40521067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0058539063
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.41497573
+      objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_RootOrder
       value: 0

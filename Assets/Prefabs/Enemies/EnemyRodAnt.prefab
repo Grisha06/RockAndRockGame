@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2662519692991653952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2593080872429114293}
+  m_Layer: 6
+  m_Name: MusicNoteSpavner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2593080872429114293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662519692991653952}
+  m_LocalRotation: {x: -0, y: -0, z: 0.049805216, w: 0.99875903}
+  m_LocalPosition: {x: 0.105, y: 0.255, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2387849578921768735}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.71}
+--- !u!1 &5597862833755167137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8574169469337282339}
+  m_Layer: 6
+  m_Name: MusicNoteSpavner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8574169469337282339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597862833755167137}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9978695, w: -0.06524239}
+  m_LocalPosition: {x: -0.039, y: 0.752, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2387849578921768735}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -172.518}
 --- !u!1001 &6364887792930417422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,11 +210,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8752683425755478632, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_PrefabInstance: {fileID: 6364887792930417422}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2387849577978446183 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8752683425572235881, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
-  m_PrefabInstance: {fileID: 6364887792930417422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2387849578178360416 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
@@ -175,6 +232,7 @@ MonoBehaviour:
   enemyBaceAction: 0
   Flipable: 1
   Flip: 1
+  FlipLocalScale: 1
   health: 8
   maxHealth: 0
   musicArm: 2
@@ -204,12 +262,12 @@ MonoBehaviour:
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:
-  - MusicNoteSpavner: {fileID: 2387849578553366200}
+  - MusicNoteSpavner: {fileID: 2593080872429114293}
     SpawnTime: 0.1
     Force: 0.3
     Lifetime: 2.5
     Damage: 2
-  - MusicNoteSpavner: {fileID: 2387849577978446183}
+  - MusicNoteSpavner: {fileID: 8574169469337282339}
     SpawnTime: 0.1
     Force: 0.3
     Lifetime: 2.5
@@ -235,14 +293,14 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 8752683425371348840, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_PrefabInstance: {fileID: 6364887792930417422}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2387849578553366200 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8752683426138242486, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
-  m_PrefabInstance: {fileID: 6364887792930417422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2387849578921768732 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+  m_PrefabInstance: {fileID: 6364887792930417422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2387849578921768735 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8752683426775358481, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
   m_PrefabInstance: {fileID: 6364887792930417422}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &9201597887917324008 stripped

@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 4914671289546299791, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
     - target: {fileID: 6218099679868554698, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedEnemyPlantCell Variant
+      value: EnemyJail
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Size.x
@@ -236,6 +236,9 @@ MonoBehaviour:
   EntityName: /n
   nameText: {fileID: 1006468713956905412}
   enemyBaceAction: 0
+  Flipable: 0
+  Flip: 0
+  FlipLocalScale: 0
   health: 10
   maxHealth: 0
   musicArm: 2

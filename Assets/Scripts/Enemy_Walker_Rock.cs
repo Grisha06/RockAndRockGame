@@ -12,6 +12,7 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
     public BoxCollider2D WallsChecker;
     public float wallCheckRadius = 0.1f;
     public bool xDir = true;
+    public bool FlipxDir = false;
     public float speed;
     public bool runIfRad = true;
     public float runRadius;
@@ -59,7 +60,7 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
             }
             if (pl.position.x != tr.position.x)
             {
-                rb.velocity = new Vector2((xDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
+                rb.velocity = new Vector2((xDir ? 1f : -1f) * (!FlipxDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
             }
         }
     }

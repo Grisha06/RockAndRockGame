@@ -76,6 +76,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public EnemyBaceActions enemyBaceAction;
     public bool Flipable = false;
     public bool Flip = false;
+    public bool FlipLocalScale = false;
     [SerializeField]
     private float health;
     [HideInInspector]
@@ -157,7 +158,10 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         {
             if (!gameObject.CompareTag("Player"))
             {
-                sr.flipX = (Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable;
+                if (!FlipLocalScale)
+                    sr.flipX = (Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable;
+                else
+                    sr.gameObject.transform.localScale = new Vector3(sr.gameObject.transform.localScale.x * ((Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable ? -1 : 1), sr.gameObject.transform.localScale.y, sr.gameObject.transform.localScale.z);
                 nameText.text = EntityName == "/n" ? "" : EntityName;
             }
             NewLateUpdate();
@@ -212,7 +216,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     {
         if (hp > 0)
         {
-            MyTrigger mt=collision.GetComponent<MyTrigger>();
+            MyTrigger mt = collision.GetComponent<MyTrigger>();
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
                 mt.Activate(this);

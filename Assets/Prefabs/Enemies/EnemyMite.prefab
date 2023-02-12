@@ -31,6 +31,14 @@ PrefabInstance:
       propertyPath: handArm
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16629222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.20512618
+      objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -75,6 +83,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7664732208616918818, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Mass
+      value: 0.17135729
+      objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918819, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Size.y
       value: 0.31136572
@@ -85,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918821, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedAntHitterSmall Variant
+      value: EnemyMite
       objectReference: {fileID: 0}
     - target: {fileID: 7664732209500834905, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Sprite
@@ -97,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Size.x
-      value: 0.7535486
+      value: 0.48032328
       objectReference: {fileID: 0}
     - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Size.y
@@ -105,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Offset.x
-      value: -0.033492565
+      value: 0.15447827
       objectReference: {fileID: 0}
     - target: {fileID: 9041824215635163130, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_Offset.y

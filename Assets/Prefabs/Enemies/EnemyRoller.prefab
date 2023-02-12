@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348846, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Name
-      value: BaceUpdatedAntRoller Variant
+      value: EnemyRoller
       objectReference: {fileID: 0}
     - target: {fileID: 8752683425371348847, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: an
@@ -301,6 +301,9 @@ MonoBehaviour:
   EntityName: /n
   nameText: {fileID: 2498069980772190930}
   enemyBaceAction: 0
+  Flipable: 0
+  Flip: 0
+  FlipLocalScale: 0
   health: 10
   maxHealth: 0
   musicArm: 2

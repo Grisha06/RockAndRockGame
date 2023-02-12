@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7798958014640176003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9054701366116943078}
+  m_Layer: 6
+  m_Name: MusicNoteSpavner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9054701366116943078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798958014640176003}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: -0.0000005513429}
+  m_LocalPosition: {x: -0.152, y: 0.395, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 759098865025437432}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1001 &6977840747583406754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +40,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: Flip
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: speed
@@ -17,7 +48,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: Flipable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: attackIfRad
@@ -46,7 +77,19 @@ PrefabInstance:
     - target: {fileID: 568217436, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: MusicNoteSpavner.Array.data[0].MusicNoteSpavner
       value: 
-      objectReference: {fileID: 759098865393708895}
+      objectReference: {fileID: 9054701366116943078}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.332322
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740958, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3785314
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335647679302740959, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7664732208616918816, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -157,8 +200,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
---- !u!4 &759098865393708895 stripped
+--- !u!4 &759098865025437432 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7664732210473545213, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7664732209500834906, guid: 0bfb04803899e1648b47423757d759a4, type: 3}
   m_PrefabInstance: {fileID: 6977840747583406754}
   m_PrefabAsset: {fileID: 0}
