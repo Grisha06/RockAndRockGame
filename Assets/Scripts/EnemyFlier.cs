@@ -21,7 +21,6 @@ public class EnemyFlier : EnemyBaceAttakable
 
     public override void NewStart()
     {
-        StartCoroutine(AttackingEnumerator());
         StartCoroutine(Flier());
     }
     public override void NewFixedUpdate()

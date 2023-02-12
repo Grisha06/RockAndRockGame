@@ -15,10 +15,7 @@ public class EnemyRoller : EnemyBaceAttakable
     public float speed;
     public bool runIfRad = true;
     public float runRadius;
-    public override void NewStart()
-    {
-        StartCoroutine(AttackingEnumerator());
-    }
+
     public override void NewFixedUpdate()
     {
         base.NewFixedUpdate();

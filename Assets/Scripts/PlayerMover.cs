@@ -37,14 +37,7 @@ public class PlayerMover : NewEnemyBace
     }
     public override void NewUpdate()
     {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 mousePosZ = mousePos;
-        mousePosZ.z = 0;
-        Vector3 relativePos = mousePosZ - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        Vector3 e = rotation.eulerAngles;
-        e = new Vector3(e.x, e.y, e.z);
-        arrowObj.rotation = Quaternion.Euler(e);
+        arrowObj.rotation = Quaternion.LookRotation((Vector2)mainCam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position, Vector3.up);
         isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
         if (isGrounded) jumps = maxJumps;
         arrowRend.sprite = arrowSprites[jumps];
@@ -82,11 +75,12 @@ public class PlayerMover : NewEnemyBace
         weapon[weaponSelect].Attack(mn);
         mn.transform.rotation = Quaternion.identity;
         mn.transform.localScale = Vector3.one;
-        mn.GetComponent<MusicNoteStart>().isRight = false;
-        mn.GetComponent<MusicNoteStart>().dir = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].MusicNoteSpavner;
-        mn.GetComponent<MusicNoteStart>().force = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Force;
-        mn.GetComponent<MusicNoteStart>().lifeTime = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Lifetime;
-        mn.GetComponent<MusicNoteStart>().damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Damage;
+        MusicNoteStart mns = mn.GetComponent<MusicNoteStart>();
+        mns.isRight = false;
+        mns.dir = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].MusicNoteSpavner;
+        mns.force = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Force;
+        mns.lifeTime = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Lifetime;
+        mns.damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Damage;
         mn.transform.SetParent(null);
         weapon[weaponSelect].Ammo -= !weapon[weaponSelect].isAmmoDecreasing ? 0 : weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].AmmoCost;
     }

@@ -21,10 +21,7 @@ public class EnemyWalkerJumper : EnemyBaceAttakable
     private float goingUpt=0f;
     public float runRadius;
     public float jumpForce;
-    public override void NewStart()
-    {
-        StartCoroutine(AttackingEnumerator());
-    }
+
     public override void NewFixedUpdate()
     {
         base.NewFixedUpdate();

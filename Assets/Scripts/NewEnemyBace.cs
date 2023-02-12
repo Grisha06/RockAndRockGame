@@ -14,6 +14,12 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     [HideInInspector]
     public int MusicNoteSpavnerSelNum = 0;
     public bool attackIfRad = true;
+
+    public sealed override void Start()
+    {
+        base.Start();
+        StartCoroutine(AttackingEnumerator());
+    }
     public void SpawnM(int mnssn)
     {
         GameObject mn = Instantiate(MusicNote, MusicNoteSpavner[mnssn].MusicNoteSpavner);
@@ -114,7 +120,7 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     [Header("Custom fields")]
     public bool dont_totch_me;
 
-    private void Start()
+    public virtual void Start()
     {
         maxHealth = health;
         tr = transform;

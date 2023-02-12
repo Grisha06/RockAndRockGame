@@ -8,15 +8,10 @@ public class EnemyPlantCell : NewEnemyBace
     public GameObject Prisoner;
     public SpriteRenderer PrisonerPlace;
 
-    public override void NewUpdate() { }
-    public override void NewOnCollisionEnter2D(Collision2D collision) { }
     public override void NewFixedUpdate() 
     {
         PrisonerPlace.sprite = Prisoner.GetComponent<NewEnemyBace>().sr.sprite;
     }
-    public override void NewOnTriggerStay2D(Collider2D collision) { }
-    public override void NewOnTriggerEnter2D(Collider2D collision) { }
-    public override void NewStart() { }
 
     public override void SelfDestroy()
     {
