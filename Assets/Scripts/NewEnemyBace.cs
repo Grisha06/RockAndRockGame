@@ -20,10 +20,11 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
         MusicNoteSpavner[mnssn].Attack(mn);
         mn.transform.rotation = Quaternion.identity;
         mn.transform.localScale = Vector3.one;
-        mn.GetComponent<MusicNoteStart>().dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
-        mn.GetComponent<MusicNoteStart>().force = MusicNoteSpavner[mnssn].Force;
-        mn.GetComponent<MusicNoteStart>().lifeTime = MusicNoteSpavner[mnssn].Lifetime;
-        mn.GetComponent<MusicNoteStart>().damage = MusicNoteSpavner[mnssn].Damage;
+        MusicNoteStart mns = mn.GetComponent<MusicNoteStart>();
+        mns.dir = MusicNoteSpavner[mnssn].MusicNoteSpavner;
+        mns.force = MusicNoteSpavner[mnssn].Force;
+        mns.lifeTime = MusicNoteSpavner[mnssn].Lifetime;
+        mns.damage = MusicNoteSpavner[mnssn].Damage;
         mn.transform.SetParent(null);
     }
     public void SpawnMN()
@@ -65,6 +66,7 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     }
 }
 
+[RequireComponent(typeof(Rigidbody2D)), DisallowMultipleComponent]
 public abstract class NewEnemyBace : MonoBehaviour, IDamagable
 {
     [Header("Inheritanced fields")]
@@ -155,7 +157,6 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
         {
             if (!gameObject.CompareTag("Player"))
             {
-
                 sr.flipX = (Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable;
                 nameText.text = EntityName == "/n" ? "" : EntityName;
             }
@@ -204,28 +205,6 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     {
         if (hp > 0)
         {
-            if (!gameObject.CompareTag("Player"))
-            {
-                if (collision.gameObject.CompareTag("notePL"))
-                {
-                    AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
-                    collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
-                    Destroy(collision.gameObject);
-                }
-                if (collision.gameObject.CompareTag("Player"))
-                {
-                    AddDamage(collision.gameObject.GetComponent<PlayerMover>().handCollideDamage, true);
-                }
-            }
-            else
-            {
-                if (collision.gameObject.CompareTag("note"))
-                {
-                    AddDamage(collision.gameObject.GetComponent<MusicNoteStart>().damage, false);
-                    collision.gameObject.GetComponent<MusicNoteStart>().StopAllCoroutines();
-                    Destroy(collision.gameObject);
-                }
-            }
             NewOnCollisionEnter2D(collision);
         }
     }
@@ -233,9 +212,10 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     {
         if (hp > 0)
         {
-            if (collision.CompareTag("HandHitter") && collision.gameObject.GetComponent<HandHitter>().LayerToAttack.Contains(gameObject.layer))
+            MyTrigger mt=collision.GetComponent<MyTrigger>();
+            if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
-                AddDamage(collision.gameObject.GetComponent<HandHitter>().Damage, true);
+                mt.Activate(this);
             }
             NewOnTriggerEnter2D(collision);
         }

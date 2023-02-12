@@ -71,5 +71,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf7a69e5fe5d6843b8de58b5d281261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayerToAttack: 0a000000
+  LayerToActivate: 0a000000
   Damage: 1

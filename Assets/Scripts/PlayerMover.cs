@@ -158,21 +158,4 @@ public class PlayerMover : NewEnemyBace
         else
             an.Play("die");
     }
-    public override void NewOnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("destroyOnCollPl"))
-        {
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.CompareTag("hp"))
-        {
-            hp += 2;
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.CompareTag("ammo"))
-        {
-            weapon[weaponSelect].Ammo += 10;
-            Destroy(collision.gameObject);
-        }
-    }
 }

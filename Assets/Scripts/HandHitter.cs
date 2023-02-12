@@ -1,9 +1,12 @@
 using UnityEngine;
 
-[AddComponentMenu("Enemies/Hand Hitter")]
-[RequireComponent(typeof(Collider2D))]
-public class HandHitter : MonoBehaviour
+[AddComponentMenu("Triggers/Hand Hitter Trigger")]
+public class HandHitter : MyTrigger
 {
-    public int[] LayerToAttack;
-    public int Damage = 1;
+    public int damage = 1;
+    public bool IsByHand = true;
+    public override void Activate(NewEnemyBace entity)
+    {
+        entity.AddDamage(damage, IsByHand);
+    }
 }
