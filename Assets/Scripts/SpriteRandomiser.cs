@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using NTC.Global.Cache;
 
-public class SpriteRandomiser : MonoBehaviour
+public class SpriteRandomiser : MonoCache
 {
     public List<Sprite> Sprits;
     public bool rotate = true;

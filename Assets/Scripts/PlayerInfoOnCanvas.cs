@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NTC.Global.Cache;
 
-public class PlayerInfoOnCanvas : MonoBehaviour
+public class PlayerInfoOnCanvas : MonoCache
 {
     PlayerMover pm;
     [SerializeField] private Text hp;

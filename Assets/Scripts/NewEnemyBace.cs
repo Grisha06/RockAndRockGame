@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using NTC.Global.Cache;
 
 
 public abstract class EnemyBaceAttakable : NewEnemyBace
@@ -73,7 +74,7 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
 }
 
 [RequireComponent(typeof(Rigidbody2D)), DisallowMultipleComponent]
-public abstract class NewEnemyBace : MonoBehaviour, IDamagable
+public abstract class NewEnemyBace : MonoCache, IDamagable
 {
     [Header("Inheritanced fields")]
     public string EntityName = "/n";
@@ -142,14 +143,14 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
     public virtual void NewOnTriggerStay2D(Collider2D collision) { }
     public virtual void NewOnTriggerEnter2D(Collider2D collision) { }
 
-    private void FixedUpdate()
+    protected override void FixedRun()
     {
         if (hp > 0)
         {
             NewFixedUpdate();
         }
     }
-    private void Update()
+    protected override void Run()
     {
         if (gameObject.CompareTag("Player"))
             t += Time.deltaTime;
@@ -158,11 +159,11 @@ public abstract class NewEnemyBace : MonoBehaviour, IDamagable
             NewUpdate();
         }
     }
-    private void LateUpdate()
+    protected override void LateRun()
     {
         if (hp > 0)
         {
-            if (!gameObject.CompareTag("Player"))
+            if (!gameObject.CompareTag("Player") && rb)
             {
                 if (!FlipLocalScale)
                     sr.flipX = (Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable;

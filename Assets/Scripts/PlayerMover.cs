@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMover : NewEnemyBace
 {
-    public override void NewFixedUpdate() { }
-    public override void NewOnTriggerStay2D(Collider2D collision) { }
-    public override void NewOnTriggerEnter2D(Collider2D collision) { }
-
     public KeyObj[] controls;
     public float jumpForce = 1;
     private float angle;

@@ -1,8 +1,9 @@
 using UnityEngine;
+using NTC.Global.Cache;
 
 [AddComponentMenu("Enemies/Boss Bar")]
 [RequireComponent(typeof(NewEnemyBace))]
-public class BossBar : MonoBehaviour
+public class BossBar : MonoCache
 {
     [Min(0)]
     public float Tiling = 1.66f;
@@ -35,7 +36,8 @@ public class BossBar : MonoBehaviour
 
         bbh = bbho.GetComponent<BossBarHolder>();
     }
-    private void LateUpdate()
+
+    protected override void LateRun()
     {
         if (use && ((neb.gameObject.CompareTag("Player") ? true : Vector3.Distance(neb.pl.transform.position, transform.position) < Distance) || Distance == 0f))
         {

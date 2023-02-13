@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NTC.Global.Cache;
 
-public class Shaker : MonoBehaviour
+public class Shaker : MonoCache
 {
     public IEnumerator ShakeC(float duration, float magnitude)
     {

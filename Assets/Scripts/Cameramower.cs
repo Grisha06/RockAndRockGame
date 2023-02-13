@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NTC.Global.Cache;
 
-public class Cameramower : MonoBehaviour
+public class Cameramower : MonoCache
 {
     public Transform lookTo;
     public float CameraSpeed;
@@ -17,7 +18,7 @@ public class Cameramower : MonoBehaviour
         tr = transform;
         if (lookTo != null) tr.position = lookTo.position;
     }
-    void LateUpdate()
+    protected override void LateRun()
     {
         if (lookTo != null && !isShaking)
         {
