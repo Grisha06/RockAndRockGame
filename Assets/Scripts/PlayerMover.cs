@@ -25,11 +25,23 @@ public class PlayerMover : NewEnemyBace
     public int handCollideDamage=1;
     private Camera mainCam;
     private Cameramower mainCamM;
+    public override float hp
+    {
+        get { return health; }
+        set
+        {
+            health = value;
+            if (health > maxHealth)
+                maxHealth = health;
+            PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
+        }
+    }
 
     public override void NewStart()
     {
         mainCam = Camera.main;
         mainCamM = mainCam.GetComponent<Cameramower>();
+        PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
         StartCoroutine(Shooter());
     }
     public override void NewUpdate()
@@ -80,6 +92,7 @@ public class PlayerMover : NewEnemyBace
         mns.damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Damage;
         mn.transform.SetParent(null);
         weapon[weaponSelect].Ammo -= !weapon[weaponSelect].isAmmoDecreasing ? 0 : weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].AmmoCost;
+        PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
     }
     IEnumerator Shooter()
     {
@@ -91,10 +104,12 @@ public class PlayerMover : NewEnemyBace
             if (Input.GetKey(KeyObj.FindInKeysArr(controls, "decreaseWeaponSelect")))
             {
                 weaponSelect += weaponSelect < weapon.Count - 1 ? 1 : 0;
+                PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
             }
             if (Input.GetKey(KeyObj.FindInKeysArr(controls, "increaseWeaponSelect")))
             {
                 weaponSelect -= weaponSelect > 0 ? 1 : 0;
+                PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
             }
             weaponSprite.sprite = weapon[weaponSelect].sprite;
             if ((!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].Ammo > 0) && hp > 0)

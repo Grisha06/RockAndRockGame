@@ -85,11 +85,11 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     public bool Flip = false;
     public bool FlipLocalScale = false;
     [SerializeField]
-    private float health;
+    protected float health;
     [HideInInspector]
     public float maxHealth;
 
-    public float hp
+    public virtual float hp
     {
         get { return health; }
         set
