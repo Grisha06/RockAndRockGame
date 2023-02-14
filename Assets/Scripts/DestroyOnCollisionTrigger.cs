@@ -5,6 +5,7 @@ public class DestroyOnCollisionTrigger : MyTrigger
 {
     public override void Activate(NewEnemyBace entity)
     {
+        base.Activate(entity);
         StopAllCoroutines();
         Destroy(gameObject);
     }

@@ -7,6 +7,7 @@ public class HandHitter : MyTrigger
     public bool IsByHand = true;
     public override void Activate(NewEnemyBace entity)
     {
+        base.Activate(entity);
         entity.AddDamage(damage, IsByHand);
     }
 }

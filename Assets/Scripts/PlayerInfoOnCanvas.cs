@@ -9,6 +9,7 @@ public class PlayerInfoOnCanvas : MonoCache
     PlayerMover pm;
     [SerializeField] private Text hp;
     [SerializeField] private Text ammo;
+    static UnityEvent textUpdate;
     private void Start()
     {
         pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMover>();

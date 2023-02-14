@@ -7,5 +7,13 @@ using NTC.Global.Cache;
 public abstract class MyTrigger : MonoCache
 {
     public int[] LayerToActivate;
-    public abstract void Activate(NewEnemyBace entity);
+    protected NewEnemyBace neb = null;
+    public virtual void Activate(NewEnemyBace entity)
+    {
+        neb = entity;
+    }
+    public virtual void Diactivate(NewEnemyBace entity)
+    {
+        neb = null;
+    }
 }

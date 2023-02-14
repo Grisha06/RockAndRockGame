@@ -7,6 +7,7 @@ public class HealTrigger : DestroyOnCollisionTrigger
     public float Hp = 2;
     public override void Activate(NewEnemyBace entity)
     {
+        base.Activate(entity);
         entity.hp += Hp;
         base.Activate(entity);
     }

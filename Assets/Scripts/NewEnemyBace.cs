@@ -142,6 +142,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     public virtual void NewOnCollisionEnter2D(Collision2D collision) { }
     public virtual void NewOnTriggerStay2D(Collider2D collision) { }
     public virtual void NewOnTriggerEnter2D(Collider2D collision) { }
+    public virtual void NewOnTriggerExit2D(Collider2D collision) { }
 
     protected override void FixedRun()
     {
@@ -229,6 +230,18 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
                 mt.Activate(this);
             }
             NewOnTriggerEnter2D(collision);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (hp > 0)
+        {
+            MyTrigger mt = collision.GetComponent<MyTrigger>();
+            if (mt && mt.LayerToActivate.Contains(gameObject.layer))
+            {
+                mt.Diactivate(this);
+            }
+            NewOnTriggerExit2D(collision);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

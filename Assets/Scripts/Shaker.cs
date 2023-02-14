@@ -22,5 +22,8 @@ public class Shaker : MonoCache
         cm.isShaking = false;
         transform.position = origPos;
     }
-
+    public void Shake(float duration)
+    {
+        StartCoroutine(ShakeC(duration, duration));
+    }
 }
