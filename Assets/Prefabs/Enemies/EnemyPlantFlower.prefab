@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554698, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Name
-      value: EnemyFirstPlant
+      value: EnemyPlantFlower
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Size.x
@@ -140,7 +140,7 @@ MonoBehaviour:
   sr: {fileID: 1078171568827532709}
   t: 0
   dont_totch_me: 0
-  attackRadius: 4.5
+  attackRadius: 5.5
   MusicNoteSpavner:
   - MusicNoteSpavner: {fileID: 1078171569197147137}
     SpawnTime: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   attackTime: 1.5
   MusicNoteSpavnerSelNum: 0
   attackIfRad: 1
+  rotateMusicNoteSpawners: 1
 --- !u!4 &1078171567723799519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6218099680122169548, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}

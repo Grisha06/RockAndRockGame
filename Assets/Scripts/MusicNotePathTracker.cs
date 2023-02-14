@@ -12,8 +12,7 @@ public class MusicNotePathTracker : MusicNoteStart
     }
     protected override void Run()
     {
-        dir.LookAt(pl.transform, Vector3.forward);
-        dir.Rotate(new Vector3(0, -90, 0));
-        dir.Rotate(new Vector3(90, 0, 0));
+        Vector2 r = Quaternion.LookRotation(transform.position - pl.tr.position, Vector3.up).eulerAngles * Mathf.Deg2Rad;
+        rb.velocity = new Vector2((transform.position.x < pl.tr.position.x ? 1f : -1f) * Mathf.Cos(r.x), Mathf.Sin(r.x));
     }
 }
