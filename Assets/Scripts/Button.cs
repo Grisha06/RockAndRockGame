@@ -6,10 +6,8 @@ using UnityEngine.Events;
 [AddComponentMenu("Triggers/Button")]
 public class Button : MyTrigger
 {
-    [SerializeField]
-    UnityEvent activationAction;
-    [SerializeField]
-    UnityEvent diactivationAction;
+    [SerializeField] protected UnityEvent activationAction;
+    [SerializeField] protected UnityEvent diactivationAction;
     [SerializeField] protected Sprite ButtonSprite0;
     [SerializeField] protected Sprite ButtonSprite1;
     protected virtual void Start()
