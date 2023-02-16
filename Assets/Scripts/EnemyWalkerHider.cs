@@ -8,7 +8,7 @@ public class EnemyWalkerHider : Enemy_Walker_Rock
     public BoxCollider2D hidedColl;
     public Sprite hiddedSprite;
     public Sprite unhiddedSprite;
-    public override void NewFixedUpdate()
+    protected override void NewFixedUpdate()
     {
         WingsPos.SetActive(false);
         if (runIfRad && Vector2.Distance(pl.position, tr.position) < runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)

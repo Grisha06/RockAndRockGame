@@ -22,7 +22,7 @@ public class PlayerMover : NewEnemyBace
     public SpriteRenderer weaponSprite;
     public int weaponSelect = 0;
     public int MusicNoteSpavnerSelect;
-    public int handCollideDamage=1;
+    public int handCollideDamage = 1;
     private Camera mainCam;
     private Cameramower mainCamM;
     public override float hp
@@ -37,24 +37,26 @@ public class PlayerMover : NewEnemyBace
         }
     }
 
-    public override void NewStart()
+    protected override void NewStart()
     {
         mainCam = Camera.main;
         mainCamM = mainCam.GetComponent<Cameramower>();
         PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
         StartCoroutine(Shooter());
     }
-    public override void NewUpdate()
+    protected override void NewUpdate()
     {
         arrowObj.rotation = Quaternion.LookRotation((Vector2)mainCam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position, Vector3.up);
-        isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
+
         if (isGrounded) jumps = maxJumps;
         arrowRend.sprite = arrowSprites[jumps];
     }
-    public override void NewLateUpdate()
+    private void CheckGround() => isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
+    protected override void NewLateUpdate()
     {
         if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0))
         {
+            CheckGround();
             if (jumps == 0)
             {
                 //mainCamM.Shake(.1f, .05f);
@@ -96,7 +98,6 @@ public class PlayerMover : NewEnemyBace
     }
     IEnumerator Shooter()
     {
-        bool h = false;
         WaitForSeconds wfs = new WaitForSeconds(0.01f);
         while (true)
         {
@@ -127,15 +128,8 @@ public class PlayerMover : NewEnemyBace
                     }
                     MusicNoteSpavnerSelect = 0;
                 }
-                if (!weapon[weaponSelect].isAutomatic && Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
+                if(Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
                 {
-                    h = true;
-                    t = 0;
-
-                }
-                if (t >= weapon[weaponSelect].ShootSpeed && h)
-                {
-                    //yield return new WaitForSeconds(0.1f);
                     MusicNoteSpavnerSelect = 0;
                     an.Play("atack");
                     for (int i = 0; i < weapon[weaponSelect].musicNoteSpavnerObjs.Length; i++)
@@ -145,7 +139,7 @@ public class PlayerMover : NewEnemyBace
                         yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
                     }
                     MusicNoteSpavnerSelect = 0;
-                    h = false;
+                    yield return new WaitForSeconds(weapon[weaponSelect].ShootSpeed);
                 }
             }
         }
@@ -163,5 +157,9 @@ public class PlayerMover : NewEnemyBace
             an.Play("damage");
         else
             an.Play("die");
+    }
+    protected override void NewOnCollisionEnter2D(Collision2D collision)
+    {
+        CheckGround();
     }
 }

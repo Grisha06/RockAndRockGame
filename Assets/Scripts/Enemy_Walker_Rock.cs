@@ -17,7 +17,7 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
     public bool runIfRad = true;
     public float runRadius;
 
-    public override void NewFixedUpdate()
+    protected override void NewFixedUpdate()
     {
         base.NewFixedUpdate();
         WingsPos.SetActive(false);

@@ -19,11 +19,11 @@ public class EnemyFlier : EnemyBaceAttakable
     [Min(0.5f)]
     public float jumpDest;
 
-    public override void NewStart()
+    protected override void NewStart()
     {
         StartCoroutine(Flier());
     }
-    public override void NewFixedUpdate()
+    protected override void NewFixedUpdate()
     {
         base.NewFixedUpdate();
         if (attackIfRad && Vector2.Distance(pl.position, tr.position) < attackRadius)

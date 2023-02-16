@@ -8,7 +8,7 @@ public class EnemyPlantCell : NewEnemyBace
     public GameObject Prisoner;
     public SpriteRenderer PrisonerPlace;
 
-    public override void NewFixedUpdate() 
+    protected override void NewFixedUpdate() 
     {
         PrisonerPlace.sprite = Prisoner.GetComponent<NewEnemyBace>().sr.sprite;
     }

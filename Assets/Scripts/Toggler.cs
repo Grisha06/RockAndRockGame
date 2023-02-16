@@ -1,34 +1,24 @@
 using UnityEngine;
-using System;
-using System.Collections;
-using UnityEngine.Events;
 
 [AddComponentMenu("Triggers/Toggler")]
 public class Toggler : Button
 {
+    [SerializeField]
     protected bool isActive = false;
-    protected override void Start()
-    {
-        activationAction.AddListener(() => { });
-    }
+
     public override void Activate(NewEnemyBace entity)
     {
-        isActive = !isActive;
-        if (isActive)
+        if (!isActive)
         {
+            Debug.Log(isActive.ToString()+" First");
             base.Activate(entity);
-            GetComponent<SpriteRenderer>().sprite = ButtonSprite1;
-            activationAction?.Invoke();
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = ButtonSprite0;
-            diactivationAction?.Invoke();
+            Debug.Log(isActive.ToString() + " Second");
             base.Diactivate(entity);
         }
+        isActive = !isActive;
     }
-    public override void Diactivate(NewEnemyBace entity)
-    {
-
-    }
+    public override void Diactivate(NewEnemyBace entity) { }
 }

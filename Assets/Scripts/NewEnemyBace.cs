@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPro;
 using NTC.Global.Cache;
 
-
 public abstract class EnemyBaceAttakable : NewEnemyBace
 {
     public float attackRadius;
@@ -116,8 +115,6 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     [HideInInspector]
     public Rigidbody2D rb;
     public SpriteRenderer sr;
-    [HideInInspector]
-    public float t = 0;
     [Header("Custom fields")]
     public bool dont_totch_me;
 
@@ -135,32 +132,30 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             nameText.transform.parent.gameObject.SetActive(true);
         NewStart();
     }
-    public virtual void NewStart() { }
-    public virtual void NewFixedUpdate() { }
-    public virtual void NewUpdate() { }
-    public virtual void NewLateUpdate() { }
-    public virtual void NewOnCollisionEnter2D(Collision2D collision) { }
-    public virtual void NewOnTriggerStay2D(Collider2D collision) { }
-    public virtual void NewOnTriggerEnter2D(Collider2D collision) { }
-    public virtual void NewOnTriggerExit2D(Collider2D collision) { }
+    protected virtual void NewStart() { }
+    protected virtual void NewFixedUpdate() { }
+    protected virtual void NewUpdate() { }
+    protected virtual void NewLateUpdate() { }
+    protected virtual void NewOnCollisionEnter2D(Collision2D collision) { }
+    protected virtual void NewOnTriggerStay2D(Collider2D collision) { }
+    protected virtual void NewOnTriggerEnter2D(Collider2D collision) { }
+    protected virtual void NewOnTriggerExit2D(Collider2D collision) { }
 
-    protected override void FixedRun()
+    protected sealed override void FixedRun()
     {
         if (hp > 0)
         {
             NewFixedUpdate();
         }
     }
-    protected override void Run()
+    protected sealed override void Run()
     {
-        if (gameObject.CompareTag("Player"))
-            t += Time.deltaTime;
         if (hp > 0)
         {
             NewUpdate();
         }
     }
-    protected override void LateRun()
+    protected sealed override void LateRun()
     {
         if (hp > 0)
         {
@@ -228,6 +223,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
                 mt.Activate(this);
+                mt.UpdateNebActivate(this);
             }
             NewOnTriggerEnter2D(collision);
         }
@@ -240,6 +236,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
                 mt.Diactivate(this);
+                mt.UpdateNebDiactivate(this);
             }
             NewOnTriggerExit2D(collision);
         }

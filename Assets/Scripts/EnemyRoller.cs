@@ -16,7 +16,7 @@ public class EnemyRoller : EnemyBaceAttakable
     public bool runIfRad = true;
     public float runRadius;
 
-    public override void NewFixedUpdate()
+    protected override void NewFixedUpdate()
     {
         base.NewFixedUpdate();
         WingsPos.SetActive(false);
@@ -60,11 +60,11 @@ public class EnemyRoller : EnemyBaceAttakable
             }
         }
     }
-    public override void NewUpdate()
+    protected override void NewUpdate()
     {
         base.NewUpdate();
     }
-    public override void NewOnCollisionEnter2D(Collision2D collision)
+    protected override void NewOnCollisionEnter2D(Collision2D collision)
     {
 
     }

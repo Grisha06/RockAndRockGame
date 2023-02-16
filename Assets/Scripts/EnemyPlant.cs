@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyPlant : EnemyBaceAttakable
 {
     public bool rotateMusicNoteSpawners = true;
-    public override void NewFixedUpdate()
+    protected override void NewFixedUpdate()
     {
         base.NewFixedUpdate();
         WingsPos.SetActive(false);

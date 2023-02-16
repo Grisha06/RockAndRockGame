@@ -22,7 +22,7 @@ public class EnemyWalkerJumper : EnemyBaceAttakable
     public float runRadius;
     public float jumpForce;
 
-    public override void NewFixedUpdate()
+    protected override void NewFixedUpdate()
     {
         base.NewFixedUpdate();
         WingsPos.SetActive(false);
@@ -99,14 +99,6 @@ public class EnemyWalkerJumper : EnemyBaceAttakable
         goingUp = true;
         goingUpt = 0;
         an.Play("jump");
-    }
-    public override void NewUpdate()
-    {
-        base.NewUpdate();
-    }
-    public override void NewOnCollisionEnter2D(Collision2D collision)
-    {
-
     }
     public void CheckRightWall()
     {
