@@ -20,10 +20,10 @@ public class BossBar : MonoCache
     [HideInInspector]
     public GameObject bbho;
     public GameObject BossBarPrefab;
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject BossBarGroup;
     NewEnemyBace neb;
-    private void Start()
+    private async void Start()
     {
         neb = GetComponent<NewEnemyBace>();
 
@@ -33,13 +33,19 @@ public class BossBar : MonoCache
         bbho.transform.localPosition = Vector3.zero;
         bbho.transform.localScale = Vector3.one;
         bbho.transform.rotation = Quaternion.identity;
-
         bbh = bbho.GetComponent<BossBarHolder>();
+        bbho.SetActive(false);
+
+        await System.Threading.Tasks.Task.Delay(500);
+
+        UpdateBossBar(neb.hp);
+        neb.OnHpChanged.AddListener(UpdateBossBar);
+        PlayerMover.single.OnJumped.AddListener(() => { UpdateBossBar(neb.hp); });
     }
 
-    protected override void LateRun()
+    public void UpdateBossBar(float hp)
     {
-        if (use && ((neb.gameObject.CompareTag("Player") ? true : Vector3.Distance(neb.pl.transform.position, transform.position) < Distance) || Distance == 0f))
+        if (use && (((neb ? neb.gameObject.CompareTag("Player") : false) ? true : Vector3.Distance(PlayerMover.single.tr.position, neb.tr.position) < Distance) || Distance == 0f))
         {
             bbho.SetActive(true);
             bbh.BossBarBG1.color = BgColor;
@@ -54,7 +60,7 @@ public class BossBar : MonoCache
             {
                 bbh.BossBarBG2.gameObject.SetActive(false);
             }
-            bbh.BossBarIm.transform.localScale = new Vector3(neb.hp > 0 ? (float)neb.hp / (float)neb.maxHealth : 0, 1f, 1f);
+            bbh.BossBarIm.transform.localScale = new Vector3(hp > 0 ? (float)hp / (float)neb.maxHealth : 0, 1f, 1f);
             bbho.transform.localScale = new Vector3(Width, 1f, 1f);
 
 

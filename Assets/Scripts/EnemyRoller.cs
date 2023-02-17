@@ -20,15 +20,15 @@ public class EnemyRoller : EnemyBaceAttakable
     {
         base.NewFixedUpdate();
         WingsPos.SetActive(false);
-        if (runIfRad && Vector2.Distance(pl.position, tr.position) < runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)
+        if (runIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Run;
         }
-        if (attackIfRad && Vector2.Distance(pl.position, tr.position) < attackRadius)
+        if (attackIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Attack;
         }
-        if (Vector2.Distance(pl.position, tr.position) >= runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)
+        if (Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.None;
         }
@@ -46,15 +46,15 @@ public class EnemyRoller : EnemyBaceAttakable
 
         if (enemyBaceAction == EnemyBaceActions.Run)
         {
-            if (pl.position.x > tr.position.x)
+            if (PlayerMover.single.tr.position.x > tr.position.x)
             {
                 xDir = true;
             }
-            if (pl.position.x < tr.position.x)
+            if (PlayerMover.single.tr.position.x < tr.position.x)
             {
                 xDir = false;
             }
-            if (pl.position.x != tr.position.x)
+            if (PlayerMover.single.tr.position.x != tr.position.x)
             {
                 rb.angularVelocity = (xDir ? -1f : 1f) * speed * Time.deltaTime;
             }

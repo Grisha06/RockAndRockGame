@@ -26,11 +26,11 @@ public class EnemyFlier : EnemyBaceAttakable
     protected override void NewFixedUpdate()
     {
         base.NewFixedUpdate();
-        if (attackIfRad && Vector2.Distance(pl.position, tr.position) < attackRadius)
+        if (attackIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Attack;
         }
-        if (Vector2.Distance(pl.position, tr.position) >= runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)
+        if (Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.None;
         }

@@ -1480,6 +1480,12 @@ MonoBehaviour:
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
   musicArm: 2
   handArm: 2
   Drop:
@@ -9978,6 +9984,12 @@ MonoBehaviour:
   FlipLocalScale: 0
   health: 50
   maxHealth: 0
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
   musicArm: 0
   handArm: 0
   Drop: []
@@ -10057,6 +10069,9 @@ MonoBehaviour:
   weaponSelect: 0
   MusicNoteSpavnerSelect: 0
   handCollideDamage: 1
+  playerOnAmmoChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1333008060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11939,7 +11954,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 13.109245, y: 20.235197}
+    newSize: {x: 18.936733, y: 20.235197}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -11993,7 +12008,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 13.109245, y: 20.235197}
+  m_Size: {x: 18.936733, y: 20.235197}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -12007,7 +12022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539100995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55.4543, y: 7.6176, z: 0}
+  m_LocalPosition: {x: 58.368, y: 7.6176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16896,11 +16911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7564025830759225394, guid: 73ffc29e693056b41bfa5a56d072dc42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.41
+      value: 64.77
       objectReference: {fileID: 0}
     - target: {fileID: 7564025830759225394, guid: 73ffc29e693056b41bfa5a56d072dc42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8
+      value: 17.872
       objectReference: {fileID: 0}
     - target: {fileID: 7564025830759225394, guid: 73ffc29e693056b41bfa5a56d072dc42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18266,11 +18281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7115542373595852803, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.89
+      value: 63.289997
       objectReference: {fileID: 0}
     - target: {fileID: 7115542373595852803, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.76
+      value: 17.872
       objectReference: {fileID: 0}
     - target: {fileID: 7115542373595852803, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
       propertyPath: m_LocalPosition.z

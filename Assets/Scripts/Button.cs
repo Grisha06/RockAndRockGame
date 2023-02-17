@@ -10,10 +10,7 @@ public class Button : MyTrigger
     [SerializeField] protected UnityEvent diactivationAction;
     [SerializeField] protected Sprite ButtonSprite0;
     [SerializeField] protected Sprite ButtonSprite1;
-    protected virtual void Start()
-    {
-        //activationAction.AddListener(() => { });
-    }
+    protected virtual void Start() { }
     public override void Activate(NewEnemyBace entity)
     {
         GetComponent<SpriteRenderer>().sprite = ButtonSprite1;

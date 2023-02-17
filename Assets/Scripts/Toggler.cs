@@ -10,12 +10,10 @@ public class Toggler : Button
     {
         if (!isActive)
         {
-            Debug.Log(isActive.ToString()+" First");
             base.Activate(entity);
         }
         else
         {
-            Debug.Log(isActive.ToString() + " Second");
             base.Diactivate(entity);
         }
         isActive = !isActive;

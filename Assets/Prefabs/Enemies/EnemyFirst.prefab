@@ -532,6 +532,12 @@ MonoBehaviour:
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
   musicArm: 0
   handArm: 4
   Drop:
@@ -550,12 +556,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 264
-  pl: {fileID: 0}
   an: {fileID: 6218099679868554702}
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 6218099678992961206}
-  t: 0
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:

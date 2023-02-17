@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using NTC.Global.Cache;
 
@@ -12,5 +10,5 @@ public abstract class MyTrigger : MonoCache
     public virtual void Activate(NewEnemyBace entity) { }
     public virtual void Diactivate(NewEnemyBace entity) { }
     public void UpdateNebActivate(NewEnemyBace entity) => neb = entity;
-    public void UpdateNebDiactivate(NewEnemyBace entity) => neb = null;
+    public void UpdateNebDiactivate() => neb = null;
 }

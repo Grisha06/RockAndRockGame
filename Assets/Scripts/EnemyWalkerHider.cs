@@ -11,15 +11,15 @@ public class EnemyWalkerHider : Enemy_Walker_Rock
     protected override void NewFixedUpdate()
     {
         WingsPos.SetActive(false);
-        if (runIfRad && Vector2.Distance(pl.position, tr.position) < runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)
+        if (runIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Run;
         }
-        if (attackIfRad && Vector2.Distance(pl.position, tr.position) < attackRadius)
+        if (attackIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Attack;
         }
-        if (Vector2.Distance(pl.position, tr.position) >= runRadius && Vector2.Distance(pl.position, tr.position) >= attackRadius)
+        if (Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.None;
         }

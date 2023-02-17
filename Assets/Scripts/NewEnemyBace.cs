@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using NTC.Global.Cache;
+using UnityEngine.Events;
 
 public abstract class EnemyBaceAttakable : NewEnemyBace
 {
@@ -17,8 +18,8 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
 
     public sealed override void Start()
     {
-        base.Start();
         StartCoroutine(AttackingEnumerator());
+        base.Start();
     }
     public void SpawnM(int mnssn)
     {
@@ -39,6 +40,7 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     }
     public virtual IEnumerator AttackingEnumerator()
     {
+        yield return new WaitForSeconds(0.01f);
         while (true)
         {
             if (enemyBaceAction == EnemyBaceActions.Attack && hp > 0)
@@ -87,6 +89,8 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     protected float health;
     [HideInInspector]
     public float maxHealth;
+    public EnemyOnHpChanged OnHpChanged;
+    public UnityEvent OnJumped;
 
     public virtual float hp
     {
@@ -107,7 +111,6 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     public Transform JumpTarget;
     public GameObject WingsPos;
     public LayerMask groundLayer;
-    public Transform pl;
     [HideInInspector]
     public Animator an;
     [HideInInspector]
@@ -122,14 +125,12 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     {
         maxHealth = health;
         tr = transform;
-        if (gameObject.CompareTag("Player"))
-            pl = null;
-        else
-            pl = GameObject.FindGameObjectWithTag("Player").transform;
         rb = gameObject.GetComponent<Rigidbody2D>();
         an = gameObject.GetComponent<Animator>();
         if (nameText)
             nameText.transform.parent.gameObject.SetActive(true);
+        OnHpChanged = new EnemyOnHpChanged();
+        OnJumped = new UnityEvent();
         NewStart();
     }
     protected virtual void NewStart() { }
@@ -201,12 +202,21 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     {
         JumpTarget.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(45, 135));
         rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
+        OnJumped.Invoke();
         an.Play("jump");
     }
     public virtual void AddDamage(float d, bool byHand)
     {
         an.Play("damage");
+        d = Mathf.Max(d, 0);
         hp -= d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f))));
+        OnHpChanged.Invoke(hp);
+    }
+    public virtual void Heal(float d)
+    {
+        d = Mathf.Max(d, 0);
+        hp += d;
+        OnHpChanged.Invoke(hp);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -236,7 +246,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
                 mt.Diactivate(this);
-                mt.UpdateNebDiactivate(this);
+                mt.UpdateNebDiactivate();
             }
             NewOnTriggerExit2D(collision);
         }

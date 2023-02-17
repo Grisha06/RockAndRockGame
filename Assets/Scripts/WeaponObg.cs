@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public abstract class WeaponAbstract
+public class WeaponObg
 {
     public bool isAutomatic = false;
     public bool isAmmoDecreasing = true;
@@ -12,14 +12,5 @@ public abstract class WeaponAbstract
     public MusicNoteSpavnerObjPL[] musicNoteSpavnerObjs;
     public GameObject MusicNote;
     public Sprite sprite;
-    public abstract void Attack(GameObject gobj);
-}
-
-[System.Serializable]
-public class WeaponObg : WeaponAbstract
-{
-    public override void Attack(GameObject gobj)
-    {
-
-    }
+    public virtual void Attack(GameObject gobj) { }
 }

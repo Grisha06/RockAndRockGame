@@ -7,8 +7,8 @@ public class AmmoTrigger : DestroyOnCollisionTrigger
     public override void Activate(NewEnemyBace entity)
     {
         base.Activate(entity);
-        ((PlayerMover)entity).weapon[((PlayerMover)entity).weaponSelect].Ammo += Ammo;
-        PlayerInfoOnCanvas.textUpdate.Invoke(((PlayerMover)entity).hp, ((PlayerMover)entity).weapon[((PlayerMover)entity).weaponSelect].Ammo);
+        PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo += Ammo;
+        PlayerMover.single.playerOnAmmoChanged.Invoke(PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo);
         base.Activate(entity);
     }
 }

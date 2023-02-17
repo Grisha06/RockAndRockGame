@@ -1,23 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using NTC.Global.Cache;
 using UnityEngine.Events;
 
-public class PlayerInfoOnCanvasEvent : UnityEvent<float, float> { }
+[Serializable] public class EnemyOnHpChanged : UnityEvent<float> { }
+[Serializable] public class PlayerOnAmmoChanged : UnityEvent<float> { }
 
 public class PlayerInfoOnCanvas : MonoCache
 {
-    public static PlayerInfoOnCanvasEvent textUpdate;
     [SerializeField] private Text hp;
     [SerializeField] private Text ammo;
-    private void Start()
+    private async void Start()
     {
-        textUpdate = new PlayerInfoOnCanvasEvent();
-        textUpdate.AddListener((float hp_f, float ammo_f) => {
-            hp.text = "HP = " + (hp_f > 0 ? hp_f : 0).ToString();
-            ammo.text = "Ammo = " + ammo_f.ToString();
-        });
+        await System.Threading.Tasks.Task.Delay(500);
+        PlayerMover.single.OnHpChanged.AddListener(ChangeHP); 
+        PlayerMover.single.playerOnAmmoChanged.AddListener(ChangeAmmo);
+        ChangeHP(PlayerMover.single.hp);
+        ChangeAmmo(PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo);
     }
+    private void ChangeHP(float hp_f) => hp.text = "HP = " + (hp_f > 0 ? hp_f : 0).ToString();
+    private void ChangeAmmo(float ammo_f) => ammo.text = "Ammo = " + ammo_f.ToString();
 }

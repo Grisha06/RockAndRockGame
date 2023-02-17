@@ -25,6 +25,13 @@ public class PlayerMover : NewEnemyBace
     public int handCollideDamage = 1;
     private Camera mainCam;
     private Cameramower mainCamM;
+    public PlayerOnAmmoChanged playerOnAmmoChanged;
+    /// <summary>
+    /// Don't use in Start() and NewStart()!
+    /// FUCK! I DONT KNOW HOW TO DO SINGLETON RIGHT!!!!!
+    /// </summary>
+    [HideInInspector]
+    public static PlayerMover single = null;
     public override float hp
     {
         get { return health; }
@@ -33,15 +40,16 @@ public class PlayerMover : NewEnemyBace
             health = value;
             if (health > maxHealth)
                 maxHealth = health;
-            PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
         }
     }
 
     protected override void NewStart()
     {
+        if (!single)
+            single = this;
+        playerOnAmmoChanged = new PlayerOnAmmoChanged();
         mainCam = Camera.main;
         mainCamM = mainCam.GetComponent<Cameramower>();
-        PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
         StartCoroutine(Shooter());
     }
     protected override void NewUpdate()
@@ -78,6 +86,7 @@ public class PlayerMover : NewEnemyBace
     public override void Jump(float jumpForce)
     {
         rb.AddForce(arrowObj.forward * jumpForce, ForceMode2D.Impulse);
+        OnJumped.Invoke();
         an.Play("jump");
     }
     private void Shoot()
@@ -94,7 +103,7 @@ public class PlayerMover : NewEnemyBace
         mns.damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Damage;
         mn.transform.SetParent(null);
         weapon[weaponSelect].Ammo -= !weapon[weaponSelect].isAmmoDecreasing ? 0 : weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].AmmoCost;
-        PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
+        playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
     }
     IEnumerator Shooter()
     {
@@ -105,12 +114,12 @@ public class PlayerMover : NewEnemyBace
             if (Input.GetKey(KeyObj.FindInKeysArr(controls, "decreaseWeaponSelect")))
             {
                 weaponSelect += weaponSelect < weapon.Count - 1 ? 1 : 0;
-                PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
+                playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
             }
             if (Input.GetKey(KeyObj.FindInKeysArr(controls, "increaseWeaponSelect")))
             {
                 weaponSelect -= weaponSelect > 0 ? 1 : 0;
-                PlayerInfoOnCanvas.textUpdate.Invoke(hp, weapon[weaponSelect].Ammo);
+                playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
             }
             weaponSprite.sprite = weapon[weaponSelect].sprite;
             if ((!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].Ammo > 0) && hp > 0)
@@ -128,7 +137,7 @@ public class PlayerMover : NewEnemyBace
                     }
                     MusicNoteSpavnerSelect = 0;
                 }
-                if(Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
+                if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
                 {
                     MusicNoteSpavnerSelect = 0;
                     an.Play("atack");
