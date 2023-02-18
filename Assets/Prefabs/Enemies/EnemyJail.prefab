@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,6 +91,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3954254909377766815, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 4300864505660117749, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Radius
       value: 0.8405877
@@ -110,7 +114,11 @@ PrefabInstance:
     - target: {fileID: 6218099678992961206, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4914671289546299791, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+      objectReference: {fileID: 4914671289546299791, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+    - target: {fileID: 6218099678992961206, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6218099679868554698, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Name
       value: EnemyJail
@@ -241,6 +249,12 @@ MonoBehaviour:
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
   musicArm: 2
   handArm: 1
   Drop:
@@ -259,12 +273,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 264
-  pl: {fileID: 0}
   an: {fileID: 6009576491658695496}
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 6009576493054382128}
-  t: 0
   dont_totch_me: 0
   Prisoner: {fileID: 8951767811375925338, guid: 6180b1737fec3224ba4e6770f3c5a717, type: 3}
   PrisonerPlace: {fileID: 2087455545}

@@ -7,10 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3954254909377766815, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6218099678992961206, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1757783812076316494, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+      objectReference: {fileID: 1757783812076316494, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+    - target: {fileID: 6218099678992961206, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6218099679429095186, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -115,6 +123,12 @@ MonoBehaviour:
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
   musicArm: 3
   handArm: 2
   Drop:
@@ -133,12 +147,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 264
-  pl: {fileID: 0}
   an: {fileID: 0}
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 1078171568827532709}
-  t: 0
   dont_totch_me: 0
   attackRadius: 5.5
   MusicNoteSpavner:

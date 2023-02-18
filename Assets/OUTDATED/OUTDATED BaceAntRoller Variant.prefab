@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2076603058436433794, guid: 2edf60b8e47d6a04a8ae6e603cda0a32, type: 3}
       propertyPath: m_Name
-      value: BaceAntRoller Variant
+      value: OUTDATED BaceAntRoller Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2076603058436433795, guid: 2edf60b8e47d6a04a8ae6e603cda0a32, type: 3}
       propertyPath: hp

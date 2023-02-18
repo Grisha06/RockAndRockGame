@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4983290671322006160, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
       propertyPath: m_Name
-      value: BaceAnt Variant
+      value: OUTDATED BaceAnt Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4983290671322006161, guid: 71c9ca662a034534daedf9b07512519b, type: 3}
       propertyPath: speed

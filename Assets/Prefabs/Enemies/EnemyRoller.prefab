@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.47756904
       objectReference: {fileID: 0}
+    - target: {fileID: 1863560500687812411, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 8752683425371348840, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -230,7 +234,11 @@ PrefabInstance:
     - target: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1230264290624942171, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+      objectReference: {fileID: -1230264290624942171, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+    - target: {fileID: 8752683426775358482, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents:
     - {fileID: 8752683425371348847, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
     - {fileID: 1482628751363227726, guid: 6656f21b7a848e04bb32b7fed88d7f78, type: 3}
@@ -306,6 +314,12 @@ MonoBehaviour:
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
   musicArm: 2
   handArm: 2
   Drop:
@@ -324,12 +338,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 264
-  pl: {fileID: 0}
   an: {fileID: 8951767811375925342}
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 8951767809953041190}
-  t: 0
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:

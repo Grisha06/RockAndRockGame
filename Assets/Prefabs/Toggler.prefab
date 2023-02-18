@@ -88,3 +88,4 @@ MonoBehaviour:
       m_Calls: []
   ButtonSprite0: {fileID: 2021137570, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
   ButtonSprite1: {fileID: 435585701, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+  isActive: 0

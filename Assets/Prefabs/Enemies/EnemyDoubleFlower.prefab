@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 3486353291026029238}
     - target: {fileID: 1078171567406810841, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
       propertyPath: m_Name
-      value: EnemyDobleFlower
+      value: EnemyDoubleFlower
       objectReference: {fileID: 0}
     - target: {fileID: 1078171567406810844, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
       propertyPath: m_RootOrder
@@ -106,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 1078171568827532709, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6176975231686645327, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+      objectReference: {fileID: -6176975231686645327, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
     - target: {fileID: 1078171569197147137, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.637

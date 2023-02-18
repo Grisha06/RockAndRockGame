@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 5115458936238335967, guid: 1cd8fdce9dad41347949523f87ffa9ca, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6735089535813721009, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+      objectReference: {fileID: 6735089535813721009, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
     - target: {fileID: 5115458936971256995, guid: 1cd8fdce9dad41347949523f87ffa9ca, type: 3}
       propertyPath: m_Name
       value: EnemyWormEye
