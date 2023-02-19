@@ -16,10 +16,10 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     public int MusicNoteSpavnerSelNum = 0;
     public bool attackIfRad = true;
 
-    public sealed override void Start()
+    public sealed override void Awake()
     {
         StartCoroutine(AttackingEnumerator());
-        base.Start();
+        base.Awake();
     }
     public void SpawnM(int mnssn)
     {
@@ -91,17 +91,28 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     public float maxHealth;
     public EnemyOnHpChanged OnHpChanged;
     public UnityEvent OnJumped;
+    public bool dynamicMaxHp = true;
 
-    public virtual float hp
+    public float hp
     {
-        get { return health; }
-        set
+        get => GetHp();
+        set => SetHp(value);
+    }
+    protected virtual void SetHp(float value)
+    {
+        if (!dynamicMaxHp)
         {
             health = value;
             if (health > maxHealth)
                 maxHealth = health;
         }
+        else
+        {
+            health = Mathf.Min(maxHealth, value);
+        }
     }
+    protected virtual float GetHp() => health;
+
     [Min(0)]
     public float musicArm;
     [Min(0)]
@@ -121,7 +132,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     [Header("Custom fields")]
     public bool dont_totch_me;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         maxHealth = health;
         tr = transform;
@@ -131,9 +142,9 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             nameText.transform.parent.gameObject.SetActive(true);
         OnHpChanged = new EnemyOnHpChanged();
         OnJumped = new UnityEvent();
-        NewStart();
+        NewAwake();
     }
-    protected virtual void NewStart() { }
+    protected virtual void NewAwake() { }
     protected virtual void NewFixedUpdate() { }
     protected virtual void NewUpdate() { }
     protected virtual void NewLateUpdate() { }
@@ -209,13 +220,13 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     {
         an.Play("damage");
         d = Mathf.Max(d, 0);
-        hp -= d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f))));
+        hp = hp - (d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f)))));
         OnHpChanged.Invoke(hp);
     }
     public virtual void Heal(float d)
     {
         d = Mathf.Max(d, 0);
-        hp += d;
+        hp = hp + d;
         OnHpChanged.Invoke(hp);
     }
     private void OnCollisionEnter2D(Collision2D collision)

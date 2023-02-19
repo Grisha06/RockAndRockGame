@@ -2513,6 +2513,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI Rock
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 26
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d01705f50e8e0d4592048b8fb2e912d
+      internalID: 1558314823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Blood
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 17
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3952b2ffef263043a75b7f6c22dd798
+      internalID: -592151557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Frame right
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 35
+        width: 2
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874e45a241530be4894cb795a649bea8
+      internalID: -1578106018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Frame left
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 35
+        width: 2
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85036c0d8da4dc944a1bc61f65654d47
+      internalID: 638334434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Frame Middle
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 35
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798d7d8a65e298146a46eacb00615aee
+      internalID: -238321677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2531,6 +2636,7 @@ TextureImporter:
       Sprite-0001_9: 8950652881746013642
       Sprite-0001_98: -5686541625623525195
       Sprite-0001_85: -3974798595139393867
+      UI Blood: -592151557
       Sprite-0001_20: -6962434700946366827
       Sprite-0001_77: 1757783812076316494
       Sprite-0001_27: 2586144432995247052
@@ -2583,12 +2689,14 @@ TextureImporter:
       Sprite-0001_79: 7152093729927606209
       Sprite-0001_21: 7598043647562144237
       Sprite-0001_23: -5417252537472008876
+      UI Frame Middle: -238321677
       Sprite-0001_105: 8199969428497474132
       Sprite-0001_12: -542547188912238135
       Sprite-0001_48: 2141460535244266041
       Sprite-0001_89: 7083395146336551460
       Sprite-0001_8: 2601623841602742682
       Sprite-0001_103: -1335684660466582739
+      UI Frame left: 638334434
       Sprite-0001_93: 638035141550908155
       Sprite-0001_28: 8779525935089603312
       Sprite-0001_91: -5456051511627846835
@@ -2613,12 +2721,14 @@ TextureImporter:
       Sprite-0001_75: -8253937413428219000
       Sprite-0001_71: -7514402195955223974
       Sprite-0001_53: -556090176984672156
+      UI Rock: 1558314823
       ball: -594198333
       Sprite-0001_70: 7650255054670704136
       Sprite-0001_88: 104429196087744972
       Sprite-0001_52: 3497770116053522734
       Sprite-0001_92: -6536723957549282305
       Sprite-0001_102: 2616213020684850013
+      UI Frame right: -1578106018
       Sprite-0001_72: -7618911193362876794
       Sprite-0001_4: 6951114633567200485
       Sprite-0001_3: 360050356498797049

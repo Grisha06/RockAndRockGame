@@ -197,8 +197,8 @@ MonoBehaviour:
   runIfRad: 1
   runRadius: 5
   hidedColl: {fileID: 1652601876}
-  hiddedSprite: {fileID: -4733696439782501080, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
-  unhiddedSprite: {fileID: 3021512382502834093, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+  hiddedSprite: {fileID: -4733696439782501080, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+  unhiddedSprite: {fileID: 3021512382502834093, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
 --- !u!61 &3854424372930434916 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4736502121033856, guid: 7871553d6b27ff241bb24208924569b4, type: 3}

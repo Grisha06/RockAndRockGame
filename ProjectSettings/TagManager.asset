@@ -6,10 +6,6 @@ TagManager:
   tags:
   - note
   - notePL
-  - hp
-  - ammo
-  - destroyOnCollPl
-  - HandHitter
   - BossBarGroup
   layers:
   - Default

@@ -32,18 +32,8 @@ public class PlayerMover : NewEnemyBace
     /// </summary>
     [HideInInspector]
     public static PlayerMover single = null;
-    public override float hp
-    {
-        get { return health; }
-        set
-        {
-            health = value;
-            if (health > maxHealth)
-                maxHealth = health;
-        }
-    }
 
-    protected override void NewStart()
+    protected override void NewAwake()
     {
         if (!single)
             single = this;

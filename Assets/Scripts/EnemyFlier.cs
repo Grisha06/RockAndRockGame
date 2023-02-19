@@ -19,7 +19,7 @@ public class EnemyFlier : EnemyBaceAttakable
     [Min(0.5f)]
     public float jumpDest;
 
-    protected override void NewStart()
+    protected override void NewAwake()
     {
         StartCoroutine(Flier());
     }

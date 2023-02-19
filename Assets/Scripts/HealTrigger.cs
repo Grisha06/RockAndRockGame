@@ -7,8 +7,11 @@ public class HealTrigger : DestroyOnCollisionTrigger
     public float Hp = 2;
     public override void Activate(NewEnemyBace entity)
     {
-        base.Activate(entity);
-        entity.Heal(Hp);
-        base.Activate(entity);
+        if (entity.hp + Hp < entity.maxHealth || entity.dynamicMaxHp)
+        {
+            base.Activate(entity);
+            entity.Heal(Hp);
+            base.Activate(entity);
+        }
     }
 }

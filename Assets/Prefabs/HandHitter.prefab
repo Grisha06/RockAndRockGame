@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7949518898421080809}
   m_Layer: 0
   m_Name: HandHitter
-  m_TagString: HandHitter
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,4 +72,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
-  Damage: 1
+  damage: 1
+  IsByHand: 1
