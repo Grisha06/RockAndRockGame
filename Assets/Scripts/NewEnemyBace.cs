@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using NTC.Global.Cache;
 using UnityEngine.Events;
+using UnityEditor.Experimental.GraphView;
 
 public abstract class EnemyBaceAttakable : NewEnemyBace
 {
@@ -74,6 +75,10 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     }
 }
 
+
+[Serializable] public class EnemyOnTriggerEnter : UnityEvent<InventoryTrigger> { }
+[Serializable] public class EnemyOnInventoryDrop : UnityEvent<Inventory> { }
+
 [RequireComponent(typeof(Rigidbody2D)), DisallowMultipleComponent]
 public abstract class NewEnemyBace : MonoCache, IDamagable
 {
@@ -90,7 +95,10 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     [HideInInspector]
     public float maxHealth;
     public EnemyOnHpChanged OnHpChanged;
+    public EnemyOnTriggerEnter OnInvTriggerEntered;
+    public UnityEvent OnInventoryDrop;
     public UnityEvent OnJumped;
+    public UnityEvent OnDie;
     public bool dynamicMaxHp = true;
 
     public float hp
@@ -142,6 +150,9 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             nameText.transform.parent.gameObject.SetActive(true);
         OnHpChanged = new EnemyOnHpChanged();
         OnJumped = new UnityEvent();
+        OnInventoryDrop = new UnityEvent();
+        OnDie = new UnityEvent();
+        OnInvTriggerEntered = new EnemyOnTriggerEnter();
         NewAwake();
     }
     protected virtual void NewAwake() { }
@@ -204,6 +215,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
 
     public virtual void SelfDestroy()
     {
+        OnDie.Invoke();
         DropObj.Drop(transform.position, Drop);
         StopAllCoroutines();
         TryDestroyBossBar();
@@ -240,6 +252,11 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     {
         if (hp > 0)
         {
+            InventoryTrigger itr = collision.GetComponent<InventoryTrigger>();
+            if (itr && GetComponent<Inventory>())
+            {
+                OnInvTriggerEntered.Invoke(itr);
+            }
             MyTrigger mt = collision.GetComponent<MyTrigger>();
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {

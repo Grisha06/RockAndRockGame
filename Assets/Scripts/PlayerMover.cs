@@ -72,6 +72,10 @@ public class PlayerMover : NewEnemyBace
                 Jump(jumpForce);
             }
         }
+        if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "drop")))
+        {
+            OnInventoryDrop.Invoke();
+        }
     }
     public override void Jump(float jumpForce)
     {
@@ -145,6 +149,7 @@ public class PlayerMover : NewEnemyBace
     }
     public override void SelfDestroy()
     {
+        OnDie.Invoke();
         StopAllCoroutines();
         TryDestroyBossBar();
         SceneManager.LoadScene(0);

@@ -1539,7 +1539,16 @@ MonoBehaviour:
   OnHpChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnInvTriggerEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInventoryDrop:
+    m_PersistentCalls:
+      m_Calls: []
   OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
     m_PersistentCalls:
       m_Calls: []
   dynamicMaxHp: 1
@@ -6745,7 +6754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 6.2499084, y: 0}
+  m_AnchoredPosition: {x: 6.2500305, y: 0}
   m_SizeDelta: {x: 12.5, y: 62.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790285241
@@ -9406,7 +9415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.2652893, y: 0}
+  m_AnchoredPosition: {x: -0.2652588, y: 0}
   m_SizeDelta: {x: 12.682, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197455974
@@ -10631,6 +10640,7 @@ GameObject:
   - component: {fileID: 1333008055}
   - component: {fileID: 1333008060}
   - component: {fileID: 1333008061}
+  - component: {fileID: 1333008062}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -10748,7 +10758,16 @@ MonoBehaviour:
   OnHpChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnInvTriggerEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInventoryDrop:
+    m_PersistentCalls:
+      m_Calls: []
   OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
     m_PersistentCalls:
       m_Calls: []
   dynamicMaxHp: 0
@@ -10775,6 +10794,8 @@ MonoBehaviour:
     name: increaseWeaponSelect
   - key: 323
     name: attack
+  - key: 113
+    name: drop
   jumpForce: 1
   maxVelocity: -5
   isGrounded: 0
@@ -10870,6 +10891,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slf: {fileID: 1317878105}
   dist: 1
+--- !u!114 &1333008062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333008054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b5e91b0d723eb4f94fc7e2bdb99939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
+    sr: {fileID: 0}
 --- !u!1001 &1340087391
 PrefabInstance:
   m_ObjectHideFlags: 0
