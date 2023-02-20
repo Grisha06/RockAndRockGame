@@ -86,6 +86,6 @@ MonoBehaviour:
   diactivationAction:
     m_PersistentCalls:
       m_Calls: []
-  ButtonSprite0: {fileID: 2021137570, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
-  ButtonSprite1: {fileID: 435585701, guid: 709d68cac5b468f47a685cb3b46223d4, type: 3}
+  ButtonSprite0: {fileID: 2021137570, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+  ButtonSprite1: {fileID: 435585701, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
   isActive: 0
