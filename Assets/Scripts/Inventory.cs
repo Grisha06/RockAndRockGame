@@ -11,24 +11,25 @@ public class Inventory : MonoCache
     private void Start()
     {
         entity = GetComponent<NewEnemyBace>();
-        items = new List<InventoryItem>();
         entity.OnInvTriggerEntered.AddListener(AddItem);
         entity.OnDie.AddListener(DropAll);
         entity.OnInventoryDrop.AddListener(RemoveItem);
     }
     private void AddItem(InventoryTrigger intr)
     {
-        SpriteRenderer ssr=intr.gbj.GetComponent<SpriteRenderer>();
-        ssr = ssr == null ? intr.gbj.GetComponentInChildren<SpriteRenderer>() : ssr;
-        items.Add(new InventoryItem(intr.gbj, ssr));
+        SpriteRenderer ssr = intr.GetComponent<SpriteRenderer>();
+        ssr = ssr == null ? intr.GetComponentInChildren<SpriteRenderer>() : ssr;
+        items.Add(new InventoryItem(intr.gameObject, ssr));
     }
     private void RemoveItem()
     {
-        GameObject g = Instantiate(items[items.Count - 1].obj);
-        g.transform.localPosition = Vector3.zero;
-        g.transform.rotation = Quaternion.identity;
-        g.transform.SetParent(null);
-        items.RemoveAt(items.Count - 1);
+        if (items.Count != 0)
+        {
+            items[items.Count - 1].obj.SetActive(true);
+            items[items.Count - 1].obj.transform.position = entity.tr.position + new Vector3(1, 0);
+            items[items.Count - 1].obj.transform.rotation = Quaternion.identity;
+            items.RemoveAt(items.Count - 1);
+        }
     }
 
     [ContextMenu("Drop all")]

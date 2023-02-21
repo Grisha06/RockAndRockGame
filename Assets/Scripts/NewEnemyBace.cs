@@ -257,7 +257,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             {
                 OnInvTriggerEntered.Invoke(itr);
             }
-            MyTrigger mt = collision.GetComponent<MyTrigger>();
+            MyTrigger mt = itr ? itr : collision.GetComponent<MyTrigger>();
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
                 mt.Activate(this);

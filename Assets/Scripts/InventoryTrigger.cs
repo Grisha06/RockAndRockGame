@@ -1,7 +1,11 @@
 using UnityEngine;
 
 [AddComponentMenu("Triggers/Inventory Item")]
-public class InventoryTrigger : DestroyOnCollisionTrigger
+public class InventoryTrigger : MyTrigger
 {
-    public GameObject gbj;
+    public override void Activate(NewEnemyBace entity)
+    {
+        StopAllCoroutines();
+        gameObject.SetActive(false);
+    }
 }
