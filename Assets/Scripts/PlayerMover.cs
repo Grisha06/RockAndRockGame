@@ -12,6 +12,7 @@ public class PlayerMover : NewEnemyBace
     private float angle;
     public float maxVelocity;
     public bool isGrounded;
+    public bool isInvOpen;
     private int jumps;
     public int maxJumps = 3;
     private Vector2 mousePos;
@@ -44,15 +45,18 @@ public class PlayerMover : NewEnemyBace
     }
     protected override void NewUpdate()
     {
-        arrowObj.rotation = Quaternion.LookRotation((Vector2)mainCam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position, Vector3.up);
+        if (!isInvOpen)
+        {
+            arrowObj.rotation = Quaternion.LookRotation((Vector2)mainCam.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position, Vector3.up);
 
-        if (isGrounded) jumps = maxJumps;
-        arrowRend.sprite = arrowSprites[jumps];
+            if (isGrounded) jumps = maxJumps;
+            arrowRend.sprite = arrowSprites[jumps];
+        }
     }
     private void CheckGround() => isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
     protected override void NewLateUpdate()
     {
-        if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0))
+        if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0) && !isInvOpen)
         {
             CheckGround();
             if (jumps == 0)
@@ -71,10 +75,6 @@ public class PlayerMover : NewEnemyBace
                 }
                 Jump(jumpForce);
             }
-        }
-        if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "drop")))
-        {
-            OnInventoryDrop.Invoke();
         }
     }
     public override void Jump(float jumpForce)
@@ -105,44 +105,47 @@ public class PlayerMover : NewEnemyBace
         while (true)
         {
             yield return wfs;
-            if (Input.GetKey(KeyObj.FindInKeysArr(controls, "decreaseWeaponSelect")))
+            if (!isInvOpen)
             {
-                weaponSelect += weaponSelect < weapon.Count - 1 ? 1 : 0;
-                playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
-            }
-            if (Input.GetKey(KeyObj.FindInKeysArr(controls, "increaseWeaponSelect")))
-            {
-                weaponSelect -= weaponSelect > 0 ? 1 : 0;
-                playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
-            }
-            weaponSprite.sprite = weapon[weaponSelect].sprite;
-            if ((!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].Ammo > 0) && hp > 0)
-            {
-                if (weapon[weaponSelect].isAutomatic && Input.GetKey(KeyObj.FindInKeysArr(controls, "attack")))
+                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "decreaseWeaponSelect")))
                 {
-                    yield return new WaitForSeconds(weapon[weaponSelect].ShootSpeed);
-                    MusicNoteSpavnerSelect = 0;
-                    an.Play("atack");
-                    for (int i = 0; i < weapon[weaponSelect].musicNoteSpavnerObjs.Length; i++)
-                    {
-                        MusicNoteSpavnerSelect = i;
-                        Shoot();
-                        yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
-                    }
-                    MusicNoteSpavnerSelect = 0;
+                    weaponSelect += weaponSelect < weapon.Count - 1 ? 1 : 0;
+                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
                 }
-                if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
+                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "increaseWeaponSelect")))
                 {
-                    MusicNoteSpavnerSelect = 0;
-                    an.Play("atack");
-                    for (int i = 0; i < weapon[weaponSelect].musicNoteSpavnerObjs.Length; i++)
+                    weaponSelect -= weaponSelect > 0 ? 1 : 0;
+                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo);
+                }
+                weaponSprite.sprite = weapon[weaponSelect].sprite;
+                if ((!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].Ammo > 0) && hp > 0)
+                {
+                    if (weapon[weaponSelect].isAutomatic && Input.GetKey(KeyObj.FindInKeysArr(controls, "attack")))
                     {
-                        MusicNoteSpavnerSelect = i;
-                        Shoot();
-                        yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
+                        yield return new WaitForSeconds(weapon[weaponSelect].ShootSpeed);
+                        MusicNoteSpavnerSelect = 0;
+                        an.Play("atack");
+                        for (int i = 0; i < weapon[weaponSelect].musicNoteSpavnerObjs.Length; i++)
+                        {
+                            MusicNoteSpavnerSelect = i;
+                            Shoot();
+                            yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
+                        }
+                        MusicNoteSpavnerSelect = 0;
                     }
-                    MusicNoteSpavnerSelect = 0;
-                    yield return new WaitForSeconds(weapon[weaponSelect].ShootSpeed);
+                    if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "attack")))
+                    {
+                        MusicNoteSpavnerSelect = 0;
+                        an.Play("atack");
+                        for (int i = 0; i < weapon[weaponSelect].musicNoteSpavnerObjs.Length; i++)
+                        {
+                            MusicNoteSpavnerSelect = i;
+                            Shoot();
+                            yield return new WaitForSeconds(weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].SpawnTime);
+                        }
+                        MusicNoteSpavnerSelect = 0;
+                        yield return new WaitForSeconds(weapon[weaponSelect].ShootSpeed);
+                    }
                 }
             }
         }

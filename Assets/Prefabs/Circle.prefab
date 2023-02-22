@@ -154,3 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
+  Item:
+    Name: ass
+    Description: "\u0436\u043E\u043F\u0430 \u0436\u043E\u043F\u0430 \u0436\u043E\u043F\u0430
+      \u0436\u043E\u043F\u0430 \u0436\u043E\u043F\u0430 \u0436\u043E\u043F\u0430 "
+    sprite: {fileID: -594198333, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}

@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPro;
 using NTC.Global.Cache;
 using UnityEngine.Events;
-using UnityEditor.Experimental.GraphView;
 
 public abstract class EnemyBaceAttakable : NewEnemyBace
 {
@@ -96,9 +95,9 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     public float maxHealth;
     public EnemyOnHpChanged OnHpChanged;
     public EnemyOnTriggerEnter OnInvTriggerEntered;
-    public UnityEvent OnInventoryDrop;
     public UnityEvent OnJumped;
     public UnityEvent OnDie;
+    public UnityEvent OnInvItemRemoved;
     public bool dynamicMaxHp = true;
 
     public float hp
@@ -150,7 +149,6 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
             nameText.transform.parent.gameObject.SetActive(true);
         OnHpChanged = new EnemyOnHpChanged();
         OnJumped = new UnityEvent();
-        OnInventoryDrop = new UnityEvent();
         OnDie = new UnityEvent();
         OnInvTriggerEntered = new EnemyOnTriggerEnter();
         NewAwake();

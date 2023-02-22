@@ -238,9 +238,19 @@ MonoBehaviour:
   OnHpChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnInvTriggerEntered:
+    m_PersistentCalls:
+      m_Calls: []
   OnJumped:
     m_PersistentCalls:
       m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInvItemRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  dynamicMaxHp: 1
   musicArm: 2
   handArm: 2
   Drop:
@@ -258,7 +268,7 @@ MonoBehaviour:
   WingsPos: {fileID: 2387849577431353136}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 1288
   an: {fileID: 0}
   tr: {fileID: 0}
   rb: {fileID: 0}
@@ -282,15 +292,16 @@ MonoBehaviour:
   attackIfRad: 1
   rightWall: {fileID: 0}
   leftWall: {fileID: 0}
-  rightWallUp: {fileID: 0}
-  leftWallUp: {fileID: 0}
   WallsChecker: {fileID: 2387849578178360422}
   wallCheckRadius: 0.05
   xDir: 0
+  FlipxDir: 0
   speed: 120
   runIfRad: 1
-  goingUpMaxTime: 1.5
   runRadius: 6
+  rightWallUp: {fileID: 0}
+  leftWallUp: {fileID: 0}
+  goingUpMaxTime: 1.5
   jumpForce: 4
 --- !u!61 &2387849578178360422 stripped
 BoxCollider2D:

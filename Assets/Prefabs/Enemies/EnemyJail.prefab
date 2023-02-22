@@ -252,9 +252,19 @@ MonoBehaviour:
   OnHpChanged:
     m_PersistentCalls:
       m_Calls: []
+  OnInvTriggerEntered:
+    m_PersistentCalls:
+      m_Calls: []
   OnJumped:
     m_PersistentCalls:
       m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInvItemRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  dynamicMaxHp: 1
   musicArm: 2
   handArm: 1
   Drop:
@@ -272,7 +282,7 @@ MonoBehaviour:
   WingsPos: {fileID: 6009576491332214812}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 1288
   an: {fileID: 6009576491658695496}
   tr: {fileID: 0}
   rb: {fileID: 0}
