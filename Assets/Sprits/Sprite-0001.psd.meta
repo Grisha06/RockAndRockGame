@@ -1884,7 +1884,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_83
+      name: ground_eater_1
       rect:
         serializedVersion: 2
         x: 88
@@ -2585,7 +2585,7 @@ TextureImporter:
         width: 2
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2606,7 +2606,7 @@ TextureImporter:
         width: 19
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2614,6 +2614,27 @@ TextureImporter:
       bones: []
       spriteID: 798d7d8a65e298146a46eacb00615aee
       internalID: -238321677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_eater_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 43
+        width: 20
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6a3a2abc1837146af8271f8b765149
+      internalID: -2112086743
       vertices: []
       indices: 
       edges: []
@@ -2680,6 +2701,7 @@ TextureImporter:
       Sprite-0001_69: 4958817048634951748
       Sprite-0001_86: 1110773624938945997
       Button1: 435585701
+      ground_eater_2: -2112086743
       Sprite-0001_26: 1068811838823387814
       Sprite-0001_7: -2540613011197712258
       Sprite-0001_97: 6113932123906956722
@@ -2716,6 +2738,7 @@ TextureImporter:
       Sprite-0001_39: -8523776664041350253
       Sprite-0001_22: -278907292611701771
       Sprite-0001_107: -6440293488629442558
+      ground_eater_1: 4592079382771221732
       Sprite-0001_14: -8687661716108889039
       Sprite-0001_96: -5148036204997954043
       Sprite-0001_75: -8253937413428219000
@@ -2733,10 +2756,9 @@ TextureImporter:
       Sprite-0001_4: 6951114633567200485
       Sprite-0001_3: 360050356498797049
       Sprite-0001_29: -6543118760396458646
-      Sprite-0001_83: 4592079382771221732
+      Sprite-0001_106: 38780577723739802
       Sprite-0001_87: 7704743683159048866
       Sprite-0001_101: 2303282250492837043
-      Sprite-0001_106: 38780577723739802
       Sprite-0001_24: -7743208307052494542
       Sprite-0001_1: 4245052342988409972
       Sprite-0001_63: 3849401834889128797

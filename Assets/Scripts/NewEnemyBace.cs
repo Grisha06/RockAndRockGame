@@ -78,7 +78,7 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
 [Serializable] public class EnemyOnTriggerEnter : UnityEvent<InventoryTrigger> { }
 [Serializable] public class EnemyOnInventoryDrop : UnityEvent<Inventory> { }
 
-[RequireComponent(typeof(Rigidbody2D)), DisallowMultipleComponent]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class NewEnemyBace : MonoCache, IDamagable
 {
     [Header("Inheritanced fields")]
@@ -93,10 +93,15 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     protected float health;
     [HideInInspector]
     public float maxHealth;
+    [HideInInspector]
     public EnemyOnHpChanged OnHpChanged;
+    [HideInInspector]
     public EnemyOnTriggerEnter OnInvTriggerEntered;
+    [HideInInspector]
     public UnityEvent OnJumped;
+    [HideInInspector]
     public UnityEvent OnDie;
+    [HideInInspector]
     public UnityEvent OnInvItemRemoved;
     public bool dynamicMaxHp = true;
 
@@ -248,7 +253,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hp > 0)
+        if (hp > 0 && collision.gameObject.layer != 12)
         {
             InventoryTrigger itr = collision.GetComponent<InventoryTrigger>();
             if (itr && GetComponent<Inventory>())

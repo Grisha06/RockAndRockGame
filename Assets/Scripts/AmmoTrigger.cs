@@ -8,7 +8,8 @@ public class AmmoTrigger : DestroyOnCollisionTrigger
     {
         base.Activate(entity);
         PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo += Ammo;
-        PlayerMover.single.playerOnAmmoChanged.Invoke(PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo);
+        PlayerMover.single.playerOnAmmoChanged.Invoke(PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo, PlayerMover.single.weapon[PlayerMover.single.weaponSelect].ClipAmmo, PlayerMover.single.weapon[PlayerMover.single.weaponSelect].MaxClipAmmo);
+
         base.Activate(entity);
     }
 }
