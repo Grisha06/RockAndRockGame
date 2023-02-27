@@ -77,11 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Size.x
-      value: 0.68569994
+      value: 0.6656999
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Size.y
-      value: 0.10822725
+      value: 0.10719642
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Offset.x
@@ -89,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Offset.y
-      value: 0.054113626
+      value: 0.063598186
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554701, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Mass
-      value: 0.3306377
+      value: 0.32195657
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_RootOrder
@@ -232,5 +232,5 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0.86155987}
-      - {x: -0.34730345, y: 0.101356536}
+      - {x: -0.3339548, y: 0.10627446}
       - {x: 0.33130366, y: 0.11007178}

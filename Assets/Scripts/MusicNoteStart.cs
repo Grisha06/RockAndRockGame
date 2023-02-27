@@ -8,7 +8,6 @@ public class MusicNoteStart : HandHitter
     public bool isRight = true;
     public Transform dir;
     public float force = 0;
-    protected float mag = 0;
     public float lifeTime = 0;
     protected Rigidbody2D rb;
     protected virtual void Start()
@@ -22,7 +21,6 @@ public class MusicNoteStart : HandHitter
         try
         {
             rb.AddForce((isRight ? dir.right : dir.up) * force, ForceMode2D.Impulse);
-            mag = rb.velocity.magnitude;
             yield return new WaitForSeconds(lifeTime);
             StopAllCoroutines();
             Destroy(gameObject);
@@ -37,5 +35,13 @@ public class MusicNoteStart : HandHitter
         base.Activate(entity);
         StopAllCoroutines();
         Destroy(gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer) =="Ground")
+        {
+            StopAllCoroutines();
+            Destroy(gameObject);
+        }
     }
 }

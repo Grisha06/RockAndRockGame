@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1038472725297475115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.59765625
+  m_Mass: 0.5655563
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -474,7 +474,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0625, y: 0.5625}
+  m_Size: {x: 1.0425, y: 0.5425}
   m_EdgeRadius: 0.01
 --- !u!58 &4300864505660117749
 CircleCollider2D:

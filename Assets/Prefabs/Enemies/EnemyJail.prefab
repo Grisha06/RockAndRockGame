@@ -125,15 +125,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Size.x
-      value: 1.7806952
+      value: 1.7278733
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554700, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Offset.x
-      value: -0.12957132
+      value: -0.12658903
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554701, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Mass
-      value: 4.1526146
+      value: 4.0883446
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554701, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_Constraints

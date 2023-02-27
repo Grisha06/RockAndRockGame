@@ -2639,6 +2639,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: pea
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 50
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f19afaed5d21a04892917730aa7037e
+      internalID: 2125989733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2679,10 +2700,10 @@ TextureImporter:
       Sprite-0001_78: -6176975231686645327
       Sprite-0001_18: -3719131521473346678
       Sprite-0001_42: -6474176387260023767
-      Sprite-0001_15: 8492177070176303279
+      Sprite-0001_80: 8522412172829875233
       Sprite-0001_95: 4707491005991146944
       Sprite-0001_34: 3462060946324363401
-      Sprite-0001_80: 8522412172829875233
+      Sprite-0001_15: 8492177070176303279
       Sprite-0001_6: -7812539098719814344
       Sprite-0001_35: 8762817157570230700
       Sprite-0001_5: -6880077232281017949
@@ -2709,6 +2730,7 @@ TextureImporter:
       Sprite-0001_66: 3021512382502834093
       Sprite-0001_54: -7331578148394532305
       Sprite-0001_79: 7152093729927606209
+      pea: 2125989733
       Sprite-0001_21: 7598043647562144237
       Sprite-0001_23: -5417252537472008876
       UI Frame Middle: -238321677

@@ -185,6 +185,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     {
         if (hp > 0)
         {
+            if(nameText) nameText.transform.parent.rotation = Quaternion.identity;
             if (!gameObject.CompareTag("Player") && rb)
             {
                 if (!FlipLocalScale)
