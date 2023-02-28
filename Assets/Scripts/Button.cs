@@ -11,12 +11,12 @@ public class Button : MyTrigger
     [SerializeField] protected Sprite ButtonSprite0;
     [SerializeField] protected Sprite ButtonSprite1;
     protected virtual void Start() { }
-    public override void Activate(NewEnemyBace entity)
+    public override void Activate(Entity entity)
     {
         GetComponent<SpriteRenderer>().sprite = ButtonSprite1;
         activationAction?.Invoke();
     }
-    public override void Diactivate(NewEnemyBace entity)
+    public override void Diactivate(Entity entity)
     {
         GetComponent<SpriteRenderer>().sprite = ButtonSprite0;
         diactivationAction?.Invoke();

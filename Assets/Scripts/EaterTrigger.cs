@@ -4,7 +4,7 @@
 public class EaterTrigger : MyTrigger
 {
     [SerializeField] private EnemyGroundEater ege;
-    public override void Activate(NewEnemyBace entity)
+    public override void Activate(Entity entity)
     {
         ege.StartCoroutine(ege.eat(entity));
     }

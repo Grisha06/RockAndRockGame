@@ -3,16 +3,16 @@ using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
 [AddComponentMenu("Enemies/Ground Eater")]
-public class EnemyGroundEater : NewEnemyBace
+public class EnemyGroundEater : Entity
 {
     [SerializeField] private Sprite EatSprite;
     [SerializeField] private Sprite UnEatSprite;
     [SerializeField, Min(0.1f)] private float EatTime = 1;
     [SerializeField, Min(0)] private float EatHp = 2;
     [SerializeField, Min(0)] private float DragForce = 2;
-    private NewEnemyBace entit;
+    private Entity entit;
 
-    public IEnumerator eat(NewEnemyBace entity)
+    public IEnumerator eat(Entity entity)
     {
         entit = entity;
         entity.rb.isKinematic = true;

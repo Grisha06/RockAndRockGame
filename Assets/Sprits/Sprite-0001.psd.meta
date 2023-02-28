@@ -2059,8 +2059,8 @@ TextureImporter:
         y: 80
         width: 13
         height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.34615386, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2648,7 +2648,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2700,10 +2700,10 @@ TextureImporter:
       Sprite-0001_78: -6176975231686645327
       Sprite-0001_18: -3719131521473346678
       Sprite-0001_42: -6474176387260023767
-      Sprite-0001_80: 8522412172829875233
+      Sprite-0001_15: 8492177070176303279
       Sprite-0001_95: 4707491005991146944
       Sprite-0001_34: 3462060946324363401
-      Sprite-0001_15: 8492177070176303279
+      Sprite-0001_80: 8522412172829875233
       Sprite-0001_6: -7812539098719814344
       Sprite-0001_35: 8762817157570230700
       Sprite-0001_5: -6880077232281017949

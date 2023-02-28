@@ -9,12 +9,6 @@ public enum EnemyBaceBehaviors
     Stand,
     Roll
 }
-public enum EnemyBaceActions
-{
-    Run,
-    Attack,
-    None
-}
 
 [AddComponentMenu("Enemies/Enemy OUTDATED")]
 public class EnemyBace : MonoBehaviour

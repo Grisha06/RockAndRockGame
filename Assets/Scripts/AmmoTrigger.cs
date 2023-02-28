@@ -4,7 +4,7 @@
 public class AmmoTrigger : DestroyOnCollisionTrigger
 {
     public int Ammo = 10;
-    public override void Activate(NewEnemyBace entity)
+    public override void Activate(Entity entity)
     {
         base.Activate(entity);
         PlayerMover.single.weapon[PlayerMover.single.weaponSelect].Ammo += Ammo;

@@ -2,7 +2,7 @@ using UnityEngine;
 using NTC.Global.Cache;
 
 [AddComponentMenu("Enemies/Boss Bar")]
-[RequireComponent(typeof(NewEnemyBace))]
+[RequireComponent(typeof(Entity))]
 public class BossBar : MonoCache
 {
     [Min(0)]
@@ -22,10 +22,10 @@ public class BossBar : MonoCache
     public GameObject BossBarPrefab;
     //[HideInInspector]
     public GameObject BossBarGroup;
-    NewEnemyBace neb;
+    Entity neb;
     private async void Start()
     {
-        neb = GetComponent<NewEnemyBace>();
+        neb = GetComponent<Entity>();
 
         BossBarGroup = GameObject.FindGameObjectWithTag("BossBarGroup");
         bbho = Instantiate(BossBarPrefab);

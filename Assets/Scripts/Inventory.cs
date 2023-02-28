@@ -3,15 +3,15 @@ using UnityEngine;
 using NTC.Global.Cache;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(NewEnemyBace))]
+[RequireComponent(typeof(Entity))]
 public class Inventory : MonoCache
 {
     public List<InventoryItem> items;
-    private NewEnemyBace entity;
+    private Entity entity;
     public UnityEvent OnItemsChanged;
     private void Start()
     {
-        entity = GetComponent<NewEnemyBace>();
+        entity = GetComponent<Entity>();
         entity.OnInvTriggerEntered.AddListener(AddItem);
     }
     private void AddItem(InventoryTrigger intr)

@@ -6,7 +6,7 @@ using TMPro;
 using NTC.Global.Cache;
 using UnityEngine.Events;
 
-public abstract class EnemyBaceAttakable : NewEnemyBace
+public abstract class EnemyBaceAttakable : Entity
 {
     public float attackRadius;
     public BaseMusicNoteSpavnerObj[] MusicNoteSpavner;
@@ -74,21 +74,31 @@ public abstract class EnemyBaceAttakable : NewEnemyBace
     }
 }
 
+public enum EnemyBaceActions
+{
+    Run,
+    Attack,
+    None
+}
 
 [Serializable] public class EnemyOnTriggerEnter : UnityEvent<InventoryTrigger> { }
 [Serializable] public class EnemyOnInventoryDrop : UnityEvent<Inventory> { }
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class NewEnemyBace : MonoCache, IDamagable
+public abstract class Entity : MonoCache, IDamagable
 {
     [Header("Inheritanced fields")]
     public string EntityName = "/n";
     [SerializeField]
     private TextMeshProUGUI nameText;
-    public EnemyBaceActions enemyBaceAction;
-    public bool Flipable = false;
-    public bool Flip = false;
-    public bool FlipLocalScale = false;
+    [SerializeField]
+    protected EnemyBaceActions enemyBaceAction;
+    [SerializeField]
+    protected bool Flipable = false;
+    [SerializeField]
+    protected bool Flip = false;
+    [SerializeField]
+    protected bool FlipLocalScale = false;
     [SerializeField]
     protected float health;
     [HideInInspector]
@@ -256,12 +266,7 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
     {
         if (hp > 0 && collision.gameObject.layer != 12)
         {
-            InventoryTrigger itr = collision.GetComponent<InventoryTrigger>();
-            if (itr && GetComponent<Inventory>())
-            {
-                OnInvTriggerEntered.Invoke(itr);
-            }
-            MyTrigger mt = itr ? itr : collision.GetComponent<MyTrigger>();
+            MyTrigger mt = collision.GetComponent<MyTrigger>();
             if (mt && mt.LayerToActivate.Contains(gameObject.layer))
             {
                 mt.Activate(this);
@@ -295,4 +300,5 @@ public abstract class NewEnemyBace : MonoCache, IDamagable
 public interface IDamagable
 {
     public void AddDamage(float damage, bool byHand);
+    public void Heal(float damage);
 }

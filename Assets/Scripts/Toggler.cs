@@ -6,7 +6,7 @@ public class Toggler : Button
     [SerializeField]
     protected bool isActive = false;
 
-    public override void Activate(NewEnemyBace entity)
+    public override void Activate(Entity entity)
     {
         if (!isActive)
         {
@@ -18,5 +18,5 @@ public class Toggler : Button
         }
         isActive = !isActive;
     }
-    public override void Diactivate(NewEnemyBace entity) { }
+    public override void Diactivate(Entity entity) { }
 }

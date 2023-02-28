@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class PlayerMover : NewEnemyBace
+public class PlayerMover : Entity
 {
     public KeyObj[] controls;
     public float jumpForce = 1;

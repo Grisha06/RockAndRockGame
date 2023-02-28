@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [AddComponentMenu("Enemies/Barnacle")]
-public class EnemyPlantBarnacle : NewEnemyBace
+public class EnemyPlantBarnacle : Entity
 {
     [SerializeField]
     private LayerMask layer;

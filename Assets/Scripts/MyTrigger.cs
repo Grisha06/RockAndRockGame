@@ -5,10 +5,10 @@ using NTC.Global.Cache;
 public abstract class MyTrigger : MonoCache
 {
     public int[] LayerToActivate;
-    protected NewEnemyBace neb = null;
+    protected Entity neb = null;
 
-    public virtual void Activate(NewEnemyBace entity) { }
-    public virtual void Diactivate(NewEnemyBace entity) { }
-    public void UpdateNebActivate(NewEnemyBace entity) => neb = entity;
+    public virtual void Activate(Entity entity) { }
+    public virtual void Diactivate(Entity entity) { }
+    public void UpdateNebActivate(Entity entity) => neb = entity;
     public void UpdateNebDiactivate() => neb = null;
 }
