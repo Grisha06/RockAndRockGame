@@ -96,7 +96,7 @@ public abstract class Entity : MonoCache, IDamagable
     [SerializeField]
     protected bool Flipable = false;
     [SerializeField]
-    protected bool Flip = false;
+    protected bool flip = false;
     [SerializeField]
     protected bool FlipLocalScale = false;
     [SerializeField]
@@ -191,19 +191,31 @@ public abstract class Entity : MonoCache, IDamagable
             NewUpdate();
         }
     }
+    protected virtual void DoFlip()
+    {
+        Flip((flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable);
+    }
+    protected void Flip(bool f)
+    {
+        if (!FlipLocalScale)
+            sr.flipX = f;
+        else
+            sr.gameObject.transform.localScale = new Vector3(
+                sr.gameObject.transform.localScale.x * (!f ? -1 : 1
+                ), sr.gameObject.transform.localScale.y, sr.gameObject.transform.localScale.z);
+    }
     protected sealed override void LateRun()
     {
         if (hp > 0)
         {
             if(nameText) nameText.transform.parent.rotation = Quaternion.identity;
-            if (!gameObject.CompareTag("Player") && rb)
+
+            if (rb)
             {
-                if (!FlipLocalScale)
-                    sr.flipX = (Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable;
-                else
-                    sr.gameObject.transform.localScale = new Vector3(sr.gameObject.transform.localScale.x * ((Flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable ? -1 : 1), sr.gameObject.transform.localScale.y, sr.gameObject.transform.localScale.z);
-                nameText.text = EntityName == "/n" ? "" : EntityName;
+                DoFlip();
             }
+            if(nameText)
+                nameText.text = EntityName == "/n" ? "" : EntityName;
             NewLateUpdate();
         }
         if (hp <= 0 && hp > -100 && !gameObject.CompareTag("Player"))

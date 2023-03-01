@@ -1608,7 +1608,7 @@ MonoBehaviour:
   nameText: {fileID: 1628314650}
   enemyBaceAction: 2
   Flipable: 0
-  Flip: 0
+  flip: 0
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
@@ -11577,7 +11577,7 @@ MonoBehaviour:
   nameText: {fileID: 0}
   enemyBaceAction: 2
   Flipable: 0
-  Flip: 0
+  flip: 0
   FlipLocalScale: 0
   health: 50
   maxHealth: 0
@@ -20202,17 +20202,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244247920}
     m_Modifications:
+    - target: {fileID: 1119089168, guid: aa6a6921ea10b3c4a8eecce27c11d5c1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3795503835896769587, guid: aa6a6921ea10b3c4a8eecce27c11d5c1, type: 3}
       propertyPath: m_RootOrder
       value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 3795503835896769587, guid: aa6a6921ea10b3c4a8eecce27c11d5c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.71
+      value: -5.49
       objectReference: {fileID: 0}
     - target: {fileID: 3795503835896769587, guid: aa6a6921ea10b3c4a8eecce27c11d5c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.52
+      value: 8.74
       objectReference: {fileID: 0}
     - target: {fileID: 3795503835896769587, guid: aa6a6921ea10b3c4a8eecce27c11d5c1, type: 3}
       propertyPath: m_LocalPosition.z
