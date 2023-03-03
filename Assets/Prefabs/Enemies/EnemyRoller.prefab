@@ -310,7 +310,7 @@ MonoBehaviour:
   nameText: {fileID: 2498069980772190930}
   enemyBaceAction: 0
   Flipable: 0
-  Flip: 0
+  Flipped: 1
   FlipLocalScale: 0
   health: 10
   maxHealth: 0

@@ -96,7 +96,7 @@ public abstract class Entity : MonoCache, IDamagable
     [SerializeField]
     protected bool Flipable = false;
     [SerializeField]
-    protected bool flip = false;
+    protected bool Flipped = false;
     [SerializeField]
     protected bool FlipLocalScale = false;
     [SerializeField]
@@ -193,28 +193,31 @@ public abstract class Entity : MonoCache, IDamagable
     }
     protected virtual void DoFlip()
     {
-        Flip((flip ? rb.velocity.x < 0 : rb.velocity.x > 0) && rb.velocity.x != 0 && Flipable);
+        if (!Mathf.Approximately(rb.velocity.x, 0)) Flip(rb.velocity.x > 0);
     }
-    protected void Flip(bool f)
+    protected void Flip(bool _flip)
     {
+        if (Flipped)
+            _flip = !_flip;
+
         if (!FlipLocalScale)
-            sr.flipX = f;
+            sr.flipX = _flip;
         else
             sr.gameObject.transform.localScale = new Vector3(
-                sr.gameObject.transform.localScale.x * (!f ? -1 : 1
+                sr.gameObject.transform.localScale.x * (_flip ? -1 : 1
                 ), sr.gameObject.transform.localScale.y, sr.gameObject.transform.localScale.z);
     }
     protected sealed override void LateRun()
     {
         if (hp > 0)
         {
-            if(nameText) nameText.transform.parent.rotation = Quaternion.identity;
+            if (nameText) nameText.transform.parent.rotation = Quaternion.identity;
 
-            if (rb)
+            if (rb && Flipable)
             {
                 DoFlip();
             }
-            if(nameText)
+            if (nameText)
                 nameText.text = EntityName == "/n" ? "" : EntityName;
             NewLateUpdate();
         }

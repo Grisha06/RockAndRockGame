@@ -528,7 +528,7 @@ MonoBehaviour:
   nameText: {fileID: 638064989111963458}
   enemyBaceAction: 0
   Flipable: 0
-  Flip: 0
+  Flipped: 0
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
