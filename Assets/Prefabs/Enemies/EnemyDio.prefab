@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677f145937453314b8b22c87344ceedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tiling: 0.4
+  Tiling: 3
   Distance: 20
   Width: 9.02
   UseTiling: 1

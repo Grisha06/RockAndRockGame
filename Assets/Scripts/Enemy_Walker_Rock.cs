@@ -5,17 +5,15 @@ using UnityEngine;
 [AddComponentMenu("Enemies/Walker")]
 public class Enemy_Walker_Rock : EnemyBaceAttakable
 {
-    [HideInInspector]
-    public GameObject rightWall;
-    [HideInInspector]
-    public GameObject leftWall;
-    public BoxCollider2D WallsChecker;
-    public float wallCheckRadius = 0.1f;
-    public bool xDir = true;
-    public bool FlipxDir = false;
-    public float speed;
-    public bool runIfRad = true;
-    public float runRadius;
+    protected GameObject rightWall;
+    protected GameObject leftWall;
+    [SerializeField] protected BoxCollider2D WallsChecker;
+    [SerializeField] protected float wallCheckRadius = 0.1f;
+    [SerializeField] protected bool xDir = true;
+    [SerializeField] protected bool FlipxDir = false;
+    [SerializeField] protected float speed;
+    [SerializeField] protected bool runIfRad = true;
+    [SerializeField] protected float runRadius;
 
     protected override void NewFixedUpdate()
     {
@@ -61,7 +59,7 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
             }
         }
     }
-    public void CheckRightWall()
+    protected void CheckRightWall()
     {
         try
         {
@@ -72,7 +70,7 @@ public class Enemy_Walker_Rock : EnemyBaceAttakable
             rightWall = null;
         }
     }
-    public void CheckLeftWall()
+    protected void CheckLeftWall()
     {
         try
         {

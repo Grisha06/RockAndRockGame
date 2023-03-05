@@ -2660,6 +2660,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: glow_fing_stripe
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 218
+        width: 11
+        height: 1
+      alignment: 9
+      pivot: {x: 0.95454544, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 880a095d92f4b7c42bfc99046925a8f8
+      internalID: 1537689829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: glow_fing_ball
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 181
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd876df6930597a46a462e89dce3cef6
+      internalID: 1717640227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bar_splitter
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 137
+        width: 16
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97987ae740f714b4180e1e2ebdb02cf9
+      internalID: 1528118247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2689,6 +2752,7 @@ TextureImporter:
       Sprite-0001_46: 908737428218865272
       Sprite-0001_67: -4733696439782501080
       Sprite-0001_16: 1956494837358662919
+      glow_fing_stripe: 1537689829
       Sprite-0001_81: -1187545584827969660
       Sprite-0001_108: -6800309234816035037
       Sprite-0001_10: -4596688152266512502
@@ -2726,6 +2790,7 @@ TextureImporter:
       Sprite-0001_26: 1068811838823387814
       Sprite-0001_7: -2540613011197712258
       Sprite-0001_97: 6113932123906956722
+      boss_bar_splitter: 1528118247
       Sprite-0001_64: 86530094048312299
       Sprite-0001_66: 3021512382502834093
       Sprite-0001_54: -7331578148394532305
@@ -2768,6 +2833,7 @@ TextureImporter:
       Sprite-0001_53: -556090176984672156
       UI Rock: 1558314823
       ball: -594198333
+      glow_fing_ball: 1717640227
       Sprite-0001_70: 7650255054670704136
       Sprite-0001_88: 104429196087744972
       Sprite-0001_52: 3497770116053522734

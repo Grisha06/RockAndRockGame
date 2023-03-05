@@ -74,8 +74,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -3.2873468, y: 2.6778326, z: 0}
-  - {x: -8.084592, y: 4.520091, z: 1}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -205,8 +205,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -3.2873468, y: 2.6778326, z: 0}
-  - {x: -8.084592, y: 4.520091, z: 1}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7152093729927606209, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+    - target: {fileID: 1330677349087025401, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
@@ -404,8 +408,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -3.2873468, y: 2.6778326, z: 0}
-  - {x: -8.084592, y: 4.520091, z: 1}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -477,7 +481,7 @@ MonoBehaviour:
   nameText: {fileID: 7863908211239137440}
   enemyBaceAction: 0
   Flipable: 0
-  Flip: 0
+  Flipped: 0
   FlipLocalScale: 0
   health: 10
   maxHealth: 0

@@ -40,7 +40,7 @@ public class EnemyGroundEater : Entity
         sr.sprite = UnEatSprite;
         entit.rb.isKinematic = false;
         entit.sr.enabled = true;
-        entit.rb.AddForce(transform.up * DragForce, ForceMode2D.Impulse);
+        entit.rb.AddForce(tr.up * DragForce, ForceMode2D.Impulse);
         entit.AddDamage(EatHp, true);
     }
 
