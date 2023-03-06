@@ -12,7 +12,6 @@ public class EnemyEater : Entity
     }
     protected override void NewFixedUpdate()
     {
-        WingsPos.SetActive(false);
         if (isAttackable && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Attack;

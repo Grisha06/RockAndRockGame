@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Traits;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class PlayerMover : Entity
+public class PlayerMover : Entity, IEntityTrait<CanJump>
 {
     public KeyObj[] controls;
     public float jumpForce = 1;
@@ -34,7 +35,7 @@ public class PlayerMover : Entity
     [HideInInspector]
     public static PlayerMover single = null;
 
-    protected override void NewAwake()
+    protected override sealed void NewAwake()
     {
         if (!single)
             single = this;
@@ -43,7 +44,7 @@ public class PlayerMover : Entity
         mainCamM = mainCam.GetComponent<Cameramower>();
         StartCoroutine(Shooter());
     }
-    protected override void NewUpdate()
+    protected override sealed void NewUpdate()
     {
         if (!isInvOpen)
         {
@@ -54,7 +55,7 @@ public class PlayerMover : Entity
         }
     }
     private void CheckGround() => isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
-    protected override void NewLateUpdate()
+    protected override sealed void NewLateUpdate()
     {
         if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0) && !isInvOpen)
         {
@@ -73,15 +74,9 @@ public class PlayerMover : Entity
                 {
                     jumps -= 1;
                 }
-                Jump(jumpForce);
+                this.PlayerJump(jumpForce,rb,arrowObj,OnJumped,an);
             }
         }
-    }
-    public override void Jump(float jumpForce)
-    {
-        rb.AddForce(arrowObj.forward * jumpForce, ForceMode2D.Impulse);
-        OnJumped.Invoke();
-        an.Play("jump");
     }
     private void Shoot()
     {
@@ -170,14 +165,14 @@ public class PlayerMover : Entity
             }
         }
     }
-    public override void SelfDestroy()
+    public override sealed void SelfDestroy()
     {
         OnDie.Invoke();
         StopAllCoroutines();
         TryDestroyBossBar();
         SceneManager.LoadScene(0);
     }
-    public override void AddDamage(float d, bool byHand)
+    public override sealed void AddDamage(float d, bool byHand)
     {
         base.AddDamage(d, byHand);
         if (hp > 0)
@@ -185,7 +180,7 @@ public class PlayerMover : Entity
         else
             an.Play("die");
     }
-    protected override void NewOnCollisionEnter2D(Collision2D collision)
+    protected override sealed void NewOnCollisionEnter2D(Collision2D collision)
     {
         CheckGround();
     }

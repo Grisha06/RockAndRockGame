@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Traits;
 
 [AddComponentMenu("Enemies/Flier")]
-public class EnemyFlier : EnemyBaceAttakable
+public class EnemyFlier : EnemyBaceAttakable, IEntityTrait<CanJump>
 {
     [HideInInspector]
     public GameObject rightWall;
@@ -25,7 +26,6 @@ public class EnemyFlier : EnemyBaceAttakable
     }
     protected override void NewFixedUpdate()
     {
-        base.NewFixedUpdate();
         if (attackIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < attackRadius)
         {
             enemyBaceAction = EnemyBaceActions.Attack;
@@ -40,7 +40,7 @@ public class EnemyFlier : EnemyBaceAttakable
     {
         while (true)
         {
-            Jump(jumpForce);
+            this.RandomJump(jumpForce,JumpTarget,rb,OnJumped,an);
             yield return new WaitForSeconds(jumpDest);
         }
     }

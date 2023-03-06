@@ -6,6 +6,146 @@ using TMPro;
 using NTC.Global.Cache;
 using UnityEngine.Events;
 
+namespace Traits
+{
+    abstract class EntityTrait { }
+
+    interface IEntityTrait<T> where T : EntityTrait { }
+
+    class CanUpdateActions : EntityTrait { }
+
+    class CanWalk : EntityTrait { }
+
+    class CanAttack : EntityTrait { }
+
+    class CanJump : EntityTrait { }
+
+    class CanCheckWalls : EntityTrait { }
+
+    class CanCheckLeftWall : EntityTrait { }
+
+    class Penguin : IEntityTrait<CanWalk> { }
+
+    static class EntityTraits
+    {
+        public static void Walk(this IEntityTrait<CanWalk> trait, float speed, bool xDir, Rigidbody2D rb, bool FlipxDir = false)
+        {
+            if (FlipxDir)
+                rb.velocity = new Vector2((xDir ? 1f : -1f) * (!FlipxDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
+            else
+                rb.velocity = new Vector2((xDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
+        }
+        public static void Roll(this IEntityTrait<CanWalk> trait, float speed, bool xDir, Rigidbody2D rb)
+        {
+            rb.angularVelocity = (xDir ? -1f : 1f) * speed * Time.deltaTime;
+        }
+        public static void RandomJump(this IEntityTrait<CanJump> trait, float jumpForce, Transform JumpTarget, Rigidbody2D rb, UnityEvent OnJumped = null, Animator an = null)
+        {
+            JumpTarget.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(45, 135));
+            rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
+            OnJumped?.Invoke();
+            an?.Play("jump");
+        }
+        public static void Climb(this IEntityTrait<CanJump> trait, float jumpForce, Rigidbody2D rb, ref bool xDir, ref Vector2 goingUpPos, ref bool goingUp, ref float goingUpt, Collider2D WallsChecker, UnityEvent OnJumped = null, Animator an = null)
+        {
+            xDir = true;
+            goingUpPos = rb.position + new Vector2(0, Mathf.Sqrt(jumpForce) + WallsChecker.bounds.size.y);
+            goingUp = true;
+            goingUpt = 0;
+            OnJumped?.Invoke();
+            an?.Play("jump");
+        }
+        public static void PlayerJump(this IEntityTrait<CanJump> trait, float jumpForce, Rigidbody2D rb, Transform arrowObj, UnityEvent OnJumped = null, Animator an = null)
+        {
+            rb.AddForce(arrowObj.forward * jumpForce, ForceMode2D.Impulse);
+            OnJumped?.Invoke();
+            an?.Play("jump");
+        }
+        public static void WalkUpdate(this IEntityTrait<CanUpdateActions> trait,
+            ref bool xDir,
+            Rigidbody2D rb,
+            ref EnemyBaceActions enemyBaceAction,
+            bool runIfRad,
+            bool attackIfRad,
+            Action CheckRightWall,
+            Action CheckLeftWall,
+            GameObject rightWall,
+            GameObject leftWall,
+            Transform tr,
+            float runRadius,
+            float attackRadius
+            )
+        {
+            if (runIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
+            {
+                enemyBaceAction = EnemyBaceActions.Run;
+            }
+            if (attackIfRad && Vector2.Distance(PlayerMover.single.tr.position, tr.position) < attackRadius)
+            {
+                enemyBaceAction = EnemyBaceActions.Attack;
+            }
+            if (Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= runRadius && Vector2.Distance(PlayerMover.single.tr.position, tr.position) >= attackRadius)
+            {
+                enemyBaceAction = EnemyBaceActions.None;
+            }
+            CheckRightWall();
+            CheckLeftWall();
+            if (!rightWall && leftWall)
+            {
+                xDir = true;
+            }
+            if (rightWall && !leftWall)
+            {
+                xDir = false;
+            }
+        }
+        public static void CheckRightWall(this IEntityTrait<CanCheckWalls> trait, ref GameObject rightWall, Collider2D WallsChecker, Transform tr, float wallCheckRadius, LayerMask groundLayer)
+        {
+            try
+            {
+                rightWall = Physics2D.OverlapCircleAll(tr.position + new Vector3(WallsChecker.bounds.size.x / 2f + wallCheckRadius, WallsChecker.bounds.size.y / 2f + wallCheckRadius), wallCheckRadius, groundLayer)[0].gameObject;
+            }
+            catch
+            {
+                rightWall = null;
+            }
+        }
+        public static void CheckLeftWall(this IEntityTrait<CanCheckWalls> trait, ref GameObject leftWall, Collider2D WallsChecker, Transform tr, float wallCheckRadius, LayerMask groundLayer)
+        {
+            try
+            {
+                leftWall = Physics2D.OverlapCircleAll(tr.position - new Vector3(WallsChecker.bounds.size.x / 2f + wallCheckRadius, -WallsChecker.bounds.size.y / 2f + wallCheckRadius), wallCheckRadius, groundLayer)[0].gameObject;
+            }
+            catch
+            {
+                leftWall = null;
+            }
+        }
+        public static void CheckRightWallUp(this IEntityTrait<CanCheckWalls> trait, ref GameObject rightWallUp, Collider2D WallsChecker, Transform tr, float wallCheckRadius, LayerMask groundLayer)
+        {
+            try
+            {
+                rightWallUp = Physics2D.OverlapCircleAll(tr.position + new Vector3(WallsChecker.bounds.size.x + wallCheckRadius, WallsChecker.bounds.size.y * 2f), wallCheckRadius, groundLayer)[0].gameObject;
+            }
+            catch
+            {
+                rightWallUp = null;
+            }
+        }
+        public static void CheckLeftWallUp(this IEntityTrait<CanCheckWalls> trait, ref GameObject leftWallUp, Collider2D WallsChecker, Transform tr, float wallCheckRadius, LayerMask groundLayer)
+        {
+            try
+            {
+                leftWallUp = Physics2D.OverlapCircleAll(tr.position - new Vector3(WallsChecker.bounds.size.x + wallCheckRadius, -WallsChecker.bounds.size.y * 2f), wallCheckRadius, groundLayer)[0].gameObject;
+            }
+            catch
+            {
+                leftWallUp = null;
+            }
+        }
+    }
+}
+
 public abstract class EnemyBaceAttakable : Entity
 {
     public float attackRadius;
@@ -181,6 +321,8 @@ public abstract class Entity : MonoCache, IDamagable
     {
         if (hp > 0)
         {
+            if(WingsPos)
+                WingsPos?.SetActive(false);
             NewFixedUpdate();
         }
     }
@@ -249,13 +391,6 @@ public abstract class Entity : MonoCache, IDamagable
         StopAllCoroutines();
         TryDestroyBossBar();
         Destroy(gameObject);
-    }
-    public virtual void Jump(float jumpForce)
-    {
-        JumpTarget.rotation = Quaternion.Euler(0, 0, UnityEngine.Random.Range(45, 135));
-        rb.AddForce(JumpTarget.right * jumpForce, ForceMode2D.Impulse);
-        OnJumped.Invoke();
-        an.Play("jump");
     }
     public virtual void AddDamage(float d, bool byHand)
     {
