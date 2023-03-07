@@ -30,7 +30,10 @@ namespace Traits
     {
         public static void Walk(this IEntityTrait<CanWalk> trait, float speed, bool xDir, Rigidbody2D rb, bool FlipxDir = false)
         {
-            rb.velocity = new Vector2((xDir ? 1f : -1f) * (!FlipxDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
+            if (FlipxDir)
+                rb.velocity = new Vector2((xDir ? 1f : -1f) * (!FlipxDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
+            else
+                rb.velocity = new Vector2((xDir ? 1f : -1f) * speed * Time.deltaTime, rb.velocity.y);
         }
         public static void Roll(this IEntityTrait<CanWalk> trait, float speed, bool xDir, Rigidbody2D rb)
         {
@@ -58,8 +61,7 @@ namespace Traits
             OnJumped?.Invoke();
             an?.Play("jump");
         }
-        public static void WalkUpdate(
-            this IEntityTrait<CanUpdateActions> trait,
+        public static void WalkUpdate(this IEntityTrait<CanUpdateActions> trait,
             ref bool xDir,
             Rigidbody2D rb,
             ref EnemyBaceActions enemyBaceAction,
