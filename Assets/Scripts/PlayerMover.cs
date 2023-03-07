@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Traits;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class PlayerMover : Entity, IEntityTrait<CanJump>
+public class PlayerMover : Entity
 {
     public KeyObj[] controls;
     public float jumpForce = 1;
@@ -35,7 +34,7 @@ public class PlayerMover : Entity, IEntityTrait<CanJump>
     [HideInInspector]
     public static PlayerMover single = null;
 
-    protected override sealed void NewAwake()
+    protected override void NewAwake()
     {
         if (!single)
             single = this;
@@ -44,7 +43,7 @@ public class PlayerMover : Entity, IEntityTrait<CanJump>
         mainCamM = mainCam.GetComponent<Cameramower>();
         StartCoroutine(Shooter());
     }
-    protected override sealed void NewUpdate()
+    protected override void NewUpdate()
     {
         if (!isInvOpen)
         {
@@ -55,7 +54,7 @@ public class PlayerMover : Entity, IEntityTrait<CanJump>
         }
     }
     private void CheckGround() => isGrounded = Physics2D.OverlapCircle(tr.position, 0.42f, groundLayer);
-    protected override sealed void NewLateUpdate()
+    protected override void NewLateUpdate()
     {
         if (Input.GetKeyDown(KeyObj.FindInKeysArr(controls, "jump")) && (rb.velocity.magnitude < maxVelocity || maxVelocity < 0) && !isInvOpen)
         {
@@ -74,9 +73,15 @@ public class PlayerMover : Entity, IEntityTrait<CanJump>
                 {
                     jumps -= 1;
                 }
-                this.PlayerJump(jumpForce,rb,arrowObj,OnJumped,an);
+                Jump(jumpForce);
             }
         }
+    }
+    public override void Jump(float jumpForce)
+    {
+        rb.AddForce(arrowObj.forward * jumpForce, ForceMode2D.Impulse);
+        OnJumped.Invoke();
+        an.Play("jump");
     }
     private void Shoot()
     {
@@ -165,14 +170,14 @@ public class PlayerMover : Entity, IEntityTrait<CanJump>
             }
         }
     }
-    public override sealed void SelfDestroy()
+    public override void SelfDestroy()
     {
         OnDie.Invoke();
         StopAllCoroutines();
         TryDestroyBossBar();
         SceneManager.LoadScene(0);
     }
-    public override sealed void AddDamage(float d, bool byHand)
+    public override void AddDamage(float d, bool byHand)
     {
         base.AddDamage(d, byHand);
         if (hp > 0)
@@ -180,7 +185,7 @@ public class PlayerMover : Entity, IEntityTrait<CanJump>
         else
             an.Play("die");
     }
-    protected override sealed void NewOnCollisionEnter2D(Collision2D collision)
+    protected override void NewOnCollisionEnter2D(Collision2D collision)
     {
         CheckGround();
     }

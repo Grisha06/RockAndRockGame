@@ -1,46 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Traits;
 
 [AddComponentMenu("Enemies/Walker Jumper")]
-public class EnemyWalkerJumper : EnemyBaceAttakable, IEntityTrait<CanJump>, IEntityTrait<CanWalk>, IEntityTrait<CanUpdateActions>, IEntityTrait<CanCheckWalls>
+public class EnemyWalkerJumper : Enemy_Walker_Rock
 {
-    public GameObject rightWall;
-    public GameObject leftWall;
-    public BoxCollider2D WallsChecker;
-    public float wallCheckRadius = 0.1f;
-    public bool xDir = true;
-    public bool FlipxDir = false;
-    public float speed;
-    public bool runIfRad = true;
-    public float runRadius;
     public GameObject rightWallUp;
     public GameObject leftWallUp;
     [SerializeField]
     private float goingUpMaxTime = 1.5f;
-    public bool goingUp = false;
-    public Vector2 goingUpPos;
-    public float goingUpt = 0f;
+    private bool goingUp = false;
+    private Vector2 goingUpPos;
+    private float goingUpt=0f;
     public float jumpForce;
 
     protected override void NewFixedUpdate()
     {
+        WingsPos.SetActive(false);
         if (!goingUp)
         {
-            this.WalkUpdate(ref xDir, rb, ref enemyBaceAction, runIfRad, attackIfRad, () => { this.CheckRightWall(ref rightWall, WallsChecker, tr, wallCheckRadius, groundLayer); }, () => { this.CheckLeftWall(ref leftWall, WallsChecker, tr, wallCheckRadius, groundLayer); }, rightWall, leftWall, tr, runRadius, attackRadius);
-            this.Walk(speed, xDir, rb, FlipxDir);
-            this.CheckRightWallUp(ref rightWallUp, WallsChecker, tr, wallCheckRadius, groundLayer);
-            this.CheckLeftWallUp(ref leftWallUp, WallsChecker, tr, wallCheckRadius, groundLayer);
-
+            base.NewFixedUpdate();
+            CheckRightWallUp();
+            CheckLeftWallUp();
             if ((leftWall && !leftWallUp) || (rightWall && !rightWallUp))
             {
-                this.Climb(jumpForce, rb, ref xDir, ref goingUpPos, ref goingUp, ref goingUpt, WallsChecker, an: an);
+                Jump(jumpForce);
             }
         }
         else
         {
-            if (rb.position.y >= goingUpPos.y - 0.5f || goingUpt >= goingUpMaxTime)
+            if (rb.position.y >= goingUpPos.y - 0.5f || goingUpt>= goingUpMaxTime)
             {
                 goingUp = false;
                 goingUpt = 0f;
@@ -52,6 +41,25 @@ public class EnemyWalkerJumper : EnemyBaceAttakable, IEntityTrait<CanJump>, IEnt
                 goingUpt += Time.deltaTime;
                 rb.position = Vector2.Lerp(rb.position, rb.position + new Vector2((xDir ? 1f : -1f) * speed * Time.deltaTime, Mathf.Sqrt(jumpForce) + WallsChecker.bounds.size.y), Time.deltaTime * 2);
             }
+        }
+    }
+    public override void Jump(float jumpForce)
+    {
+        xDir = true;
+        goingUpPos = rb.position + new Vector2(0, Mathf.Sqrt(jumpForce) + WallsChecker.bounds.size.y);
+        goingUp = true;
+        goingUpt = 0;
+        an.Play("jump");
+    }
+    public void CheckRightWallUp()
+    {
+        try
+        {
+            rightWallUp = Physics2D.OverlapCircleAll(tr.position + new Vector3(WallsChecker.bounds.size.x + wallCheckRadius, WallsChecker.bounds.size.y + Mathf.Sqrt(jumpForce)), wallCheckRadius, groundLayer)[0].gameObject;
+        }
+        catch
+        {
+            rightWallUp = null;
         }
     }
     public void CheckLeftWallUp()
