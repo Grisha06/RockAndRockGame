@@ -352,6 +352,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 8951767809953041190}
+  drawGizmos: 0
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:

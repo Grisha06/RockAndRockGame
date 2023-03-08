@@ -244,6 +244,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 3795503836774526794}
+  drawGizmos: 0
   dont_totch_me: 0
   isAttackable: 1
   attackRadius: 2

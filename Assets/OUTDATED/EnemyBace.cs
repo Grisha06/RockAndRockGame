@@ -24,7 +24,7 @@ public class EnemyBace : MonoBehaviour
     public float attackRadius;
     public float attackTime;
     public bool sameTimeAttack = false;
-    public MusicNoteSpavnerObj[] MusicNoteSpavner;
+    public BaseMusicNoteSpavnerObj[] MusicNoteSpavner;
     public DropObj[] Drop;
     public int MusicNoteSpavnerSelNum = 0;
     public GameObject MusicNote;

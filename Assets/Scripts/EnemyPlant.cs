@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [AddComponentMenu("Enemies/Plant")]
-public class EnemyPlant : EnemyBaceAttakable
+public class EnemyPlant : EntityAttakable
 {
     public bool rotateMusicNoteSpawners = true;
     protected override void NewFixedUpdate()

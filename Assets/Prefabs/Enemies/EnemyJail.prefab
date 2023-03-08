@@ -245,7 +245,7 @@ MonoBehaviour:
   nameText: {fileID: 1006468713956905412}
   enemyBaceAction: 0
   Flipable: 0
-  Flip: 0
+  Flipped: 0
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 6009576493054382128}
+  drawGizmos: 0
   dont_totch_me: 0
   Prisoner: {fileID: 8951767811375925338, guid: 6180b1737fec3224ba4e6770f3c5a717, type: 3}
   PrisonerPlace: {fileID: 2087455545}

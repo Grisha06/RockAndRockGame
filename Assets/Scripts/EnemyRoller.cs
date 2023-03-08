@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Enemies/Roller")]
-public class EnemyRoller : EnemyBaceAttakable
+public class EnemyRoller : EntityAttakable
 {
     [HideInInspector]
     public GameObject rightWall;

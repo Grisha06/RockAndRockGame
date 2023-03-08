@@ -6,7 +6,7 @@ using TMPro;
 using NTC.Global.Cache;
 using UnityEngine.Events;
 
-public abstract class EnemyBaceAttakable : Entity
+public abstract class EntityAttakable : Entity
 {
     public float attackRadius;
     public BaseMusicNoteSpavnerObj[] MusicNoteSpavner;
@@ -20,6 +20,11 @@ public abstract class EnemyBaceAttakable : Entity
     {
         StartCoroutine(AttackingEnumerator());
         base.Awake();
+    }
+    protected override void NewOnDrawGizmosSelected()
+    {
+        if (attackIfRad)
+            UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.back, attackRadius);
     }
     public void SpawnM(int mnssn)
     {
@@ -151,8 +156,17 @@ public abstract class Entity : MonoCache, IDamagable
     [HideInInspector]
     public Rigidbody2D rb;
     public SpriteRenderer sr;
+    [SerializeField]
+    private bool drawGizmos = false;
     [Header("Custom fields")]
     public bool dont_totch_me;
+
+    private void OnDrawGizmosSelected()
+    {
+        if (drawGizmos)
+            NewOnDrawGizmosSelected();
+    }
+    protected virtual void NewOnDrawGizmosSelected() { }
 
     public virtual void Awake()
     {

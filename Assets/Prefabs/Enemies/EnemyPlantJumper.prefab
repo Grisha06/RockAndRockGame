@@ -171,6 +171,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 1303691521034537659}
+  drawGizmos: 0
   dont_totch_me: 0
   jumpForce: 1.5
 --- !u!114 &1412789952

@@ -231,7 +231,7 @@ MonoBehaviour:
   nameText: {fileID: 9201597887917324008}
   enemyBaceAction: 0
   Flipable: 1
-  Flip: 1
+  Flipped: 0
   FlipLocalScale: 1
   health: 8
   maxHealth: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 2387849578921768732}
+  drawGizmos: 0
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:
@@ -290,8 +291,6 @@ MonoBehaviour:
   attackTime: 1.5
   MusicNoteSpavnerSelNum: 0
   attackIfRad: 1
-  rightWall: {fileID: 0}
-  leftWall: {fileID: 0}
   WallsChecker: {fileID: 2387849578178360422}
   wallCheckRadius: 0.05
   xDir: 0

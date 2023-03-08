@@ -185,6 +185,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 3854424374353450014}
+  drawGizmos: 0
   dont_totch_me: 0
   attackRadius: 3
   MusicNoteSpavner:
@@ -197,8 +198,6 @@ MonoBehaviour:
   attackTime: 1.5
   MusicNoteSpavnerSelNum: 0
   attackIfRad: 1
-  rightWall: {fileID: 0}
-  leftWall: {fileID: 0}
   WallsChecker: {fileID: 3854424372930434916}
   wallCheckRadius: 0.05
   xDir: 0

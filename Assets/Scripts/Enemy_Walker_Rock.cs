@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Enemies/Walker")]
-public class Enemy_Walker_Rock : EnemyBaceAttakable
+public class Enemy_Walker_Rock : EntityAttakable
 {
     protected GameObject rightWall;
     protected GameObject leftWall;

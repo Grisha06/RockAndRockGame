@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Enemies/Flier")]
-public class EnemyFlier : EnemyBaceAttakable
+public class EnemyFlier : EntityAttakable
 {
     [HideInInspector]
     public GameObject rightWall;

@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.161709
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0681255
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -119,7 +119,7 @@ MonoBehaviour:
   nameText: {fileID: 5793761455511520337}
   enemyBaceAction: 0
   Flipable: 0
-  Flip: 0
+  Flipped: 0
   FlipLocalScale: 0
   health: 10
   maxHealth: 0
@@ -161,6 +161,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   rb: {fileID: 0}
   sr: {fileID: 1078171568827532709}
+  drawGizmos: 0
   dont_totch_me: 0
   attackRadius: 5.5
   MusicNoteSpavner:
