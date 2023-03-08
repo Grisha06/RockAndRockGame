@@ -161,6 +161,11 @@ public abstract class Entity : MonoCache, IDamagable
     [Header("Custom fields")]
     public bool dont_totch_me;
 
+    [ContextMenu("Die")]
+    private void ContextMenuDie()
+    {
+        hp = 0;
+    }
     private void OnDrawGizmosSelected()
     {
         if (drawGizmos)
@@ -271,11 +276,20 @@ public abstract class Entity : MonoCache, IDamagable
         OnJumped.Invoke();
         an.Play("jump");
     }
-    public virtual void AddDamage(float d, bool byHand)
+    public enum DamageType
+    {
+        Hand, Music, Generic
+    }
+    public virtual void AddDamage(float d, DamageType damageType)
     {
         an.Play("damage");
         d = Mathf.Max(d, 0);
-        hp = hp - (d == 0 ? 1 : (d / (float)(byHand ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f)))));
+        if (damageType == DamageType.Hand)
+            hp = hp - (d == 0 ? 1 : (d / (float)(true ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f)))));
+        if (damageType == DamageType.Music)
+            hp = hp - (d == 0 ? 1 : (d / (float)(false ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f)))));
+        if (damageType == DamageType.Generic)
+            hp = hp - (d == 0 ? 1 : d);
         OnHpChanged.Invoke(hp);
     }
     public virtual void Heal(float d)
@@ -328,6 +342,47 @@ public abstract class Entity : MonoCache, IDamagable
 
 public interface IDamagable
 {
-    public void AddDamage(float damage, bool byHand);
+    public void AddDamage(float damage, Entity.DamageType damageType);
     public void Heal(float damage);
+}
+
+namespace DamageTypes
+{
+    public abstract class DamageType { }
+    public interface IDamageType<T> where T : DamageType { }
+
+    public class HandDamage : DamageType { }
+    public class MusicDamage : DamageType { }
+    public class GenericDamage : DamageType { }
+
+
+    static class DamageTypeCalculates
+    {
+        public static void Calculate(this IDamageType<HandDamage> trait, float resist, float damage)
+        {
+
+        }
+        public static void Calculate(this IDamageType<MusicDamage> trait, float resist, float damage)
+        {
+
+        }
+        public static void Calculate(this IDamageType<GenericDamage> trait, float resist, float damage)
+        {
+
+        }
+    }
+
+    [System.Serializable]
+    public class DamageTypeStruct<T> where T : IDamageType<DamageType>
+    {
+        public float damage;
+        public float resist;
+        public float hp
+        {
+            get
+            {
+                return this.Calculate()
+            }
+        }
+    }
 }

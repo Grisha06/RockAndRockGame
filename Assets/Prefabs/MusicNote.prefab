@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
   damage: 1
-  IsByHand: 0
+  damageType: 1
   isRight: 1
   dir: {fileID: 0}
   force: 0

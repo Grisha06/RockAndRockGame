@@ -177,9 +177,9 @@ public class PlayerMover : Entity
         TryDestroyBossBar();
         SceneManager.LoadScene(0);
     }
-    public override void AddDamage(float d, bool byHand)
+    public override void AddDamage(float d, DamageType damageType)
     {
-        base.AddDamage(d, byHand);
+        base.AddDamage(d, damageType);
         if (hp > 0)
             an.Play("damage");
         else

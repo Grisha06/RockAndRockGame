@@ -41,7 +41,7 @@ public class EnemyGroundEater : Entity
         entit.rb.isKinematic = false;
         entit.sr.enabled = true;
         entit.rb.AddForce(tr.up * DragForce, ForceMode2D.Impulse);
-        entit.AddDamage(EatHp, true);
+        entit.AddDamage(EatHp, DamageType.Hand);
     }
 
     public override void SelfDestroy()

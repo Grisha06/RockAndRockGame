@@ -4,9 +4,10 @@ using UnityEngine;
 public class HandHitter : MyTrigger
 {
     public float damage = 1;
-    public bool IsByHand = true;
+    public Entity.DamageType damageType = Entity.DamageType.Hand;
     public override void Activate(Entity entity)
     {
-        entity.AddDamage(damage, IsByHand);
+        entity.AddDamage(damage, damageType);
     }
 }
+
