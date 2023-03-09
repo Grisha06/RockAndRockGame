@@ -23,8 +23,8 @@ public abstract class EntityAttakable : Entity
     }
     protected override void NewOnDrawGizmosSelected()
     {
-        if (attackIfRad)
-            UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.back, attackRadius);
+        //if (attackIfRad)
+            //UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.back, attackRadius);
     }
     public void SpawnM(int mnssn)
     {
@@ -164,7 +164,7 @@ public abstract class Entity : MonoCache, IDamagable
     [ContextMenu("Die")]
     private void ContextMenuDie()
     {
-        hp = 0;
+        AddDamage(hp, DamageType.Generic);
     }
     private void OnDrawGizmosSelected()
     {
@@ -280,16 +280,26 @@ public abstract class Entity : MonoCache, IDamagable
     {
         Hand, Music, Generic
     }
+    protected virtual float CalculateDamage(float d, DamageType damageType)
+    {
+        switch (damageType)
+        {
+            case DamageType.Hand:
+                return (d == 0 ? 1 : (d / (float)(handArm == 0 ? 1 : Math.Max(handArm, 1f))));
+            case DamageType.Music:
+                return (d == 0 ? 1 : (d / (float)(musicArm == 0 ? 1 : Math.Max(musicArm, 1f))));
+            case DamageType.Generic:
+                return (d == 0 ? 1 : d);
+            default:
+                break;
+        }
+        return 0f;
+    }
     public virtual void AddDamage(float d, DamageType damageType)
     {
         an.Play("damage");
         d = Mathf.Max(d, 0);
-        if (damageType == DamageType.Hand)
-            hp = hp - (d == 0 ? 1 : (d / (float)(true ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f)))));
-        if (damageType == DamageType.Music)
-            hp = hp - (d == 0 ? 1 : (d / (float)(false ? (handArm == 0 ? 1 : Math.Max(handArm, 1f)) : (musicArm == 0 ? 1 : Math.Max(musicArm, 1f)))));
-        if (damageType == DamageType.Generic)
-            hp = hp - (d == 0 ? 1 : d);
+        hp = hp - CalculateDamage(d, damageType);
         OnHpChanged.Invoke(hp);
     }
     public virtual void Heal(float d)
@@ -344,45 +354,4 @@ public interface IDamagable
 {
     public void AddDamage(float damage, Entity.DamageType damageType);
     public void Heal(float damage);
-}
-
-namespace DamageTypes
-{
-    public abstract class DamageType { }
-    public interface IDamageType<T> where T : DamageType { }
-
-    public class HandDamage : DamageType { }
-    public class MusicDamage : DamageType { }
-    public class GenericDamage : DamageType { }
-
-
-    static class DamageTypeCalculates
-    {
-        public static void Calculate(this IDamageType<HandDamage> trait, float resist, float damage)
-        {
-
-        }
-        public static void Calculate(this IDamageType<MusicDamage> trait, float resist, float damage)
-        {
-
-        }
-        public static void Calculate(this IDamageType<GenericDamage> trait, float resist, float damage)
-        {
-
-        }
-    }
-
-    [System.Serializable]
-    public class DamageTypeStruct<T> where T : IDamageType<DamageType>
-    {
-        public float damage;
-        public float resist;
-        public float hp
-        {
-            get
-            {
-                return this.Calculate()
-            }
-        }
-    }
 }

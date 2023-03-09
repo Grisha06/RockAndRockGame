@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 [AddComponentMenu("Enemies/Tree")]
 public class EnemyTree : EntityAttakable
@@ -11,8 +8,14 @@ public class EnemyTree : EntityAttakable
     protected TreeSpavnerObj[] treeSpavnerObj;
     private void SpawnEnemy(int i)
     {
+        RaycastHit2D raycast= Physics2D.Raycast(treeSpavnerObj[i].MusicNoteSpavner.position, -tr.up, 100f, groundLayer);
         Entity mn = Instantiate(treeSpavnerObj[i].ToSpawn[Random.Range(0, treeSpavnerObj[i].ToSpawn.Length)], treeSpavnerObj[i].MusicNoteSpavner);
         mn.an.Play("grow");
+        if (raycast)
+        {
+            Debug.Log(raycast.collider.gameObject.name);
+            mn.tr.position = raycast.point;
+        }
         mn.tr.rotation = Quaternion.identity;
         mn.tr.localScale = Vector3.one;
         mn.tr.SetParent(null);
