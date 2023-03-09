@@ -13,7 +13,6 @@ public class EnemyTree : EntityAttakable
         mn.an.Play("grow");
         if (raycast)
         {
-            Debug.Log(raycast.collider.gameObject.name);
             mn.tr.position = raycast.point;
         }
         mn.tr.rotation = Quaternion.identity;
