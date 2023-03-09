@@ -24,6 +24,6 @@ public class CameraTrigger : MyTrigger
     public override void Diactivate(Entity entity)
     {
         cm.lookTo = startPos;
-        cm.OrtSize = startSize;
+        cm.OrtSize = 3;
     }
 }
