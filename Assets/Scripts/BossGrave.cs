@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using BossTraits;
 
 [AddComponentMenu("Bosses/Grave")]
-public class BossGrave : Boss, IBossAttack<Generic>, IBossAttack<Generic2>
+public class BossGrave : Boss
 {
 
 }

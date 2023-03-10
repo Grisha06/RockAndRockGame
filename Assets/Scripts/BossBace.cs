@@ -5,13 +5,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 using BossTraits;
-
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Boss : Entity
 {
-    [SerializeField, BossAttackAttribute] private BossAttack[] bossAttacks;
+    [SerializeField] private BossAttack[] bossAttacks;
+    [SerializeField] private bool isSleeping = true;
     [SerializeField, Min(0)] private float attackDelay = 1;
+    [HideInInspector] public UnityEvent OnWakeUp;
+    [HideInInspector] public UnityEvent<IBossAttack> OnAttack;
     public override sealed void Awake()
     {
         StartCoroutine(Attacker());
@@ -20,39 +23,64 @@ public abstract class Boss : Entity
     private IEnumerator Attacker()
     {
         yield return null;
+        while (true)
+        {
+            if (!isSleeping)
+            {
+                yield return new WaitForSeconds(attackDelay);
+                yield return new WaitForSeconds(DoAttack());
+            }
+            else
+            {
+                yield return new WaitForSeconds(1f);
+            }
+        }
+    }
+    public void WakeUp()
+    {
+        OnWakeUp?.Invoke();
+        isSleeping = false;
+    }
+    public float DoAttack()
+    {
+        int i = Random.Range(0, bossAttacks.Length);
+        object bt = bossAttacks[i].bossTrait.GetType().GetConstructor(Type.EmptyTypes).Invoke(null);
+        IBossAttack bbt = (IBossAttack)bt;
+        bbt.Attack(this);
+        OnAttack?.Invoke(bbt);
+        return i;
     }
 }
+
+
 namespace BossTraits
 {
-    abstract class BossTrait { }
+    public interface IBossAttack {
+        public abstract void Attack(Boss entity);
+    }
 
-    interface IBossAttack<T> where T : BossTrait { }
-
-    class Generic : BossTrait { }
-    class Generic2 : BossTrait { }
-
-    static class BossTraits
+    public class Generic : IBossAttack 
     {
-        public static void Attack(this IBossAttack<Generic> trait, Boss entity)
+        public void Attack(Boss entity)
         {
-
+            Debug.Log(entity.GetType().Name);
         }
-        public static void Attack(this IBossAttack<Generic2> trait, Boss entity)
+    }
+    public class Generic2 : IBossAttack
+    {
+        public void Attack(Boss entity)
         {
-
+            Debug.Log(entity.GetType().Name);
         }
     }
 
-    
-    public class BossAttackAttribute : PropertyAttribute
-    {
-
-    }
     [Serializable]
     public class BossAttack
     {
         [Range(0f, 100f)]
-        public float chance;
+        public float Chance;
+        [Min(0)] 
+        public float Delay = 1;
         public enum BossTraitsEnum
         {
             Generic, Generic2

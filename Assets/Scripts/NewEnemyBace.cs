@@ -15,6 +15,7 @@ public abstract class EntityAttakable : Entity
     [HideInInspector]
     public int MusicNoteSpavnerSelNum = 0;
     public bool attackIfRad = true;
+    public GameObject MusicNote;
 
     public sealed override void Awake()
     {
@@ -145,7 +146,6 @@ public abstract class Entity : MonoCache, IDamagable
     [Min(0)]
     public float handArm;
     public DropObj[] Drop;
-    public GameObject MusicNote;
     public Transform JumpTarget;
     public GameObject WingsPos;
     public LayerMask groundLayer;
