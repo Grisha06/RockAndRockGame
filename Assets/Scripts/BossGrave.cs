@@ -8,5 +8,5 @@ using BossAttacks;
 [AddComponentMenu("Bosses/Grave")]
 public class BossGrave : Boss
 {
-
+    public GameObject groundUpAttackPrefab;
 }

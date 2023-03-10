@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using BossAttacks;
 using Random = UnityEngine.Random;
+using OUTDATED_Traits;
+using System.Collections.Generic;
+using Unity.Mathematics;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Boss : Entity
@@ -12,7 +15,7 @@ public abstract class Boss : Entity
     [SerializeField] private bool isSleeping = true;
     [SerializeField, Min(0)] private float attackDelay = 1;
     public UnityEvent OnWakeUp;
-    [HideInInspector] public UnityEvent<IBossAttack> OnAttack;
+    [HideInInspector] public UnityEvent<BossAttack> OnAttack;
     public override sealed void Awake()
     {
         StartCoroutine(Attacker());
@@ -41,37 +44,66 @@ public abstract class Boss : Entity
     }
     public float DoAttack()
     {
-        int i = Random.Range(0, bossAttacks.Length);
-        BossAttacks.IBossAttack bt = bossAttacks[i].bossTrait;
-        bt.Attack(this);
-        OnAttack?.Invoke(bt);
-        return bossAttacks[i].Delay;
+        List<BossAttack> ab = new List<BossAttack>();
+        foreach (var item in bossAttacks)
+        {
+            if (Random.Range(0, 101) < item.Chance)
+            {
+                ab.Add(item);
+            }
+        }
+        if (ab.Count > 0)
+        {
+            BossAttack i = ab[Random.Range(0, ab.Count)];
+
+            IBossAttack bt = i.bossTrait;
+            StartCoroutine(bt.Attack(this, i, OnAttack));
+            return i.Delay;
+        }
+        else
+            return 0.1f;
     }
 }
 
 
 namespace BossAttacks
 {
+    using UnityEngine;
+
+
     public interface IBossAttack
     {
-        void Attack(Boss entity);
+        IEnumerator Attack(Boss entity, BossAttack attack, UnityEvent<BossAttack> onAttack = null);
     }
 
-    public class Generic : IBossAttack
+    public class GroundUpAttack : IBossAttack
     {
-        public void Attack(Boss entity)
+        public IEnumerator Attack(Boss entity, BossAttack attack, UnityEvent<BossAttack> onAttack = null)
         {
-            Debug.Log(entity.name + ": " + this.GetType().Name);
-        }
-    }
-    public class Generic2 : IBossAttack
-    {
-        public void Attack(Boss entity)
-        {
-            Debug.Log(entity.name + ": " + this.GetType().Name);
-        }
-    }
+            yield return null;
+            Debug.Log(entity.GetType().Name + " == " + nameof(BossGrave) + ": " + GetType().Name);
 
+            if (entity.GetType().Name == nameof(BossGrave))
+                entity.StartCoroutine(Attack((BossGrave)entity, attack, onAttack));
+
+            yield return new WaitForSeconds(attack.Delay*5f);
+        }
+        public IEnumerator Attack(BossGrave entity, BossAttack attack, UnityEvent<BossAttack> onAttack = null)
+        {
+            Debug.Log(GetType().Name);
+            for (int i = 0; i < 5; i++)
+            {
+                Transform ins = Object.Instantiate(entity.groundUpAttackPrefab).transform;
+                ins.position = new Vector2(PlayerMover.single.tr.position.x, entity.tr.position.y);
+                ins.SetParent(null);
+                ins.rotation = Quaternion.identity;
+                ins.localScale = Vector2.one;
+
+                yield return new WaitForSeconds(attack.Delay);
+            }
+            onAttack?.Invoke(attack);
+        }
+    }
     [Serializable]
     public struct BossAttack
     {
@@ -81,7 +113,7 @@ namespace BossAttacks
         public float Delay;
         public enum BossTraitsEnum
         {
-            Generic, Generic2
+            GroundUpAttack
         }
         [SerializeField]
         private BossTraitsEnum bossTraits;
@@ -91,10 +123,8 @@ namespace BossAttacks
             {
                 switch (bossTraits)
                 {
-                    case BossTraitsEnum.Generic:
-                        return new Generic();
-                    case BossTraitsEnum.Generic2:
-                        return new Generic2();
+                    case BossTraitsEnum.GroundUpAttack:
+                        return new GroundUpAttack();
                     default:
                         return null;
                 }
