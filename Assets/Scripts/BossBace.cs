@@ -3,13 +3,14 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
 using BossTraits;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Boss : Entity
 {
-    [SerializeField] private BossAttack[] bossAttacks;
+    [SerializeField, BossAttackAttribute] private BossAttack[] bossAttacks;
     [SerializeField, Min(0)] private float attackDelay = 1;
     public override sealed void Awake()
     {
@@ -42,8 +43,13 @@ namespace BossTraits
         }
     }
 
+    
+    public class BossAttackAttribute : PropertyAttribute
+    {
+
+    }
     [Serializable]
-    struct BossAttack
+    public class BossAttack
     {
         [Range(0f, 100f)]
         public float chance;

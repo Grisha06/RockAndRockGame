@@ -16623,9 +16623,8 @@ MonoBehaviour:
   sr: {fileID: 1255491908}
   drawGizmos: 0
   dont_totch_me: 0
-  bossAttacks:
-  - chance: 31.8
-    bossTraits: 0
+  bossAttacks: []
+  attackDelay: 1
 --- !u!1001 &1266182709
 PrefabInstance:
   m_ObjectHideFlags: 0
