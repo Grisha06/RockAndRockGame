@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
   damage: 2
-  IsByHand: 1
+  damageType: 0
 --- !u!1001 &4204736926944062191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,16 +225,12 @@ MonoBehaviour:
   musicArm: 3
   handArm: 2
   Drop:
-  - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
-    chance: 100
-    number: 2
   - obj: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
     chance: 67.3
     number: 1
   - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
     chance: 9.3
     number: 3
-  MusicNote: {fileID: 8212732330406563222, guid: 397da983742c26e4fb2c1058a955a0d6, type: 3}
   JumpTarget: {fileID: 3795503835681491248}
   WingsPos: {fileID: 3795503836160696166}
   groundLayer:

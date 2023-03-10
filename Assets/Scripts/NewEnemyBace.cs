@@ -109,13 +109,10 @@ public abstract class Entity : MonoCache, IDamagable
     protected float health;
     [HideInInspector]
     public float maxHealth;
-    [HideInInspector]
     public EnemyOnHpChanged OnHpChanged;
     [HideInInspector]
     public EnemyOnTriggerEnter OnInvTriggerEntered;
-    [HideInInspector]
     public UnityEvent OnJumped;
-    [HideInInspector]
     public UnityEvent OnDie;
     [HideInInspector]
     public UnityEvent OnInvItemRemoved;
@@ -181,10 +178,6 @@ public abstract class Entity : MonoCache, IDamagable
         an = gameObject.GetComponent<Animator>();
         if (nameText)
             nameText.transform.parent.gameObject.SetActive(true);
-        OnHpChanged = new EnemyOnHpChanged();
-        OnJumped = new UnityEvent();
-        OnDie = new UnityEvent();
-        OnInvTriggerEntered = new EnemyOnTriggerEnter();
         NewAwake();
     }
     protected virtual void NewAwake() { }

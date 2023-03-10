@@ -210,16 +210,12 @@ MonoBehaviour:
   musicArm: 3
   handArm: 3
   Drop:
-  - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
-    chance: 100
-    number: 2
   - obj: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
     chance: 67.3
     number: 1
   - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
     chance: 9.3
     number: 3
-  MusicNote: {fileID: 0}
   JumpTarget: {fileID: 0}
   WingsPos: {fileID: 0}
   groundLayer:
@@ -237,6 +233,7 @@ MonoBehaviour:
   attackTime: 3
   MusicNoteSpavnerSelNum: 0
   attackIfRad: 1
+  MusicNote: {fileID: 0}
   treeSpavnerObj:
   - MusicNoteSpavner: {fileID: 7487727539441812295}
     SpawnTime: 1

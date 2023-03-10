@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor;
-using BossTraits;
+using BossAttacks;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -13,7 +11,7 @@ public abstract class Boss : Entity
     [SerializeField] private BossAttack[] bossAttacks;
     [SerializeField] private bool isSleeping = true;
     [SerializeField, Min(0)] private float attackDelay = 1;
-    [HideInInspector] public UnityEvent OnWakeUp;
+    public UnityEvent OnWakeUp;
     [HideInInspector] public UnityEvent<IBossAttack> OnAttack;
     public override sealed void Awake()
     {
@@ -44,59 +42,59 @@ public abstract class Boss : Entity
     public float DoAttack()
     {
         int i = Random.Range(0, bossAttacks.Length);
-        object bt = bossAttacks[i].bossTrait.GetType().GetConstructor(Type.EmptyTypes).Invoke(null);
-        IBossAttack bbt = (IBossAttack)bt;
-        bbt.Attack(this);
-        OnAttack?.Invoke(bbt);
-        return i;
+        BossAttacks.IBossAttack bt = bossAttacks[i].bossTrait;
+        bt.Attack(this);
+        OnAttack?.Invoke(bt);
+        return bossAttacks[i].Delay;
     }
 }
 
 
-namespace BossTraits
+namespace BossAttacks
 {
-    public interface IBossAttack {
-        public abstract void Attack(Boss entity);
+    public interface IBossAttack
+    {
+        void Attack(Boss entity);
     }
 
-    public class Generic : IBossAttack 
+    public class Generic : IBossAttack
     {
         public void Attack(Boss entity)
         {
-            Debug.Log(entity.GetType().Name);
+            Debug.Log(entity.name + ": " + this.GetType().Name);
         }
     }
     public class Generic2 : IBossAttack
     {
         public void Attack(Boss entity)
         {
-            Debug.Log(entity.GetType().Name);
+            Debug.Log(entity.name + ": " + this.GetType().Name);
         }
     }
 
     [Serializable]
-    public class BossAttack
+    public struct BossAttack
     {
         [Range(0f, 100f)]
         public float Chance;
-        [Min(0)] 
-        public float Delay = 1;
+        [Min(0)]
+        public float Delay;
         public enum BossTraitsEnum
         {
             Generic, Generic2
         }
         [SerializeField]
         private BossTraitsEnum bossTraits;
-        public Type bossTrait
+        public IBossAttack bossTrait
         {
             get
             {
                 switch (bossTraits)
                 {
                     case BossTraitsEnum.Generic:
-                        return typeof(Generic);
+                        return new Generic();
                     case BossTraitsEnum.Generic2:
-                        return typeof(Generic2);
+                        return new Generic2();
                     default:
                         return null;
                 }

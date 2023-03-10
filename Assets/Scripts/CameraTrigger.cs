@@ -10,20 +10,32 @@ public class CameraTrigger : MyTrigger
     private float startSize = 3;
     private Transform startPos;
     private Cameramower cm;
+    [SerializeField]
+    private bool useSize = true;
+    [SerializeField]
+    private bool usePosition = true;
     private void Awake()
     {
         cm = Camera.main.GetComponent<Cameramower>();
     }
     public override void Activate(Entity entity)
     {
-        startSize = Camera.main.orthographicSize;
-        startPos = cm.lookTo;
-        cm.lookTo = transform;
-        cm.OrtSize = Size;
+        if (useSize)
+        {
+            startSize = Camera.main.orthographicSize;
+            cm.OrtSize = Size;
+        }
+        if (usePosition)
+        {
+            startPos = cm.lookTo;
+            cm.lookTo = transform;
+        }
     }
     public override void Diactivate(Entity entity)
     {
-        cm.lookTo = startPos;
-        cm.OrtSize = 3;
+        if (usePosition)
+            cm.lookTo = startPos;
+        if (useSize)
+            cm.OrtSize = 3;
     }
 }

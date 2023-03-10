@@ -268,16 +268,12 @@ MonoBehaviour:
   musicArm: 2
   handArm: 1
   Drop:
-  - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
-    chance: 4.6
-    number: 1
   - obj: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
     chance: 37.8
     number: 2
   - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
     chance: 61
     number: 3
-  MusicNote: {fileID: 0}
   JumpTarget: {fileID: 6009576491945637450}
   WingsPos: {fileID: 6009576491332214812}
   groundLayer:

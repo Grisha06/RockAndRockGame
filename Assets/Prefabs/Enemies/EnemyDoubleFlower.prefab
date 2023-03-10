@@ -8,6 +8,34 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.data[0].obj
+      value: 
+      objectReference: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.data[1].obj
+      value: 
+      objectReference: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.data[0].chance
+      value: 67.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.data[0].number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.data[1].chance
+      value: 9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
+      propertyPath: Drop.Array.data[1].number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 805011729, guid: fff89360c488c9a41a06cb33ffdaba22, type: 3}
       propertyPath: MusicNoteSpavner.Array.size
       value: 2
       objectReference: {fileID: 0}

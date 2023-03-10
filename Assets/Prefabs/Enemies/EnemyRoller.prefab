@@ -333,16 +333,12 @@ MonoBehaviour:
   musicArm: 2
   handArm: 2
   Drop:
-  - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
-    chance: 22.5
-    number: 1
   - obj: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
     chance: 5.1
     number: 2
   - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
     chance: 61
     number: 3
-  MusicNote: {fileID: 8212732330406563222, guid: 397da983742c26e4fb2c1058a955a0d6, type: 3}
   JumpTarget: {fileID: 8951767811092999516}
   WingsPos: {fileID: 8951767811687545610}
   groundLayer:
@@ -380,6 +376,7 @@ MonoBehaviour:
   attackTime: 2
   MusicNoteSpavnerSelNum: 0
   attackIfRad: 1
+  MusicNote: {fileID: 8212732330406563222, guid: 397da983742c26e4fb2c1058a955a0d6, type: 3}
   rightWall: {fileID: 0}
   leftWall: {fileID: 0}
   WallsChecker: {fileID: 1287902673892972389}

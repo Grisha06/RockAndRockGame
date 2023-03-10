@@ -10427,6 +10427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7115542373595852926, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
+      propertyPath: m_Mass
+      value: 0.063899994
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7115542373595852801, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
@@ -10453,6 +10457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
+  diactivateOnDestroy: 0
+  diactivateOnDisable: 0
   activationAction:
     m_PersistentCalls:
       m_Calls: []
@@ -16505,11 +16511,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 382.84277
+      value: 382.79
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.045589447
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 6218099679868554703, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16598,7 +16604,19 @@ MonoBehaviour:
       m_Calls: []
   OnDie:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8155005346007582900}
+        m_TargetAssemblyTypeName: MyTrigger, Assembly-CSharp
+        m_MethodName: DestroyToEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInvItemRemoved:
     m_PersistentCalls:
       m_Calls: []
@@ -16608,13 +16626,19 @@ MonoBehaviour:
   Drop:
   - obj: {fileID: 1134215305923564647, guid: 4d79b59ab3cb6fd4aa24becf13153353, type: 3}
     chance: 100
-    number: 2
+    number: 1
   - obj: {fileID: 1134215305923564647, guid: 033b810ee5972f24e985e4341b244f46, type: 3}
     chance: 67.3
+    number: 3
+  - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
+    chance: 37.2
     number: 1
   - obj: {fileID: 1134215305923564647, guid: 340cca9f550700b45b9a28beb34a6e54, type: 3}
     chance: 9.3
-    number: 3
+    number: 2
+  - obj: {fileID: 6218099679868554698, guid: 4d61ce49aa01ea04286714ee74d250ee, type: 3}
+    chance: 100
+    number: 1
   JumpTarget: {fileID: 0}
   WingsPos: {fileID: 0}
   groundLayer:
@@ -16627,9 +16651,20 @@ MonoBehaviour:
   drawGizmos: 0
   dont_totch_me: 0
   bossAttacks:
-  - chance: 0
+  - Chance: 0
+    Delay: 1
     bossTraits: 0
+  - Chance: 0
+    Delay: 0.5
+    bossTraits: 1
+  isSleeping: 1
   attackDelay: 1
+  OnWakeUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1266182709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17304,7 +17339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.3925781, y: 11.75293}
+  m_AnchoredPosition: {x: -2.3927002, y: 11.75293}
   m_SizeDelta: {x: -1356.495, y: -763.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1300928687
@@ -26164,7 +26199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7115542373595852926, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
       propertyPath: m_Mass
-      value: 0.063899994
+      value: 0.0639
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7115542373595852801, guid: e81db45c6d63c294ebb2a1951d84ef84, type: 3}
@@ -26192,6 +26227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
+  diactivateOnDestroy: 0
+  diactivateOnDisable: 0
   activationAction:
     m_PersistentCalls:
       m_Calls: []
@@ -28767,6 +28804,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayerToActivate: 0a000000
+  diactivateOnDestroy: 0
+  diactivateOnDisable: 0
   activationAction:
     m_PersistentCalls:
       m_Calls: []
@@ -32332,6 +32371,10 @@ PrefabInstance:
       propertyPath: Size
       value: 8.57
       objectReference: {fileID: 0}
+    - target: {fileID: 8155005345108624608, guid: 2bd93bf9bdaa417418ac8da18a933d94, type: 3}
+      propertyPath: diactivateOnDestroy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8155005345108624610, guid: 2bd93bf9bdaa417418ac8da18a933d94, type: 3}
       propertyPath: m_Size.x
       value: 24.85
@@ -32395,6 +32438,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8155005345108624611, guid: 2bd93bf9bdaa417418ac8da18a933d94, type: 3}
   m_PrefabInstance: {fileID: 8155005346007582898}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8155005346007582900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8155005345108624608, guid: 2bd93bf9bdaa417418ac8da18a933d94, type: 3}
+  m_PrefabInstance: {fileID: 8155005346007582898}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911f7cb2e0ee5514697183e57203196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8159631142219784682
 PrefabInstance:
   m_ObjectHideFlags: 0
