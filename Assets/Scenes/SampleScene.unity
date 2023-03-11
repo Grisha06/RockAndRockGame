@@ -9743,6 +9743,7 @@ MonoBehaviour:
   hp2: {fileID: 1528100257}
   ammo: {fileID: 201871257}
   ammoSpiner: {fileID: 675194560}
+  ammoSpinerBase: {fileID: 1907359385}
 --- !u!1 &675194558
 GameObject:
   m_ObjectHideFlags: 0
@@ -18060,53 +18061,7 @@ MonoBehaviour:
   - {fileID: -1335684660466582739, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
   - {fileID: 2616213020684850013, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
   - {fileID: 38780577723739802, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
-  weapon:
-  - isAutomatic: 0
-    isAmmoDecreasing: 1
-    isReloadable: 1
-    Ammo: 100
-    ClipAmmo: 0
-    MaxClipAmmo: 100
-    ReloadSpeed: 1
-    ShootSpeed: 0.08
-    musicNoteSpavnerObjs:
-    - MusicNoteSpavner: {fileID: 1418261139}
-      SpawnTime: 0.1
-      Force: 0.3
-      Lifetime: 2.5
-      Damage: 1
-      AmmoCost: 1
-    MusicNote: {fileID: 7845709570152305804, guid: fe738e18268ca41479fd0f91e0a9d77e, type: 3}
-    sprite: {fileID: 8198249141363050723, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
-  - isAutomatic: 1
-    isAmmoDecreasing: 1
-    isReloadable: 1
-    Ammo: 500
-    ClipAmmo: 0
-    MaxClipAmmo: 100
-    ReloadSpeed: 1
-    ShootSpeed: 0.1
-    musicNoteSpavnerObjs:
-    - MusicNoteSpavner: {fileID: 1418261139}
-      SpawnTime: 0
-      Force: 0.3
-      Lifetime: 2
-      Damage: 2
-      AmmoCost: 2
-    - MusicNoteSpavner: {fileID: 803442022}
-      SpawnTime: 0
-      Force: 0.2
-      Lifetime: 3
-      Damage: 1
-      AmmoCost: 1
-    - MusicNoteSpavner: {fileID: 1622006841}
-      SpawnTime: 0
-      Force: 0.2
-      Lifetime: 3
-      Damage: 1
-      AmmoCost: 1
-    MusicNote: {fileID: 7845709570152305804, guid: fe738e18268ca41479fd0f91e0a9d77e, type: 3}
-    sprite: {fileID: 1162831633960180250, guid: e4e0c977b1e03154b99b2817207f2995, type: 3}
+  weapon: []
   weaponSprite: {fileID: 378218317}
   weaponSelect: 0
   MusicNoteSpavnerSelect: 0

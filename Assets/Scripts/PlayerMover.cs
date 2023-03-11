@@ -97,7 +97,7 @@ public class PlayerMover : Entity
         mns.damage = weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].Damage;
         mn.transform.SetParent(null);
         weapon[weaponSelect].ClipAmmo -= !weapon[weaponSelect].isAmmoDecreasing ? 0 : weapon[weaponSelect].musicNoteSpavnerObjs[MusicNoteSpavnerSelect].AmmoCost;
-        playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo);
+        playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo, weapon.Count == 0);
     }
     IEnumerator Shooter()
     {
@@ -107,17 +107,17 @@ public class PlayerMover : Entity
             yield return wfs;
             if (!isInvOpen)
             {
-                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "decreaseWeaponSelect")))
+                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "decreaseWeaponSelect")) && weapon.Count != 0)
                 {
                     weaponSelect += weaponSelect < weapon.Count - 1 ? 1 : 0;
-                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo);
+                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo, weapon.Count == 0);
                 }
-                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "increaseWeaponSelect")))
+                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "increaseWeaponSelect")) && weapon.Count != 0)
                 {
                     weaponSelect -= weaponSelect > 0 ? 1 : 0;
-                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo);
+                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo, weapon.Count == 0);
                 }
-                if (Input.GetKey(KeyObj.FindInKeysArr(controls, "reload")) && weapon[weaponSelect].isReloadable)
+                if (weapon.Count != 0 && Input.GetKey(KeyObj.FindInKeysArr(controls, "reload")) && weapon[weaponSelect].isReloadable)
                 {
                     float baseSpeed = an.speed;
                     an.speed = weapon[weaponSelect].ReloadSpeed;
@@ -133,12 +133,12 @@ public class PlayerMover : Entity
                         weapon[weaponSelect].ClipAmmo += weapon[weaponSelect].Ammo;
                         weapon[weaponSelect].Ammo = 0;
                     }
-                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo);
+                    playerOnAmmoChanged.Invoke(weapon[weaponSelect].Ammo, weapon[weaponSelect].ClipAmmo, weapon[weaponSelect].MaxClipAmmo, weapon.Count == 0);
 
                     an.speed = 1;
                 }
-                weaponSprite.sprite = weapon[weaponSelect].sprite;
-                if ((!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].ClipAmmo > 0) && hp > 0)
+                weaponSprite.sprite = weapon.Count != 0 ? weapon[weaponSelect].sprite : null;
+                if (weapon.Count != 0 && (!weapon[weaponSelect].isAmmoDecreasing || weapon[weaponSelect].ClipAmmo > 0) && hp > 0)
                 {
                     if (weapon[weaponSelect].isAutomatic && Input.GetKey(KeyObj.FindInKeysArr(controls, "attack")))
                     {
